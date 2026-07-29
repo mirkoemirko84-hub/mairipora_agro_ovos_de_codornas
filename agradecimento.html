@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suguimoto Agro - Obrigado!</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f7f6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 30px; border: 4px solid #27ae60; border-radius: 15px; background: white; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        
+        /* Efeito de Destaque Piscante Profissional */
+        .sucesso-pisca { font-size: 28px; color: #27ae60; font-weight: bold; animation: piscar 1s infinite alternate; margin-bottom: 20px; }
+        @keyframes piscar {
+            0% { opacity: 0.3; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+        
+        .btn { display: inline-block; padding: 15px 25px; font-size: 16px; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 15px; min-width: 180px; }
+        .btn-next { background-color: #27ae60; }
+        .btn-back { background-color: #9b59b6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Áudio embutido que toca automaticamente ao carregar -->
+        <audio id="somObrigado" autoplay>
+            <source src="https://google.com" type="audio/ogg">
+        </audio>
+
+        <!-- Texto Animado com Efeito Especial -->
+        <div class="sucesso-pisca">🎉 COMPRA CONCLUÍDA COM SUCESSO! 🎉</div>
+        
+        <h3>[ TELA 6: AGRADECIMENTO ]</h3>
+        <p>Muito obrigado pela preferência! O Mestre Suguimoto já está a separar as suas cartelas de ovos fresquinhos das bichinhas.</p>
+        <hr>
+        
+        <!-- BOTÕES DE IR E VOLTAR -->
+        <a href="qrcode.html" class="btn btn-back">⬅️ Voltar para QR Code</a>
+        <a href="index.html" class="btn btn-next">Novo Pedido (Início) ➡️</a>
+    </div>
+
+    <!-- Script de segurança caso o navegador bloqueie o som automático -->
+    <script>
+        document.addEventListener('click', function() {
+            var som = document.getElementById('somObrigado');
+            if(som.paused) { som.play(); }
+        });
+    </script>
+</body>
+</html>

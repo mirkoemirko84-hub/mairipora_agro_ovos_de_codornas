@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SOFTWARE_SUGUIMOTO</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; }
+        h1 { color: #1b5e20; text-align: center; font-weight: bold; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        .bloco { padding: 15px; margin-bottom: 15px; border-radius: 12px; border-left: 6px solid #1b5e20; background-color: #f1f8e9; }
+        .bloco.fiado { border-left: 6px solid #fbc02d; background-color: #fffde7; }
+        .bloco.descarte { background-color: #ffebee; border-left: 6px solid #c62828; }
+        .bloco.adm { background-color: #fffde7; border-left: 6px solid #fbc02d; }
+        
+        h3 { margin-top: 0; color: #1b5e20; margin-bottom: 10px; }
+        .bloco.fiado h3 { color: #f57f17; }
+        .bloco.descarte h3 { color: #b71c1c; }
+        .bloco.adm h3 { color: #f57f17; }
+        
+        .form-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        input, select, button { padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 8px; }
+        
+        input:focus, select:focus, button:focus {
+            outline: 3px solid #1b5e20 !important;
+            border-color: #1b5e20;
+            cursor: pointer !important;
+        }
+        
+        button { background: linear-gradient(135deg, #fbc02d, #f57f17); color: #fff; cursor: pointer; border: none; font-weight: bold; }
+        button:hover { background: linear-gradient(135deg, #f57f17, #e65100); }
+        button:disabled { background: #ccc !important; color: #666 !important; cursor: not-allowed; opacity: 0.5; }
+        .bloco.descarte button { background: linear-gradient(135deg, #e57373, #c62828); }
+
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #ddd; }
+        th, td { padding: 12px; text-align: center; border-bottom: 1px solid #ddd; }
+        th { background-color: #1b5e20; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        .fechamento { margin-top: 20px; background: #fff; border: 2px solid #1b5e20; border-radius: 12px; padding: 15px; }
+        .fechamento-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #ddd; font-size: 16px; font-weight: bold; }
+        .fechamento-item.total-final { font-size: 20px; color: white; margin-top: 10px; background: #1b5e20; padding: 12px; border-radius: 8px; }
+        .status-txt { font-weight: bold; font-size: 14px; color: #c62828; margin-left: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SOFTWARE_SUGUIMOTO - Caixa Geral</h1>
+
+    <!-- 1. VENDA -->
+    <div class="bloco">
+        <h3>1. Venda Direta - 100 por cento Pago</h3>
+        <div class="form-row">
+            <input type="text" id="v_cli" placeholder="Nome do Cliente">
+            <select id="v_per"><option value="Manha">Manha</option><option value="Tarde">Tarde</option></select>
+            <select id="v_tip"><option value="cartela">Cartela</option><option value="avulso">Avulso</option></select>
+            <input type="number" id="v_qtd" value="1">
+            <input type="number" id="v_val" value="12.00" step="0.01">
+            <select id="v_for"><option value="PIX">PIX</option><option value="Dindin">Dindin</option></select>
+            <button id="btn_venda" disabled>Lancar Venda</button>
+        </div>
+    </div>
+
+    <!-- 2. FIADO -->
+    <div class="bloco fiado">
+        <h3>2. Fiado / A Receber</h3>
+        <div class="form-row">
+            <input type="text" id="f_cli" placeholder="Nome do Devedor">
+            <select id="f_per"><option value="Manha">Manha</option><option value="Tarde">Tarde</option></select>
+            <select id="f_tip"><option value="cartela">Cartela</option><option value="avulso">Avulso</option></select>
+            <input type="number" id="f_qtd" value="1">
+            <input type="number" id="f_val" value="12.00" step="0.01">
+            <button id="btn_fiado" disabled>Lancar Fiado</button>
+        </div>
+    </div>
+
+    <!-- 3. DESCARTE -->
+    <div class="bloco descarte">
+        <h3>3. Ovos Descartados - Controle Fisico</h3>
+        <div class="form-row">
+            <input type="text" id="d_mot" placeholder="Motivo">
+            <select id="d_per"><option value="Manha">Manha</option><option value="Tarde">Tarde</option></select>
+            <select id="d_tip"><option value="cartela">Cartela</option><option value="avulso">Avulso</option></select>
+            <input type="number" id="d_qtd" value="1">
+            <button id="btn_descarte" disabled>Lancar Descarte</button>
+        </div>
+    </div>
+
+    <!-- 4. CONTROLE DE ACESSO ADM AUTOMATICO -->
+    <div class="bloco adm">
+        <h3>4. Controle de Acesso ADM</h3>
+        <div class="form-row">
+            <input type="password" id="senha_sistema" maxlength="4" placeholder="Digite os 4 digitos" oninput="checarSenhaAoDigitar()">
+            <span id="status_txt" class="status-txt">SISTEMA TRANCADO</span>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Periodo</th><th>Cliente / Registro</th><th>Cartelas</th><th>Avulsos</th><th>Valor</th><th>Forma</th><th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tabela_corpo"></tbody>
+    </table>
+
+    <div class="fechamento">
+        <h3>Fechamento do Caixa</h3>
+        <div class="fechamento-item"><span>Total PIX:</span><span id="r_pix">R$ 0,00</span></div>
+        <div class="fechamento-item"><span>Total Dindin:</span><span id="r_din">R$ 0,00</span></div>
+        <div class="fechamento-item" style="color: #f57f17;"><span>Subtotal a Receber (Fiado):</span><span id="r_fia">R$ 0,00</span></div>
+        <div class="fechamento-item"><span>Subtotal Geral (Vendas):</span><span id="r_sub">R$ 0,00</span></div>
+        <div class="fechamento-item" style="color: #c62828;"><span>Ovos Descartados (Fisico):</span><span id="r_des">0 cart. / 0 avul.</span></div>
+        <div class="fechamento-item total-final"><span>Faturamento Real (Em Caixa):</span><span id="r_tot">R$ 0,00</span></div>
+    </div>
+</div>
+
+<script>
+    var lista = [];
+
+    // MANOBRA DE DESTRAVE SEM BOTAO (DIRETO AO DIGITAR)
+    function checarSenhaAoDigitar() {
+        var campoSenha = document.getElementById("senha_sistema");
+        var texto = document.getElementById("status_txt");
+        
+        if (campoSenha.value === "1234") {
+            texto.innerText = "✅ LIBERADO";
+            texto.style.color = "#1b5e20";
+
+            // Destranca os botoes de lancamento na hora
+            document.getElementById("btn_venda").disabled = false;
+            document.getElementById("btn_fiado").disabled = false;
+            document.getElementById("btn_descarte").disabled = false;
+            
+            // Pula direto para o primeiro campo de venda
+            document.getElementById("v_cli").focus();
+        } else {
+            texto.innerText = "SISTEMA TRANCADO";
+            texto.style.color = "#c62828";
+            document.getElementById("btn_venda").disabled = true;
+            document.getElementById("btn_fiado").disabled = true;
+            document.getElementById("btn_descarte").disabled = true;
+        }
+    }
+
+    function travarBotao(botao) {
+        botao.disabled = true;
+        setTimeout(function() { botao.disabled = false; }, 500);
+    }
+
+    document.getElementById("btn_venda").onclick = function() {
+        travarBotao(this);
+        var cliente = document.getElementById("v_cli").value.trim() || "ADM - VENDA";
+        lista.push({
+            per: document.getElementById("v_per").value, cli: cliente, tip: document.getElementById("v_tip").value,
+            qtd: parseInt(document.getElementById("v_qtd").value) || 0, val: parseFloat(document.getElementById("v_val").value) || 0,
+            for: document.getElementById("v_for").value, sta: "Pago"
+        });
+        document.getElementById("v_cli").value = ""; desenhar();
+    };
+
+    document.getElementById("btn_fiado").onclick = function() {
+        travarBotao(this);
+        var devedor = document.getElementById("f_cli").value.trim() || "ADM - FIADO";
+        lista.push({
+            per: document.getElementById("f_per").value, cli: devedor, tip: document.getElementById("f_tip").value,
+            qtd: parseInt(document.getElementById("f_qtd").value) || 0, val: parseFloat(document.getElementById("f_val").value) || 0,
+            for: "-", sta: "A Receber"
+        });
+        document.getElementById("f_cli").value = ""; desenhar();
+    };
+
+    document.getElementById("btn_descarte").onclick = function() {
+        travarBotao(this);
+        var motivo = document.getElementById("d_mot").value.trim() || "ADM - DESCARTE";
+        lista.push({
+            per: document.getElementById("d_per").value, cli: motivo, tip: document.getElementById("d_tip").value,
+            qtd: parseInt(document.getElementById("d_qtd").value) || 0, val: 0, for: "-", sta: "Descartado"
+        });
+        document.getElementById("d_mot").value = ""; desenhar();
+    };
+
+    function desenhar() {
+        var html = ""; var tPix = 0, tDin = 0, tFia = 0, tSub = 0, tReal = 0, cDes = 0, aDes = 0;
+        for (var i = 0; i < lista.length; i++) {
+            var item = lista[i];
+            var cart = item.tip === "cartela" ? item.qtd : "-";
+            var avul = item.tip === "avulso" ? item.qtd : "-";
+            var estiloRow = "";
+
+            if (item.sta === "Descartado") {
+                estiloRow = "background-color: #ffebee; color: #c62828;";
+                if (item.tip === "cartela") cDes += item.qtd; else aDes += item.qtd;
+            } else if (item.sta === "A Receber") {
