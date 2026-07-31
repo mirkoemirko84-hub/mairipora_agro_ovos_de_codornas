@@ -150,13 +150,13 @@ function processarPagamento() {
 
     // PROCESSAMENTO DE COMPRA CLIENTE COM SALDO DISPONÍVEL
     if (qtd === 1) {
-        if (valorPago < 13) {
+               if (valorPago < 13) {
             statusBox.className = "erro";
             statusBox.innerHTML = "❌ Pagamento Recusado! O sistema não aceita valores menores que o preço de tabela.";
         } else {
             finalizarVendaCliente(1, valorPago);
         }
-    } 
+    } // <-- ESTA CHAVE FECHA A 1ª CARTELA E ARRUMA TUDO!
     else if (qtd === 2) {
         if (valorPago < 25) {
             statusBox.className = "erro";
@@ -177,7 +177,81 @@ function processarPagamento() {
             finalizarVendaCliente(3, valorPago);
         }
     }
+
+} // Aqui fecha a função antiga que calcula a quantidade
+
+// 🌟 AQUI COMEÇA A FUNÇÃO DE FINALIZAR TOTALMENTE SEPARADA E CORRETA:
+function finalizarVendaCliente(qtd, valorFinal, comDesconto = false) {
+    const statusBox = document.getElementById('status-box');
+    
+    saldoCartelas -= qtd;
+    clientesAtendidos += 1;
+    
+    document.getElementById('saldo_atual').innerText = saldoCartelas;
+    document.getElementById('contador_clientes').innerText = clientesAtendidos;
+    document.getElementById('valor_pago').value = valorFinal;
+    
+    statusBox.className = "sucesso";
+    if (comDesconto) {
+        statusBox.innerHTML = "📢 Validação do Sistema... <br><br>🌟 Parabéns! O nosso sistema identificou a sua <strong>FIDELIDADE</strong> à nossa produção artesanal. O seu valor final foi recalculado. Pagamento de R$ " + valorFinal.toFixed(2) + " processado com sucesso!";
+    } else {
+        statusBox.innerHTML = "✅ Pagamento Aceito com sucesso! Valor recebido: R$ " + valorFinal.toFixed(2) + " (Obrigado pela preferência!)";
+    }
+
+    // Espera 3 segundos para o cliente ler a mensagem e pula para a tela isolada do QR Code!
+    setTimeout(function() {
+        window.location.href = "qrcode.html";
+    }, 3000);
 }
+
+
+} // Aqui fecha a função antiga que calcula a quantidade
+
+// 🌟 AQUI COMEÇA A FUNÇÃO DE FINALIZAR TOTALMENTE SEPARADA E CORRETA:
+function finalizarVendaCliente(qtd, valorFinal, comDesconto = false) {
+    const statusBox = document.getElementById('status-box');
+    
+    saldoCartelas -= qtd;
+    clientesAtendidos += 1;
+    
+    document.getElementById('saldo_atual').innerText = saldoCartelas;
+    document.getElementById('contador_clientes').innerText = clientesAtendidos;
+    document.getElementById('valor_pago').value = valorFinal;
+    
+    statusBox.className = "sucesso";
+    if (comDesconto) {
+        statusBox.innerHTML = "📢 Validação do Sistema... <br><br>🌟 Parabéns! O nosso sistema identificou a sua <strong>FIDELIDADE</strong> à nossa produção artesanal. O seu valor final foi recalculado. Pagamento de R$ " + valorFinal.toFixed(2) + " processado com sucesso!";
+    } else {
+        statusBox.innerHTML = "✅ Pagamento Aceito com sucesso! Valor recebido: R$ " + valorFinal.toFixed(2) + " (Obrigado pela preferência!)";
+    }
+
+    // Espera 3 segundos para o cliente ler a mensagem e pula para a tela isolada do QR Code!
+    setTimeout(function() {
+        window.location.href = "qrcode.html";
+    }, 3000);
+}
+
+    
+    saldoCartelas -= qtd;
+    clientesAtendidos += 1;
+    
+    document.getElementById('saldo_atual').innerText = saldoCartelas;
+    document.getElementById('contador_clientes').innerText = clientesAtendidos;
+    document.getElementById('valor_pago').value = valorFinal;
+    
+    statusBox.className = "sucesso";
+    if (comDesconto) {
+        statusBox.innerHTML = "📢 Validação do Sistema... <br><br>🌟 Parabéns! O nosso sistema identificou a sua <strong>FIDELIDADE</strong> à nossa produção artesanal. O seu valor final foi recalculado. Pagamento de R$ " + valorFinal.toFixed(2) + " processado com sucesso!";
+    } else {
+        statusBox.innerHTML = "✅ Pagamento Aceito com sucesso! Valor recebido: R$ " + valorFinal.toFixed(2) + " (Obrigado pela preferência!)";
+    }
+
+    // O PULO DO GATO: Espera 3 segundos e pula para a tela isolada do QR Code!
+    setTimeout(function() {
+        window.location.href = "qrcode.html";
+    }, 3000);
+}
+
 
 function finalizarVendaCliente(qtd, valorFinal, comDesconto = false) {
     const statusBox = document.getElementById('status-box');
