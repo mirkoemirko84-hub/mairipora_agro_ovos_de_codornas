@@ -6,213 +6,147 @@
     <title>Mairiporã Agro - Ovos de Codorna</title>
     <style>
         :root {
-            --primary: #2c5e3b;
-            --secondary: #e67e22;
-            --background: #f9f9f9;
-            --text: #2c3e50;
-            --card-bg: #ffffff;
+            --primary: #e67e22;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
         }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background);
-            color: var(--text);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--light);
+            color: var(--dark);
             text-align: center;
-            padding: 2.5rem 1rem;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            letter-spacing: 1px;
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
         }
-
-        header p {
-            margin: 0.5rem 0 0 0;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
         .container {
             max-width: 600px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.8rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #eaeaea;
-            text-align: left;
-        }
-
-        .price-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: bold;
-            margin-top: 0;
-        }
-
-        .price-tag {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-
-        .badge {
-            background: #e8f5e9;
-            color: var(--primary);
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        h2 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-top: 0;
-            border-bottom: 2px solid #e8f5e9;
-            padding-bottom: 0.5rem;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-left: 1.8rem;
-        }
-
-        li::before {
-            content: "•";
-            color: var(--secondary);
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -0.2rem;
-        }
-
-        /* Estilo para centralizar e ajustar o QR Code */
-        .qrcode-container {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-
-        .img-qrcode {
-            max-width: 220px;
-            width: 100%;
-            height: auto;
-            border: 2px solid #eaeaea;
-            border-radius: 8px;
-            padding: 5px;
+            margin: 20px auto;
+            padding: 20px;
             background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
+        .produto-img {
+            width: 80px;
+            height: auto;
+            margin: 10px;
+        }
+        .preco {
+            font-size: 32px;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .alerta-logistica {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 15px 0;
+            border: 1px solid #ffeeba;
+            font-size: 14px;
+        }
         .btn-whatsapp {
-            display: block;
+            display: inline-block;
             background-color: #25d366;
             color: white;
-            text-align: center;
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 15px 30px;
             text-decoration: none;
+            font-size: 18px;
             font-weight: bold;
-            font-size: 1.1rem;
+            border-radius: 50px;
+            margin-top: 15px;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-            transition: background 0.3s;
-            margin-top: 2rem;
         }
-
-        .btn-whatsapp:hover {
-            background-color: #128c7e;
+        .qr-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #ddd;
         }
-
+        .qr-code {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
         footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.85rem;
+            margin-top: 40px;
+            font-size: 12px;
             color: #7f8c8d;
-            border-top: 1px solid #eaeaea;
-            margin-top: 3rem;
+            padding-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Mairiporã Agro</h1>
-        <p>Produção Artesanal • Agricultura Familiar</p>
+        🥚 MAIRIPORÃ AGRO
     </header>
 
     <div class="container">
+        <h2>Ovos de Codorna Frescos</h2>
+        <p>Produção familiar com a máxima qualidade e colheita diária.</p>
+        
+        <!-- Preço Atualizado -->
+        <div class="preco">R$ 13,00 <span style="font-size: 16px; color: #7f8c8d;">/ cartela (30 ovos)</span></div>
 
-        <!-- Tabela de Preços -->
-        <div class="card">
-            <span class="badge">Frescos e Selecionados</span>
-            <p class="price-title" style="margin-top: 0.8rem; margin-bottom: 0;">Cartela Ovos de Codorna</p>
-            <div class="price-tag">R$ 13,00</div>
-            <p style="margin: 0; color: #7f8c8d; font-size: 0.9rem;">Unidade da cartela fechada (30 ovos)</p>
+        <!-- Regra de Limite Logístico -->
+        <div class="alerta-logistica">
+            ⚠️ ATENÇÃO ÀS REGRAS DE AGOSTO:<br>
+            Por motivos de logística e organização de entregas,<br>
+            o limite é de no MÁXIMO 3 cartelas por pedido.
         </div>
 
-        <!-- Pagamento Facilitado com Imagem do QR Code -->
-        <div class="card">
-            <h2>Pagamento Facilitado</h2>
-            <p>Pague com rapidez via <strong>PIX</strong> no ato do pedido.</p>
-            
-            <div class="qrcode-container">
-                <img src="qrcodemod.agosto 01.00.26 agosto.png" alt="QR Code Pix" class="img-qrcode" onerror="this.src='https://tcdn.com.br'">
-                <p style="font-size: 12px; color: #666; margin-top: 8px; font-weight: 500;">Leitura validada pelo Bradesco</p>
-            </div>
-        </div>
+        <p><strong>Condição:</strong> Apenas vendas online com pagamento antecipado.</p>
 
-        <!-- Logística -->
-        <div class="card">
-            <h2>Logística e Previsão de Entregas</h2>
-            <ul>
-                <li><strong>🚚 Entregas às TERÇAS-FEIRAS:</strong> Atende à produção acumulada de 4 dias (Sexta, Sábado, Domingo e Segunda-feira).</li>
-                <li><strong>🚚 Entregas às SEXTAS-FEIRAS:</strong> Atende à produção acumulada de 4 dias (Terça, Quarta, Quinta e Sexta-feira).</li>
-                <li><strong>🚌 Retirada na Rodoviária:</strong> Se for pertinho, combinamos o horário e posso entregar em mãos na hora, conforme a minha disponibilidade!</li>
-                <li><strong>⏱️ Agendamento:</strong> Faça o seu pedido com antecedência para garantir os ovos mais frescos da rota.</li>
-            </ul>
-        </div>
-
-        <!-- Pós-Venda -->
-        <div class="card" style="background-color: #fcf8f2;">
-            <h2>Pós-Venda e Agradecimento</h2>
-            <p style="font-style: italic; color: #555; margin-bottom: 0;">
-                "A Mairiporã Agro agradece imensamente a sua preferência! O seu apoio à agricultura familiar é o que nos move. Esperamos que goste dos nossos ovos frescos e selecionados. Até à próxima!"
-            </p>
-        </div>
-
-                        <!-- Botão WhatsApp -->
-        <a href="https://wa.me" target="_blank" class="btn-whatsapp">
-            💬 Fazer Pedido (WhatsApp)
+        <!-- Botão WhatsApp Integrado -->
+        <a href="https://wa.me" class="btn-whatsapp" target="_blank">
+            Chamar no WhatsApp e Pedir
         </a>
 
+        <!-- Seção do QR Code de Pagamento Antecipado -->
+        <div class="qr-section">
+            <h3>Pague Antecipado via QR Code</h3>
+            <p style="font-size: 14px; color: #7f8c8d;">Faça o scan para garantir a sua reserva antes da entrega</p>
+            <img src="qrcode-pagamento.png" alt="QR Code Pagamento Antecipado" class="qr-code">
         </div>
+    </div>
 
     <footer>
-        <p>© 2026 Mairiporã Agro. Todos os direitos reservados.</p>
-        <p>Desenvolvido por: JCS_software | Versão: v1.0.0</p>
+        &copy; 2026 Mairiporã Agro - Todos os direitos reservados.
     </footer>
+
+    <!-- CONTADOR DE ACESSOS SECRETO (Senha: 999) -->
+    <script>
+        function iniciarContadorSecreto() {
+            let acessos = localStorage.getItem('mairipora_acessos') || 0;
+            acessos = parseInt(acessos) + 1;
+            localStorage.setItem('mairipora_acessos', acessos);
+            
+            let sequenciaTeclas = "";
+            document.addEventListener('keydown', function(evento) {
+                sequenciaTeclas += evento.key;
+                if (sequenciaTeclas.length > 3) {
+                    sequenciaTeclas = sequenciaTeclas.substr(sequenciaTeclas.length - 3);
+                }
+                
+                if (sequenciaTeclas === "999") {
+                    alert("📊 [PAINEL ADM MAIRIPORÃ AGRO]\nTotal de acessos registados neste dispositivo: " + acessos + " visitas.");
+                }
+            });
+        }
+        window.onload = iniciarContadorSecreto;
+    </script>
 
 </body>
 </html>
