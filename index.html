@@ -1,26 +1,168 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mairiporã Agro Codornas</title>
+    <title>Mairiporã Agro - Ovos de Codorna</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { font-size: 6vw; max-font-size: 28px; word-wrap: break-word; color: #2e7d32; }
-        .botao { display: inline-block; padding: 15px 30px; margin: 15px; background-color: #2e7d32; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 18px; }
-        .contador { font-size: 20px; margin: 20px 0; font-weight: bold; color: #e65100; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2e7d32;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .grid-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .grid-info { grid-template-columns: 1fr; }
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+        }
+        .preco {
+            font-size: 24px;
+            color: #2e7d32;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .img-qrcode {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #2e7d32;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            background-color: #128c7e;
+        }
+        .logistica-lista {
+            list-style-type: none;
+            padding: 0;
+        }
+        .logistica-lista li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #eee;
+            margin-top: 40px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Mairiporã Agro</h1>
+        <p>Produção Artesanal • Agricultura Familiar</p>
+    </header>
+
     <div class="container">
-        <h1>🌾 mairipora_agro_ovos_de_codornas</h1>
-        <p>[ TELA 1: PÁGINA PRINCIPAL ]</p>
-        <p>Esta é a página inicial da nossa bancada digital.</p>
         
-        <div class="contador">⭐ 14 clientes atendidos este mês</div>
-        
-        <a href="vendas.html" class="botao">Ir para Vendas e Cartelas ➡️</a>
+        <h2>Tabela de Preços</h2>
+        <div class="grid-info">
+            <div class="card">
+                <h3>Cartela Ovos de Codorna</h3>
+                <p>Frescos e Selecionados</p>
+                <!-- ### ALTERE O PREÇO ABAIXO QUANDO PRECISAR ### -->
+                <div class="preco">R$ 13,00</div>
+                <!-- ############################################# -->
+                <p style="font-size: 12px; color: #666;">Unidade da cartela</p>
+            </div>
+            
+            <div class="card">
+                <h3>Pagamento Facilitado</h3>
+                <p>Pague com rapidez via PIX no ato do pedido.</p>
+                <img src="qrcodemod.agosto 01.00.26 agosto.png" alt="QR Code Pix" class="img-qrcode" onerror="this.src='https://qrserver.com'">
+                <p style="font-size: 12px; color: #666; margin-top: 5px;">Leitura validada pelo Bradesco</p>
+            </div>
+        </div>
+
+        <h2>Logística e Previsão de Entregas</h2>
+        <ul class="logistica-lista">
+            <li>🚚 <strong>Entregas às TERÇAS-FEIRAS:</strong> Atende à produção acumulada de 4 dias (Sexta, Sábado, Domingo e Segunda-feira).</li>
+            <li>🚚 <strong>Entregas às SEXTAS-FEIRAS:</strong> Atende à produção acumulada de 4 dias (Terça, Quarta, Quinta e Sexta-feira).</li>
+            <li>🚌 <strong>Retirada na Rodoviária:</strong> Se for pertinho, combinamos o horário e posso entregar em mãos na hora, conforme a minha disponibilidade!</li>
+            <li>⏱️ <strong>Agendamento:</strong> Faça o seu pedido com antecedência para garantir os ovos mais frescos da rota.</li>
+        </ul>
+
+        <h2>Pós-Venda e Agradecimento</h2>
+        <p>Após concluir o seu pagamento ou receber o seu pedido, a nossa mensagem oficial de fecho será enviada para o seu WhatsApp:</p>
+        <blockquote style="font-style: italic; background: #f0f7f0; padding: 15px; border-left: 5px solid #2e7d32; margin: 10px 0;">
+            "A Mairiporã Agro agradece imensamente a sua preferência! O seu apoio à agricultura familiar é o que nos move. Esperamos que goste dos nossos ovos frescos e selecionados. Até à próxima!"
+        </blockquote>
+
     </div>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP BUSINESS COM LINK AJUSTADO -->
+    <a href="https://whatsapp.com." class="btn-whatsapp" target="_blank">
+        💬 Fazer Pedido (WhatsApp)
+    </a>
+
+    <footer>
+        <p>© 2026 Mairiporã Agro. Todos os direitos reservados.</p>
+        <p style="font-size: 11px; color: #888; margin-top: 5px;">Desenvolvido por: <strong>JCS_software</strong> | Versão: <strong>v1.0.0</strong></p>
+    </footer>
+
 </body>
 </html>
