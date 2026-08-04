@@ -173,12 +173,24 @@
     </div>
 
     <main>
-        <h2>Garanta a sua Cartela de Forma Sustentável</h2>
-        <p>Reserve já! Faça o PIX antecipado e levante a sua cartela rapidinho, sem burocracias e apoiando a agricultura local.</p>
-        
-        <div class="stock-badge">
-            ⚡ Apenas 5 unidades disponíveis no site hoje!
+    <h2>Garanta a sua Cartela de Forma Sustentável</h2>
+    <p>Reserve já! Faça o PIX antecipado e levante a sua cartela rapidinho, sem burocracias e apoiando a agricultura local.</p>
+    
+    <div class="stock-badge">
+        ⚡ Apenas 5 unidades disponíveis no site hoje!
+    </div>
+
+    <!-- Bloco Pix Copia e Cola - Mairiporã Agro -->
+    <div class="pix-container" style="text-align: center; margin-top: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <p style="font-weight: bold; color: var(--dark); margin-bottom: 8px; font-size: 14px;">Ou pague com o Pix Copia e Cola:</p>
+        <div style="display: flex; gap: 5px; justify-content: center; max-width: 320px; margin: 0 auto;">
+            <input type="text" id="pixCode" value="SUA_CHAVE_PIX_AQUI" readonly 
+                   style="width: 70%; padding: 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9;">
+            <button onclick="copiarPix()" style="width: 30%; padding: 8px; background: #25D366; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">
+                Copiar
+            </button>
         </div>
+    </div>
 
         <div class="price-tag">
             Valor da Cartela: R$ <span id="view-preco">13.00</span>
@@ -227,12 +239,36 @@
         let precoAtual = 13.00;
         let audio = document.getElementById('bg-music');
 
+           <script>
+        let cliques = 0;
+        let precoAtual = 13.00;
+        let audio = document.getElementById('bg-music');
+
+        // Função do Monitor de Cliques
         function registarClique() {
             cliques++;
             document.getElementById('click-count').innerText = cliques;
             // Mostra o bloco do QR Code diretamente na página abaixo do botão
             document.getElementById('qr-container').style.display = 'block';
         }
+
+        // Função do Pix Copia e Cola
+        function copiarPix() {
+            var copyText = document.getElementById("pixCode");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // Para telemóveis
+            navigator.clipboard.writeText(copyText.value);
+            alert("Código Pix copiado! Cole no aplicativo do seu banco.");
+        }
+
+        // Correção do Áudio do Painel ADM (Silenciado)
+        function toggleAudio() {
+            console.log("Ajuste de áudio acionado discretamente.");
+        }
+    </script>
+</body>
+</html>
+
 
         function abrirAdmin() {
             let codigo = prompt("Insira o Código de Acesso Administrativo:");
