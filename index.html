@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mairiporã Agro - Motor Digital</title>
+    <title>Mairiporã Agro - Motor Ecológico</title>
     <style>
         :root {
-            --primary: #2e7d32;
-            --dark: #1b5e20;
+            --primary: #1b5e20;
+            --dark: #0d3c11;
             --light: #f1f8e9;
             --text: #333;
-            --accent: #00bfa5;
+            --accent: #2e7d32;
+            --alert: #d84315;
         }
         body {
             font-family: Arial, sans-serif;
@@ -30,19 +31,51 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
         }
+        /* Zona Secreta de Clique Esquerdo (Código 999) */
         .secret-trigger {
             position: absolute;
             top: 0;
             left: 0;
             width: 50px;
             height: 50px;
-            cursor: default;
             background: transparent;
+            cursor: default;
+        }
+        /* BIO com Imagem e Apelo do Ecossistema */
+        .bio-container {
+            width: 100%;
+            min-height: 220px;
+            background-image: url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        .bio-text {
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            max-width: 85%;
+            text-align: center;
+            line-height: 1.6;
+            border-left: 5px solid var(--alert);
+        }
+        .eco-alert {
+            color: #ff8a65;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
         }
         main {
             flex: 1;
             max-width: 600px;
-            margin: 40px auto;
+            margin: 20px auto;
             background: white;
             padding: 30px;
             border-radius: 8px;
@@ -59,9 +92,9 @@
             margin: 10px 0;
         }
         .price-tag {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
-            color: var(--dark);
+            color: var(--primary);
             margin: 15px 0;
         }
         .btn-pix {
@@ -74,11 +107,20 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0,191,165,0.3);
+            box-shadow: 0 4px 10px rgba(46,125,50,0.3);
             transition: 0.2s;
         }
-        .btn-pix:hover { background-color: #009688; }
-        
+        .btn-pix:hover { background-color: var(--dark); }
+        .btn-audio {
+            background: #555;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
         #panel-adm {
             display: none;
             margin-top: 30px;
@@ -88,17 +130,9 @@
             border-radius: 8px;
             text-align: left;
         }
-        #panel-adm h3 { color: var(--dark); margin-top: 0; }
+        #panel-adm h3 { color: var(--primary); margin-top: 0; }
         .stat-line { margin: 10px 0; font-size: 14px; font-family: monospace; }
-        .btn-adm {
-            background-color: #e65100;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 12px;
-            border-radius: 3px;
-        }
+        .btn-adm { background-color: #e65100; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
         footer {
             background-color: #212121;
             color: #757575;
@@ -111,51 +145,69 @@
 </head>
 <body>
 
+    <!-- Gatilho invisível no canto superior esquerdo -->
     <div class="secret-trigger" onclick="abrirAdmin()"></div>
 
     <header>
         <h1>Mairiporã Agro</h1>
-        <p>Ovos Frescos Diretamente do Produtor</p>
+        <p>Ovos Frescos & Consciência Planetária</p>
     </header>
 
+    <!-- BIO CONSOLIDADA: ECOSSISTEMA + SOCIAL -->
+    <div class="bio-container">
+        <div class="bio-text">
+            <span class="eco-alert">⚠️ O Nosso Ecossistema Pede Socorro!</span>
+            A terra, a água e o clima sofrem com a exploração desmedida. Na Mairiporã Agro, produzimos com respeito absoluto à natureza. 
+            <br><br>
+            🌱 <strong>Aporte Comunitário:</strong> Incentivamos as nossas crianças a aprender a poupar para o futuro e apoiamos a terceira idade a investir a sua experiência em iniciativas de micro-aporte rural. Proteger o planeta é uma missão de todas as gerações!
+        </div>
+    </div>
+
     <main>
-        <h2>Garanta a sua Cartela Sem Filas</h2>
-        <p>Reserve e pague online via RecargaPlay para levantamento rápido.</p>
+        <h2>Garanta a sua Cartela de Forma Sustentável</h2>
+        <p>Reserve já! Faça o PIX antecipado e levante a sua cartela rapidinho, sem burocracias e apoiando a agricultura local.</p>
         
+        <!-- Saldo camuflado contra olheiros -->
         <div class="stock-badge">
             ⚡ Apenas 5 unidades disponíveis no site hoje!
         </div>
 
-        <!-- Preço Dinâmico Controlado pelo Administrador -->
         <div class="price-tag">
-            Valor da Cartela: R$ <span id="view-preco">15.00</span>
+            Valor da Cartela: R$ <span id="view-preco">13.00</span>
         </div>
 
         <button class="btn-pix" onclick="registarClique()">
             📱 Pagar Antecipado via PIX
         </button>
 
-        <!-- TELA ADM CONSOLIDADA COM ALTERAÇÃO DE PREÇO -->
+        <br>
+        <button class="btn-audio" onclick="toggleAudio()">🎵 Ativar Som da Natureza</button>
+        <audio id="bg-music" loop>
+            <source src="https://mixkit.co" type="audio/wav">
+        </audio>
+
+        <!-- TELA ADM SECRETA CONSOLIDADA (CÓDIGO 999) -->
         <div id="panel-adm">
             <h3>📊 Painel Secreto - Código 999</h3>
-            <div class="stat-line"><strong>Chassi Status:</strong> Ativo</div>
+            <div class="stat-line"><strong>Chassi Status:</strong> Ativo (Mairiporã Agro)</div>
             <div class="stat-line"><strong>Motor Digital:</strong> JCS_Software v1.0.0 [STEM]</div>
-            <div class="stat-line"><strong>Reserva Real:</strong> 7 Cartelas (210 unidades)</div>
+            <div class="stat-line"><strong>Reserva Real:</strong> 7 Cartelas Estruturadas (210 unidades)</div>
             <div class="stat-line"><strong>Monitor de Cliques:</strong> <span id="click-count">0</span></div>
             <div class="stat-line">
-                <strong>Preço Atual:</strong> R$ <span id="adm-preco">15.00</span>
+                <strong>Preço Atual:</strong> R$ <span id="adm-preco">13.00</span>
                 <button class="btn-adm" onclick="alterarPreco()">Alterar Preço</button>
             </div>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Mairiporã Agro. Sistema movido pelo motor digital da <strong>JCS_Software v1.0.0 [STEM]</strong>.
+        &copy; 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da <strong>JCS_Software v1.0.0 [STEM]</strong>.
     </footer>
 
     <script>
         let cliques = 0;
-        let precoAtual = 15.00;
+        let precoAtual = 13.00;
+        let audio = document.getElementById('bg-music');
 
         function registarClique() {
             cliques++;
@@ -167,21 +219,31 @@
             let codigo = prompt("Insira o Código de Acesso Administrativo:");
             if(codigo === "999") {
                 document.getElementById('panel-adm').style.display = 'block';
+                alert("Acesso Autorizado! Painel JCS_Software Carregado.");
             } else {
                 alert("Código Inválido.");
             }
         }
 
-        // Nova Função que comentámos para alterar os preços dinamicamente
         function alterarPreco() {
-            let novoPreco = prompt("Insira o novo preço da cartela (Ex: 16.50):");
+            let novoPreco = prompt("Insira o novo preço da cartela (Ex: 14.50):");
             if(novoPreco && !isNaN(novoPreco)) {
                 precoAtual = parseFloat(novoPreco);
                 document.getElementById('view-preco').innerText = precoAtual.toFixed(2);
                 document.getElementById('adm-preco').innerText = precoAtual.toFixed(2);
-                alert("Preço atualizado com sucesso para R$ " + precoAtual.toFixed(2));
+                alert("Preço atualizado com sucesso!");
             } else {
                 alert("Valor inválido.");
+            }
+        }
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                document.querySelector('.btn-audio').innerText = "⏸️ Pausar Som";
+            } else {
+                audio.pause();
+                document.querySelector('.btn-audio').innerText = "🎵 Ativar Som da Natureza";
             }
         }
     </script>
