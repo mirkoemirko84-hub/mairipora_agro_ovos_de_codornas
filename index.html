@@ -118,7 +118,6 @@
             cursor: pointer;
             margin-top: 15px;
         }
-        /* Área do QR Code real na tela */
         #qr-container {
             display: none;
             margin-top: 20px;
@@ -142,12 +141,12 @@
         }
         #panel-adm h3 { color: var(--primary); margin-top: 0; }
         .stat-line { margin: 10px 0; font-size: 14px; font-family: monospace; }
-        .btn-adm { background-color: #e65100; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+        .btn-adm { background-color: #e65100; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 3px; font-weight: bold; margin-top: 5px; }
         footer {
             background-color: #212121;
             color: #757575;
             text-align: center;
-            padding: 15px;
+            padding: 25px;
             font-size: 12px;
             margin-top: auto;
         }
@@ -155,7 +154,7 @@
 </head>
 <body>
 
-    <!-- Gatilho invisível no canto superior esquerdo ampliado para 60px para facilitar o toque -->
+    <!-- Gatilho secreto no canto superior esquerdo -->
     <div class="secret-trigger" onclick="abrirAdmin()"></div>
 
     <header>
@@ -168,40 +167,38 @@
             <span class="eco-alert">⚠️ O Nosso Ecossistema Pede Socorro!</span>
             A terra, a água e o clima sofrem com a exploração desmedida. Na Mairiporã Agro, produzimos com respeito absoluto à natureza. 
             <br><br>
-            🌱 <strong>Aporte Comunitário:</strong> Incentivamos as nossas crianças a aprender a poupar para o futuro e apoiamos a terceira idade a investir a sua experiência em iniciativas de micro-aporte rural. Proteger o planeta é uma missão de todas as gerações!
+            🌱 <strong>Aporte Comunitário:</strong> Incentivamos as nossas crianças a aprender a poupar para o futuro e apoiamos a terceira idade a investir a sua experiência em initiatives de micro-aporte rural. Proteger o planeta é uma missão de todas as gerações!
         </div>
     </div>
 
     <main>
-    <h2>Garanta a sua Cartela de Forma Sustentável</h2>
-    <p>Reserve já! Faça o PIX antecipado e levante a sua cartela rapidinho, sem burocracias e apoiando a agricultura local.</p>
-    
-    <div class="stock-badge">
-        ⚡ Apenas 5 unidades disponíveis no site hoje!
-    </div>
-
-    <!-- Bloco Pix Copia e Cola - Mairiporã Agro -->
-    <div class="pix-container" style="text-align: center; margin-top: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <p style="font-weight: bold; color: var(--dark); margin-bottom: 8px; font-size: 14px;">Ou pague com o Pix Copia e Cola:</p>
-        <div style="display: flex; gap: 5px; justify-content: center; max-width: 320px; margin: 0 auto;">
-            <input type="text" id="pixCode" value="SUA_CHAVE_PIX_AQUI" readonly 
-                   style="width: 70%; padding: 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9;">
-            <button onclick="copiarPix()" style="width: 30%; padding: 8px; background: #25D366; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">
-                Copiar
-            </button>
+        <h2>Garanta a sua Cartela de Forma Sustentável</h2>
+        <p>Reserve já! Faça o PIX antecipado e levante a sua cartela rapidinho, sem burocracias e apoiando a agricultura local.</p>
+        
+        <div class="stock-badge">
+            ⚡ Apenas 5 unidades disponíveis no site hoje!
         </div>
-    </div>
+
+        <!-- Bloco Pix Copia e Cola -->
+        <div class="pix-container" style="text-align: center; margin-top: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <p style="font-weight: bold; color: var(--dark); margin-bottom: 8px; font-size: 14px;">Ou pague com o Pix Copia e Cola:</p>
+            <div style="display: flex; gap: 5px; justify-content: center; max-width: 320px; margin: 0 auto;">
+                <input type="text" id="pixCode" value="SUA_CHAVE_PIX_LONGA_AQUI" readonly 
+                       style="width: 70%; padding: 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9;">
+                <button onclick="copiarPix()" style="width: 30%; padding: 8px; background: #25D366; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">
+                    Copiar
+                </button>
+            </div>
+        </div>
 
         <div class="price-tag">
             Valor da Cartela: R$ <span id="view-preco">13.00</span>
         </div>
 
-        <!-- Botão PIX abre o QR Code direto no ecrã sem travar -->
         <button class="btn-pix" onclick="registarClique()">
             📱 Pagar Antecipado via PIX
         </button>
 
-        <!-- Contentor do QR Code com a imagem real do seu repositório -->
         <div id="qr-container">
             <p><strong>Linha 6312: Use o seu banco para escanear o QR Code RecargaPlay abaixo:</strong></p>
             <img src="qrcode-pagamento.png" alt="QR Code de Pagamento">
@@ -211,7 +208,6 @@
         <br>
         <button class="btn-audio" onclick="toggleAudio()">🎵 Ativar Som da Natureza</button>
         
-        <!-- Link de som direto em MP3 público e estável -->
         <audio id="bg-music" loop>
             <source src="https://soundhelix.com" type="audio/mp3">
         </audio>
@@ -221,82 +217,28 @@
             <h3>📊 Painel Secreto - Código 999</h3>
             <div class="stat-line"><strong>Chassi Status:</strong> Ativo (Mairiporã Agro)</div>
             <div class="stat-line"><strong>Motor Digital:</strong> JCS_Software v1.0.0 [STEM]</div>
-            <div class="stat-line"><strong>Reserva Real:</strong> 7 Cartelas Estruturadas (210 unidades)</div>
-            <div class="stat-line"><strong>Monitor de Cliques:</strong> <span id="click-count">0</span></div>
-            <div class="stat-line">
-                <strong>Preço Atual:</strong> R$ <span id="adm-preco">13.00</span>
-                <button class="btn-adm" onclick="alterarPreco()">Alterar Preço</button>
-            </div>
+            <div class="stat-line"><strong>Reserva Real:</strong> 5 Cartelas Disponíveis</div>
+            <div class="stat-line"><strong>Monitor de Cliques:</strong> <span id="click-count">0</span> acessos</div>
+            <br>
+            <button class="btn-adm" onclick="alterarPreco()">Alterar Preço</button>
+            <button class="btn-adm" style="background-color: var(--alert);" onclick="executarEstorno()">Módulo de Estornos</button>
+            <button class="btn-adm" style="background-color: #555;" onclick="document.getElementById('panel-adm').style.display='none'">Fechar</button>
         </div>
     </main>
+
+    <!-- Tela do Zap em conformidade com o pedido do seu amigo -->
+    <div id="btn-whatsapp-flutuante" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <a href="https://wa.me" target="_blank" style="text-decoration: none;">
+            <div style="background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%px; display: flex; justify-content: center; align-items: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); transition: transform 0.2s;">
+                <span style="font-size: 30px;">💬</span>
+            </div>
+        </a>
+    </div>
 
     <footer>
-        &copy; 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da <strong>JCS_Software v1.0.0 [STEM]</strong>.
+        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0 [STEM].</p>
+        <button onclick="abrirAdmin()" style="background: none; border: none; color: #555; cursor: pointer; font-size: 11px; text-decoration: underline;">Painel ADM</button>
     </footer>
-
-            <div style="margin-top: 15px; font-weight: bold; color: var(--dark);">
-            Valor da Cartela: R$ <span id="view-preco">13.00</span>
-        </div>
-
-        <button onclick="registarClique()" style="margin-top: 15px; padding: 12px 24px; font-size: 16px; background-color: var(--primary); color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; max-width: 320px;">
-            📱 Pagar Antecipado via PIX
-        </button>
-
-        <button class="btn-audio" onclick="toggleAudio()" style="margin-top: 10px; padding: 8px 16px; font-size: 12px; background-color: #555; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            🎵 Ativar Som da Natureza
-        </button>
-    </main>
-
-    <footer style="text-align: center; padding: 20px; font-size: 12px; color: #666; margin-top: 40px; border-top: 1px solid #ccc;">
-        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0.</p>
-       <footer style="text-align: center; padding: 20px; font-size: 12px; color: #666; margin-top: 40px; border-top: 1px solid #ccc;">
-        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0.</p>
-        <button onclick="abrirAdmin()" style="background: none; border: none; color: #999; cursor: pointer; font-size: 11px; text-decoration: underline;">Área ADM</button>
-    </footer>
-
-    <!-- Painel ADM Oculto -->
-    <div id="panel-adm" style="display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: white; padding: 20px; border: 2px solid var(--primary); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;">
-        <h3 style="margin-top: 0; color: var(--primary);">Painel Administrativo</h3>
-        <p>Preço Atual: R$ <span id="adm-preco">13.00</span></p>
-        <p>Cliques no Botão: <span id="click-count">0</span></p>
-        <button onclick="alterarPreco()" style="padding: 5px 10px; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer;">Alterar Preço</button>
-        <button onclick="document.getElementById('panel-adm').style.display='none'" style="padding: 5px 10px; background: #999; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 5px;">Fechar</button>
-    </div>
-
-    <audio id="bg-music" loop>
-        <source src="sons-natureza.mp3" type="audio/mpeg">
-    </audio>
-
-           <div style="margin-top: 15px; font-weight: bold; color: var(--dark);">
-            Valor da Cartela: R$ <span id="view-preco">13.00</span>
-        </div>
-
-        <button onclick="registarClique()" style="margin-top: 15px; padding: 12px 24px; font-size: 16px; background-color: var(--primary); color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; max-width: 320px;">
-            📱 Pagar Antecipado via PIX
-        </button>
-
-        <button class="btn-audio" onclick="toggleAudio()" style="margin-top: 10px; padding: 8px 16px; font-size: 12px; background-color: #555; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            🎵 Ativar Som da Natureza
-        </button>
-    </main>
-
-    <footer style="text-align: center; padding: 20px; font-size: 12px; color: #666; margin-top: 40px; border-top: 1px solid #ccc;">
-        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0.</p>
-        <button onclick="abrirAdmin()" style="background: none; border: none; color: #999; cursor: pointer; font-size: 11px; text-decoration: underline;">Área ADM</button>
-    </footer>
-
-    <!-- Painel ADM Oculto -->
-    <div id="panel-adm" style="display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: white; padding: 20px; border: 2px solid var(--primary); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;">
-        <h3 style="margin-top: 0; color: var(--primary);">Painel Administrativo</h3>
-        <p>Preço Atual: R$ <span id="adm-preco">13.00</span></p>
-        <p>Cliques no Botão: <span id="click-count">0</span></p>
-        <button onclick="alterarPreco()" style="padding: 5px 10px; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer;">Alterar Preço</button>
-        <button onclick="document.getElementById('panel-adm').style.display='none'" style="padding: 5px 10px; background: #999; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 5px;">Fechar</button>
-    </div>
-
-    <audio id="bg-music" loop>
-        <source src="sons-natureza.mp3" type="audio/mpeg">
-    </audio>
 
     <script>
         let cliques = 0;
@@ -306,49 +248,10 @@
         function registarClique() {
             cliques++;
             document.getElementById('click-count').innerText = cliques;
-            let qrContainer = document.getElementById('qr-container');
-            if(qrContainer) { qrContainer.style.display = 'block'; }
+            document.getElementById('qr-container').style.display = 'block';
         }
 
         function copiarPix() {
             var copyText = document.getElementById("pixCode");
-            if(copyText) {
-                copyText.select();
-                copyText.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(copyText.value);
-                alert("Código Pix copiado! Cole no aplicativo do seu banco.");
-            }
-        }
-
-        function abrirAdmin() { 
-            let codigo = prompt("Insira o Código de Acesso Administrativo:"); 
-            if(codigo === "999") { 
-                document.getElementById('panel-adm').style.display = 'block'; 
-            } else { 
-                alert("Código Inválido."); 
-            } 
-        } 
-
-        function alterarPreco() { 
-            let novoPreco = prompt("Insira o novo preço da cartela:"); 
-            if(novoPreco && !isNaN(novoPreco)) { 
-                precoAtual = parseFloat(novoPreco); 
-                document.getElementById('view-preco').innerText = precoAtual.toFixed(2); 
-                document.getElementById('adm-preco').innerText = precoAtual.toFixed(2); 
-            } 
-        } 
-
-        function toggleAudio() { 
-            if (audio.paused) { 
-                audio.play().catch(function(error) { 
-                    alert("Por favor, clique novamente para dar permissão de áudio."); 
-                }); 
-                document.querySelector('.btn-audio').innerText = "⏸️ Pausar Som"; 
-            } else { 
-                audio.pause(); 
-                document.querySelector('.btn-audio').innerText = "🎵 Ativar Som da Natureza"; 
-            } 
-        }
-    </script>
-</body>
-</html>
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
