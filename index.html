@@ -1,152 +1,189 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mairiporã Agro - Ovos de Codorna</title>
+    <title>Mairiporã Agro - Motor Digital</title>
     <style>
         :root {
-            --primary: #e67e22;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
+            --primary: #2e7d32;
+            --dark: #1b5e20;
+            --light: #f1f8e9;
+            --text: #333;
+            --accent: #00bfa5;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--light);
-            color: var(--dark);
-            text-align: center;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
-            background-color: var(--dark);
+            background-color: var(--primary);
             color: white;
             padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .secret-trigger {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            cursor: default;
+            background: transparent;
+        }
+        main {
+            flex: 1;
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .stock-badge {
+            background-color: #ffe082;
+            color: #b78103;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .price-tag {
             font-size: 24px;
             font-weight: bold;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .produto-img {
-            width: 80px;
-            height: auto;
-            margin: 10px;
-        }
-        .preco {
-            font-size: 32px;
-            color: #27ae60;
-            font-weight: bold;
+            color: var(--dark);
             margin: 15px 0;
         }
-        .alerta-logistica {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin: 15px 0;
-            border: 1px solid #ffeeba;
-            font-size: 14px;
-        }
-        .btn-whatsapp {
-            display: inline-block;
-            background-color: #25d366;
+        .btn-pix {
+            background-color: var(--accent);
             color: white;
+            border: none;
             padding: 15px 30px;
-            text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            border-radius: 50px;
-            margin-top: 15px;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
-        .qr-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #ddd;
-        }
-        .qr-code {
-            max-width: 200px;
+            border-radius: 5px;
+            cursor: pointer;
             width: 100%;
-            height: auto;
-            margin-top: 10px;
-            border: 1px solid #ccc;
+            box-shadow: 0 4px 10px rgba(0,191,165,0.3);
+            transition: 0.2s;
+        }
+        .btn-pix:hover { background-color: #009688; }
+        
+        #panel-adm {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border: 2px dashed var(--primary);
             border-radius: 8px;
+            text-align: left;
+        }
+        #panel-adm h3 { color: var(--dark); margin-top: 0; }
+        .stat-line { margin: 10px 0; font-size: 14px; font-family: monospace; }
+        .btn-adm {
+            background-color: #e65100;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 3px;
         }
         footer {
-            margin-top: 40px;
+            background-color: #212121;
+            color: #757575;
+            text-align: center;
+            padding: 15px;
             font-size: 12px;
-            color: #7f8c8d;
-            padding-bottom: 20px;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
 
+    <div class="secret-trigger" onclick="abrirAdmin()"></div>
+
     <header>
-        🥚 MAIRIPORÃ AGRO
+        <h1>Mairiporã Agro</h1>
+        <p>Ovos Frescos Diretamente do Produtor</p>
     </header>
 
-    <div class="container">
-        <h2>Ovos de Codorna Frescos</h2>
-        <p>Produção familiar com a máxima qualidade e colheita diária.</p>
+    <main>
+        <h2>Garanta a sua Cartela Sem Filas</h2>
+        <p>Reserve e pague online via RecargaPlay para levantamento rápido.</p>
         
-        <!-- Preço Atualizado -->
-        <div class="preco">R$ 13,00 <span style="font-size: 16px; color: #7f8c8d;">/ cartela (30 ovos)</span></div>
-
-        <!-- Regra de Limite Logístico -->
-        <div class="alerta-logistica">
-            ⚠️ ATENÇÃO ÀS REGRAS DE AGOSTO:<br>
-            Por motivos de logística e organização de entregas,<br>
-            o limite é de no MÁXIMO 3 cartelas por pedido.
+        <div class="stock-badge">
+            ⚡ Apenas 5 unidades disponíveis no site hoje!
         </div>
 
-        <p><strong>Condição:</strong> Apenas vendas online com pagamento antecipado.</p>
-
-        <!-- Botão WhatsApp Integrado -->
-        <a href="https://wa.me" class="btn-whatsapp" target="_blank">
-            Chamar no WhatsApp e Pedir
-        </a>
-
-        <!-- Seção do QR Code de Pagamento Antecipado -->
-        <div class="qr-section">
-            <h3>Pague Antecipado via QR Code</h3>
-            <p style="font-size: 14px; color: #7f8c8d;">Faça o scan para garantir a sua reserva antes da entrega</p>
-            <img src="qrcode-pagamento.png" alt="QR Code Pagamento Antecipado" class="qr-code">
+        <!-- Preço Dinâmico Controlado pelo Administrador -->
+        <div class="price-tag">
+            Valor da Cartela: R$ <span id="view-preco">15.00</span>
         </div>
-    </div>
+
+        <button class="btn-pix" onclick="registarClique()">
+            📱 Pagar Antecipado via PIX
+        </button>
+
+        <!-- TELA ADM CONSOLIDADA COM ALTERAÇÃO DE PREÇO -->
+        <div id="panel-adm">
+            <h3>📊 Painel Secreto - Código 999</h3>
+            <div class="stat-line"><strong>Chassi Status:</strong> Ativo</div>
+            <div class="stat-line"><strong>Motor Digital:</strong> JCS_Software v1.0.0 [STEM]</div>
+            <div class="stat-line"><strong>Reserva Real:</strong> 7 Cartelas (210 unidades)</div>
+            <div class="stat-line"><strong>Monitor de Cliques:</strong> <span id="click-count">0</span></div>
+            <div class="stat-line">
+                <strong>Preço Atual:</strong> R$ <span id="adm-preco">15.00</span>
+                <button class="btn-adm" onclick="alterarPreco()">Alterar Preço</button>
+            </div>
+        </div>
+    </main>
 
     <footer>
-        &copy; 2026 Mairiporã Agro - Todos os direitos reservados.
+        &copy; 2026 Mairiporã Agro. Sistema movido pelo motor digital da <strong>JCS_Software v1.0.0 [STEM]</strong>.
     </footer>
 
-    <!-- CONTADOR DE ACESSOS SECRETO (Senha: 999) -->
     <script>
-        function iniciarContadorSecreto() {
-            let acessos = localStorage.getItem('mairipora_acessos') || 0;
-            acessos = parseInt(acessos) + 1;
-            localStorage.setItem('mairipora_acessos', acessos);
-            
-            let sequenciaTeclas = "";
-            document.addEventListener('keydown', function(evento) {
-                sequenciaTeclas += evento.key;
-                if (sequenciaTeclas.length > 3) {
-                    sequenciaTeclas = sequenciaTeclas.substr(sequenciaTeclas.length - 3);
-                }
-                
-                if (sequenciaTeclas === "999") {
-                    alert("📊 [PAINEL ADM MAIRIPORÃ AGRO]\nTotal de acessos registados neste dispositivo: " + acessos + " visitas.");
-                }
-            });
-        }
-        window.onload = iniciarContadorSecreto;
-    </script>
+        let cliques = 0;
+        let precoAtual = 15.00;
 
+        function registarClique() {
+            cliques++;
+            document.getElementById('click-count').innerText = cliques;
+            alert("Linha 6312: Bot a direcionar para o QR Code RecargaPlay no valor de R$ " + precoAtual.toFixed(2));
+        }
+
+        function abrirAdmin() {
+            let codigo = prompt("Insira o Código de Acesso Administrativo:");
+            if(codigo === "999") {
+                document.getElementById('panel-adm').style.display = 'block';
+            } else {
+                alert("Código Inválido.");
+            }
+        }
+
+        // Nova Função que comentámos para alterar os preços dinamicamente
+        function alterarPreco() {
+            let novoPreco = prompt("Insira o novo preço da cartela (Ex: 16.50):");
+            if(novoPreco && !isNaN(novoPreco)) {
+                precoAtual = parseFloat(novoPreco);
+                document.getElementById('view-preco').innerText = precoAtual.toFixed(2);
+                document.getElementById('adm-preco').innerText = precoAtual.toFixed(2);
+                alert("Preço atualizado com sucesso para R$ " + precoAtual.toFixed(2));
+            } else {
+                alert("Valor inválido.");
+            }
+        }
+    </script>
 </body>
 </html>
