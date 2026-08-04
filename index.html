@@ -267,6 +267,37 @@
         <source src="sons-natureza.mp3" type="audio/mpeg">
     </audio>
 
+           <div style="margin-top: 15px; font-weight: bold; color: var(--dark);">
+            Valor da Cartela: R$ <span id="view-preco">13.00</span>
+        </div>
+
+        <button onclick="registarClique()" style="margin-top: 15px; padding: 12px 24px; font-size: 16px; background-color: var(--primary); color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; max-width: 320px;">
+            📱 Pagar Antecipado via PIX
+        </button>
+
+        <button class="btn-audio" onclick="toggleAudio()" style="margin-top: 10px; padding: 8px 16px; font-size: 12px; background-color: #555; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            🎵 Ativar Som da Natureza
+        </button>
+    </main>
+
+    <footer style="text-align: center; padding: 20px; font-size: 12px; color: #666; margin-top: 40px; border-top: 1px solid #ccc;">
+        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0.</p>
+        <button onclick="abrirAdmin()" style="background: none; border: none; color: #999; cursor: pointer; font-size: 11px; text-decoration: underline;">Área ADM</button>
+    </footer>
+
+    <!-- Painel ADM Oculto -->
+    <div id="panel-adm" style="display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: white; padding: 20px; border: 2px solid var(--primary); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;">
+        <h3 style="margin-top: 0; color: var(--primary);">Painel Administrativo</h3>
+        <p>Preço Atual: R$ <span id="adm-preco">13.00</span></p>
+        <p>Cliques no Botão: <span id="click-count">0</span></p>
+        <button onclick="alterarPreco()" style="padding: 5px 10px; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer;">Alterar Preço</button>
+        <button onclick="document.getElementById('panel-adm').style.display='none'" style="padding: 5px 10px; background: #999; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 5px;">Fechar</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="sons-natureza.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         let cliques = 0;
         let precoAtual = 13.00;
