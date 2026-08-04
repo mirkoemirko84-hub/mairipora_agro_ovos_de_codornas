@@ -234,70 +234,89 @@
         &copy; 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da <strong>JCS_Software v1.0.0 [STEM]</strong>.
     </footer>
 
+            <div style="margin-top: 15px; font-weight: bold; color: var(--dark);">
+            Valor da Cartela: R$ <span id="view-preco">13.00</span>
+        </div>
+
+        <button onclick="registarClique()" style="margin-top: 15px; padding: 12px 24px; font-size: 16px; background-color: var(--primary); color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; max-width: 320px;">
+            📱 Pagar Antecipado via PIX
+        </button>
+
+        <button class="btn-audio" onclick="toggleAudio()" style="margin-top: 10px; padding: 8px 16px; font-size: 12px; background-color: #555; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            🎵 Ativar Som da Natureza
+        </button>
+    </main>
+
+    <footer style="text-align: center; padding: 20px; font-size: 12px; color: #666; margin-top: 40px; border-top: 1px solid #ccc;">
+        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0.</p>
+        <!-- Botão discreto para aceder à Administração -->
+        <button onclick="abrirAdmin()" style="background: none; border: none; color: #999; cursor: pointer; font-size: 11px; text-decoration: underline;">Área ADM</button>
+    </footer>
+
+    <!-- Painel ADM Oculto (Só aparece com o código) -->
+    <div id="panel-adm" style="display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: white; padding: 20px; border: 2px solid var(--primary); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;">
+        <h3 style="margin-top: 0; color: var(--primary);">Painel Administrativo</h3>
+        <p>Preço Atual: R$ <span id="adm-preco">13.00</span></p>
+        <p>Cliques no Botão: <span id="click-count">0</span></p>
+        <button onclick="alterarPreco()" style="padding: 5px 10px; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer;">Alterar Preço</button>
+        <button onclick="document.getElementById('panel-adm').style.display='none'" style="padding: 5px 10px; background: #999; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 5px;">Fechar</button>
+    </div>
+
+    <!-- Áudio de fundo -->
+    <audio id="bg-music" loop>
+        <source src="sons-natureza.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ZONA SEGURA DE SCRIPTS (Tudo fechado corretamente) -->
     <script>
         let cliques = 0;
         let precoAtual = 13.00;
         let audio = document.getElementById('bg-music');
 
-           <script>
-        let cliques = 0;
-        let precoAtual = 13.00;
-        let audio = document.getElementById('bg-music');
-
-        // Função do Monitor de Cliques
         function registarClique() {
             cliques++;
             document.getElementById('click-count').innerText = cliques;
             // Mostra o bloco do QR Code diretamente na página abaixo do botão
-            document.getElementById('qr-container').style.display = 'block';
+            let qrContainer = document.getElementById('qr-container');
+            if(qrContainer) { qrContainer.style.display = 'block'; }
         }
 
-        // Função do Pix Copia e Cola
         function copiarPix() {
             var copyText = document.getElementById("pixCode");
             copyText.select();
-            copyText.setSelectionRange(0, 99999); // Para telemóveis
+            copyText.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(copyText.value);
             alert("Código Pix copiado! Cole no aplicativo do seu banco.");
         }
 
-        // Correção do Áudio do Painel ADM (Silenciado)
-        function toggleAudio() {
-            console.log("Ajuste de áudio acionado discretamente.");
-        }
-    </script>
-</body>
-</html>
+        function abrirAdmin() { 
+            let codigo = prompt("Insira o Código de Acesso Administrativo:"); 
+            if(codigo === "999") { 
+                document.getElementById('panel-adm').style.display = 'block'; 
+            } else { 
+                alert("Código Inválido."); 
+            } 
+        } 
 
+        function alterarPreco() { 
+            let novoPreco = prompt("Insira o novo preço da cartela:"); 
+            if(novoPreco && !isNaN(novoPreco)) { 
+                precoAtual = parseFloat(novoPreco); 
+                document.getElementById('view-preco').innerText = precoAtual.toFixed(2); 
+                document.getElementById('adm-preco').innerText = precoAtual.toFixed(2); 
+            } 
+        } 
 
-        function abrirAdmin() {
-            let codigo = prompt("Insira o Código de Acesso Administrativo:");
-            if(codigo === "999") {
-                document.getElementById('panel-adm').style.display = 'block';
-            } else {
-                alert("Código Inválido.");
-            }
-        }
-
-        function alterarPreco() {
-            let novoPreco = prompt("Insira o novo preço da cartela:");
-            if(novoPreco && !isNaN(novoPreco)) {
-                precoAtual = parseFloat(novoPreco);
-                document.getElementById('view-preco').innerText = precoAtual.toFixed(2);
-                document.getElementById('adm-preco').innerText = precoAtual.toFixed(2);
-            }
-        }
-
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play().catch(function(error) {
-                    alert("Por favor, clique novamente para dar permissão de áudio ao navegador.");
-                });
-                document.querySelector('.btn-audio').innerText = "⏸️ Pausar Som";
-            } else {
-                audio.pause();
-                document.querySelector('.btn-audio').innerText = "🎵 Ativar Som da Natureza";
-            }
+        function toggleAudio() { 
+            if (audio.paused) { 
+                audio.play().catch(function(error) { 
+                    alert("Por favor, clique novamente para dar permissão de áudio."); 
+                }); 
+                document.querySelector('.btn-audio').innerText = "⏸️ Pausar Som"; 
+            } else { 
+                audio.pause(); 
+                document.querySelector('.btn-audio').innerText = "🎵 Ativar Som da Natureza"; 
+            } 
         }
     </script>
 </body>
