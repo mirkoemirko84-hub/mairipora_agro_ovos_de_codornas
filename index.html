@@ -84,6 +84,7 @@
         
         iniciarSom();
 
+        // CORREÇÃO DOS GATILHOS DE DESCONGELAMENTO
         if (checkbox.checked) {
             btnZap.style.pointerEvents = "auto"; btnZap.style.opacity = "1";
             btnPagamento.style.pointerEvents = "auto"; btnPagamento.style.opacity = "1";
@@ -125,7 +126,6 @@
         var textoMensagem = "Olá! A JCS_Software informa: O seu familiar/sócio está connosco a receber a mercadoria e solicitou o envio deste código Pix Copie e Cole para liquidação imediata da entrega.\n\nChave Pix abaixo:\n\n" + chavePix;
         var mensagem = encodeURIComponent(textoMensagem);
         
-        // FIX COMPLETO DO ERRO DE DIRETIVA DO CÓDIGO
         var urlZap = "https://wa.me" + tel + "?text=" + mensagem;
         
         if(somAtivado) audioAlerta.play();
