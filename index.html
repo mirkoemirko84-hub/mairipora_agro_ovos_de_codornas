@@ -35,7 +35,7 @@
             <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
         </div>
 
-        <!-- ÁREA SECRETA DE PAGAMENTO -->
+        <!-- ÁREA DE PAGAMENTO LIMPA (SISTEMA AZUL DESATIVADO POR ORA) -->
         <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5;">
             <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
             <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
@@ -43,16 +43,7 @@
             <div style="margin-top: 15px;">
                 <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
                 <input type="text" id="pix-copie-cole" value="00020101021126580014br.gov.bcb.pix0136suas-chaves-pix-recargapay-aqui" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                
-                <div style="margin-top: 15px; background: #e6f7ff; border: 1px solid #91d5ff; padding: 12px; border-radius: 6px; text-align: left;">
-                    <label style="display: block; font-size: 12px; font-weight: bold; color: #0050b3; margin-bottom: 5px;">📱 Número do Destinatário (Ex: Esposa/Sócio com DDD):</label>
-                    <input type="tel" id="txt-telefone-cliente" placeholder="Ex: 11999999999" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #91d5ff; border-radius: 4px; font-weight: bold; margin-bottom: 8px;">
-                    
-                    <div style="display: flex; gap: 8px;">
-                        <button onclick="copiarChavePix()" style="background: #1e293b; color: white; border: none; padding: 8px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; flex: 1;">Copiar Código</button>
-                        <button onclick="dispararPixZap()" style="background: #0070f3; color: white; border: none; padding: 8px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px;">Enviar no Zap 📤</button>
-                    </div>
-                </div>
+                <button onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
             </div>
         </div>
     </div>
@@ -84,7 +75,6 @@
         
         iniciarSom();
 
-        // CORREÇÃO DOS GATILHOS DE DESCONGELAMENTO
         if (checkbox.checked) {
             btnZap.style.pointerEvents = "auto"; btnZap.style.opacity = "1";
             btnPagamento.style.pointerEvents = "auto"; btnPagamento.style.opacity = "1";
@@ -97,13 +87,10 @@
 
     function abrirSistemasPagamento() {
         document.getElementById('bloco-pagamento').style.display = 'block';
-        var telSalvo = localStorage.getItem('ultimo_tel_cliente');
-        if (telSalvo) {
-            document.getElementById('txt-telefone-cliente').value = telSalvo;
-        }
         if(somAtivado) audioAlerta.play();
     }
 
+    // FUNÇÃO SIMPLIFICADA SEM SISTEMA AZUL
     function copiarChavePix() {
         var copyText = document.getElementById("pix-copie-cole");
         copyText.select();
@@ -112,25 +99,33 @@
         alert("Código Pix Copie e Cole copiado com sucesso!");
     }
 
-    function dispararPixZap() {
-        var tel = document.getElementById("txt-telefone-cliente").value.replace(/\D/g, '');
-        var chavePix = document.getElementById("pix-copie-cole").value;
-        
-        if (tel.length < 10) {
-            alert("Por favor, introduza um número válido com DDD (Ex: 11999999999)");
-            return;
-        }
-
-        localStorage.setItem('ultimo_tel_cliente', tel);
-
-        var textoMensagem = "Olá! A JCS_Software informa: O seu familiar/sócio está connosco a receber a mercadoria e solicitou o envio deste código Pix Copie e Cole para liquidação imediata da entrega.\n\nChave Pix abaixo:\n\n" + chavePix;
-        var mensagem = encodeURIComponent(textoMensagem);
-        
-        var urlZap = "https://wa.me" + tel + "?text=" + mensagem;
-        
-        if(somAtivado) audioAlerta.play();
-        window.open(urlZap, '_blank');
-    }
-
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('adm') === '1') {
+        document.getElementById('painel-adm').style.display = 'block';
+    }
+
+    if (localStorage.getItem('site_status') === 'offline') {
+        aplicarStatusOffline();
+    }
+
+    function alternarStatus() {
+        if (localStorage.getItem('site_status') === 'offline') {
+            localStorage.setItem('site_status', 'online');
+        } else {
+            localStorage.setItem('site_status', 'offline');
+        }
+        location.reload();
+    }
+
+    function aplicarStatusOffline() {
+        document.getElementById('jcs-checkout-container').style.display = 'none';
+        document.getElementById('manutencao-tela').style.display = 'block';
+        var btn = document.getElementById('btn-status');
+        if(btn) {
+            btn.innerText = 'Status: EM MANUTENÇÃO';
+            btn.style.background = '#cc092f';
+        }
+    }
+    </script>
+</body>
+</html>
