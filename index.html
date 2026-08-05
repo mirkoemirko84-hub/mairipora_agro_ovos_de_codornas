@@ -19,9 +19,9 @@
         <div style="margin-bottom: 25px;">
             <h3 style="color: #1a1a1a; margin-bottom: 12px; border-bottom: 2px solid #eaeaea; padding-bottom: 8px;">Condições de Venda, Logística e Aceite</h3>
             <div style="height: 180px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
-                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema de compensação bancária ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
-                <strong>2. COMPROVAÇÃO E MEIOS DE PAGAMENTO:</strong><br>O cliente poderá optar pelo pagamento em dinheiro à vista, transferência Pix, ou utilizar os canais oficiais digitais integrados (como o link Bradesco fornecido). O comprovativo correspondente deve ser disponibilizado para validação. Em caso de inconsistência de dados, a entrega será retida para análise de segurança por até 24 horas.<br><br>
-                <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces bancárias.<br><br>
+                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
+                <strong>2. COMPROVAÇÃO E PLATAFORMA DE PAGAMENTO:</strong><br>O processamento financeiro oficial do sistema é integrado via plataforma homologada <strong>RecargaPay</strong>, utilizando especificações de QR Code validadas sob as normas bancárias do Bradesco. O cliente poderá efetuar a transferência Pix a partir de qualquer instituição (Itaú, Bradesco, Santander, Nubank, etc.) ou optar pelo pagamento em dinheiro à vista.<br><br>
+                <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces de pagamento.<br><br>
                 <strong>4. POLÍTICA DE CANCELAMENTO E RETORNO:</strong><br>Ao clicar no botão de aceitação abaixo, os dados de logística são consolidados. Modificações na rota de entrega ou dados de envio devem ser comunicadas imediatamente à equipa de suporte via WhatsApp oficial.
             </div>
             <label style="display: flex; align-items: flex-start; cursor: pointer; font-size: 13px; font-weight: bold; color: #1e293b;">
@@ -31,7 +31,7 @@
         </div>
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <a id="btn-zap" href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
-            <a id="btn-pagamento" href="https://bradesco.com.br" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar via Bradesco / Pix / Dinheiro</a>
+            <a id="btn-pagamento" href="https://bradesco.com.br" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
         </div>
     </div>
 
@@ -67,8 +67,8 @@
             btnPagamento.style.pointerEvents = "auto"; btnPagamento.style.opacity = "1";
             if(somAtivado) audioAlerta.play();
         } else {
-            zap.style.pointerEvents = "none"; zap.style.opacity = "0.5";
-            pag.style.pointerEvents = "none"; pag.style.opacity = "0.5";
+            btnZap.style.pointerEvents = "none"; btnZap.style.opacity = "0.5";
+            btnPagamento.style.pointerEvents = "none"; btnPagamento.style.opacity = "0.5";
         }
     }
 
