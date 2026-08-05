@@ -1,5 +1,3 @@
-# 1. Cria e injeta o novo código diretamente no arquivo index.html
-cat << 'EOF' > index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,12 +6,21 @@ cat << 'EOF' > index.html
     <title>Checkout - JCS Software</title>
 </head>
 <body style="background-color: #f4f6f9; margin: 0; padding: 20px;">
+
+    <!-- TELA DE MANUTENÇÃO (ON/OFF) -->
+    <div id="manutencao-tela" style="display: none; text-align: center; margin-top: 100px; font-family: Arial, sans-serif;">
+        <h1 style="color: #cc092f;">Aviso do Sistema</h1>
+        <h2>JCS_Software v1.0.0 em Manutenção Operacional</h2>
+        <p>Estamos a ajustar os sistemas de som e logística. Voltamos já!</p>
+    </div>
+
+    <!-- PAINEL PRINCIPAL DO CHECKOUT -->
     <div id="jcs-checkout-container" style="font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 25px; border: 1px solid #e1e4e8; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
         <div style="margin-bottom: 25px;">
             <h3 style="color: #1a1a1a; margin-bottom: 12px; border-bottom: 2px solid #eaeaea; padding-bottom: 8px;">Condições de Venda, Logística e Aceite</h3>
             <div style="height: 180px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
-                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema de compensação bancária. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
-                <strong>2. COMPROVAÇÃO DE PAGAMENTO:</strong><br>O cliente compromete-se a utilizar os canais oficiais integrados (como o link Bradesco fornecido) e a disponibilizar o comprovativo digital. Em caso de inconsistência de dados, a entrega será retida para análise de segurança por até 24 horas.<br><br>
+                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema de compensação bancária ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
+                <strong>2. COMPROVAÇÃO E MEIOS DE PAGAMENTO:</strong><br>O cliente poderá optar pelo pagamento em dinheiro à vista, transferência Pix, ou utilizar os canais oficiais digitais integrados (como o link Bradesco fornecido). O comprovativo correspondente deve ser disponibilizado para validação. Em caso de inconsistência de dados, a entrega será retida para análise de segurança por até 24 horas.<br><br>
                 <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces bancárias.<br><br>
                 <strong>4. POLÍTICA DE CANCELAMENTO E RETORNO:</strong><br>Ao clicar no botão de aceitação abaixo, os dados de logística são consolidados. Modificações na rota de entrega ou dados de envio devem ser comunicadas imediatamente à equipa de suporte via WhatsApp oficial.
             </div>
@@ -24,29 +31,74 @@ cat << 'EOF' > index.html
         </div>
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <a id="btn-zap" href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
-            <a id="btn-pagamento" href="https://bradesco.com.br" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar via Bradesco</a>
+            <a id="btn-pagamento" href="https://bradesco.com.br" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar via Bradesco / Pix / Dinheiro</a>
         </div>
     </div>
+
+    <!-- PAINEL SECRETO DO ADMINISTRADOR (?adm=1) -->
+    <div id="painel-adm" style="display: none; max-width: 600px; margin: 20px auto; padding: 15px; background: #222; color: #fff; border-radius: 8px; text-align: center; font-family: Arial, sans-serif;">
+        <h3>Painel ADM JCS_Software</h3>
+        <button id="btn-status" onclick="alternarStatus()" style="background: #25D366; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 5px; cursor: pointer;">Status: ONLINE</button>
+    </div>
+
     <script>
+    var somAtivado = false;
+    var audioAlerta = new Audio('https://soundjay.com');
+
+    function iniciarSom() {
+        if (!somAtivado) {
+            audioAlerta.play().then(() => {
+                audioAlerta.pause();
+                audioAlerta.currentTime = 0;
+                somAtivado = true;
+            }).catch(e => console.log('Aguardando clique...'));
+        }
+    }
+
     function validarTermo() {
         var checkbox = document.getElementById('chk-aceite');
         var btnZap = document.getElementById('btn-zap');
         var btnPagamento = document.getElementById('btn-pagamento');
+        
+        iniciarSom();
+
         if (checkbox.checked) {
             btnZap.style.pointerEvents = "auto"; btnZap.style.opacity = "1";
             btnPagamento.style.pointerEvents = "auto"; btnPagamento.style.opacity = "1";
+            if(somAtivado) audioAlerta.play();
         } else {
-            btnZap.style.pointerEvents = "none"; btnZap.style.opacity = "0.5";
-            btnPagamento.style.pointerEvents = "none"; btnPagamento.style.opacity = "0.5";
+            zap.style.pointerEvents = "none"; zap.style.opacity = "0.5";
+            pag.style.pointerEvents = "none"; pag.style.opacity = "0.5";
+        }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('adm') === '1') {
+        document.getElementById('painel-adm').style.display = 'block';
+    }
+
+    if (localStorage.getItem('site_status') === 'offline') {
+        aplicarStatusOffline();
+    }
+
+    function alternarStatus() {
+        if (localStorage.getItem('site_status') === 'offline') {
+            localStorage.setItem('site_status', 'online');
+        } else {
+            localStorage.setItem('site_status', 'offline');
+        }
+        location.reload();
+    }
+
+    function aplicarStatusOffline() {
+        document.getElementById('jcs-checkout-container').style.display = 'none';
+        document.getElementById('manutencao-tela').style.display = 'block';
+        var btn = document.getElementById('btn-status');
+        if(btn) {
+            btn.innerText = 'Status: EM MANUTENÇÃO';
+            btn.style.background = '#cc092f';
         }
     }
     </script>
 </body>
 </html>
-EOF
-
-# 2. Adiciona o arquivo diretamente na árvore do Git
-git add index.html
-
-# 3. Cria o commit de sincronização
-git commit -m "Injeção direta do novo index - Termos e Proteção iOS"
