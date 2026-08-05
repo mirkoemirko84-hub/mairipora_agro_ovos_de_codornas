@@ -1,163 +1,52 @@
+# 1. Cria e injeta o novo código diretamente no arquivo index.html
+cat << 'EOF' > index.html
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mairiporã Agro - Motor Ecológico</title>
-    <style>
-        :root { --primary: #1b5e20; --dark: #0d3c11; --light: #f1f8e9; --text: #333; --accent: #2e7d32; --alert: #d84315; }
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: var(--light); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
-        header { background-color: var(--primary); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .bio-container { width: 100%; min-height: 220px; background-image: url('https://unsplash.com'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; padding: 20px 0; }
-        .bio-text { background: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 8px; font-size: 14px; max-width: 85%; text-align: center; line-height: 1.6; border-left: 5px solid var(--alert); }
-        .eco-alert { color: #ff8a65; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; }
-        main { flex: 1; max-width: 600px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
-        .stock-badge { background-color: #ffe082; color: #b78103; padding: 10px 20px; border-radius: 20px; font-weight: bold; display: inline-block; margin: 10px 0; }
-        .price-tag { font-size: 26px; font-weight: bold; color: var(--primary); margin: 15px 0; }
-        .btn-pix { background-color: var(--accent); color: white; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; box-shadow: 0 4px 10px rgba(46,125,50,0.3); }
-        .btn-audio { background: #555; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 20px; cursor: pointer; margin-top: 15px; }
-        #qr-container { display: none; margin-top: 20px; padding: 15px; background: #fff; border: 2px solid var(--accent); border-radius: 8px; }
-        #qr-container img { max-width: 200px; height: auto; }
-        #panel-adm { display: none; margin-top: 30px; padding: 20px; background: #f5f5f5; border: 2px dashed var(--primary); border-radius: 8px; text-align: left; }
-        .stat-line { margin: 10px 0; font-size: 14px; font-family: monospace; }
-        .btn-adm { background-color: #e65100; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 3px; font-weight: bold; margin-top: 5px; }
-        footer { background-color: #212121; color: #757575; text-align: center; padding: 25px; font-size: 12px; margin-top: auto; }
-    </style>
+    <title>Checkout - JCS Software</title>
 </head>
-<body>
-
-    <header>
-        <h1>Mairiporã Agro</h1>
-        <p>Ovos Frescos & Consciência Planetária</p>
-    </header>
-
-    <div class="bio-container">
-        <div class="bio-text">
-            <span class="eco-alert">⚠️ O Nosso Ecossistema Pede Socorro!</span>
-            A terra, a água e o clima sofrem com a exploração desmedida. Na Mairiporã Agro, produzimos com respeito absoluto à natureza. 
-            <br><br>
-            🌱 <strong>Aporte Comunitário:</strong> Incentivamos as nossas crianças a aprender a poupar para o futuro e apoiamos a terceira idade a investir a sua experiência em iniciativas de micro-aporte rural. Proteger o planeta é uma missão de todas as gerações!
+<body style="background-color: #f4f6f9; margin: 0; padding: 20px;">
+    <div id="jcs-checkout-container" style="font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 25px; border: 1px solid #e1e4e8; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="margin-bottom: 25px;">
+            <h3 style="color: #1a1a1a; margin-bottom: 12px; border-bottom: 2px solid #eaeaea; padding-bottom: 8px;">Condições de Venda, Logística e Aceite</h3>
+            <div style="height: 180px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
+                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema de compensação bancária. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
+                <strong>2. COMPROVAÇÃO DE PAGAMENTO:</strong><br>O cliente compromete-se a utilizar os canais oficiais integrados (como o link Bradesco fornecido) e a disponibilizar o comprovativo digital. Em caso de inconsistência de dados, a entrega será retida para análise de segurança por até 24 horas.<br><br>
+                <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces bancárias.<br><br>
+                <strong>4. POLÍTICA DE CANCELAMENTO E RETORNO:</strong><br>Ao clicar no botão de aceitação abaixo, os dados de logística são consolidados. Modificações na rota de entrega ou dados de envio devem ser comunicadas imediatamente à equipa de suporte via WhatsApp oficial.
+            </div>
+            <label style="display: flex; align-items: flex-start; cursor: pointer; font-size: 13px; font-weight: bold; color: #1e293b;">
+                <input type="checkbox" id="chk-aceite" style="margin-right: 12px; margin-top: 3px; transform: scale(1.2);" onchange="validarTermo()">
+                <span>Declaro que li, compreendi e aceito integralmente as Condições de Venda, os prazos de Logística e as diretivas de suporte do sistema.</span>
+            </label>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a id="btn-zap" href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
+            <a id="btn-pagamento" href="https://bradesco.com.br" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar via Bradesco</a>
         </div>
     </div>
-
-    <main>
-        <h2>Garanta a sua Cartela de Forma Sustentável</h2>
-        <p>Reserve já! Faça o PIX antecipado e levando a sua cartela rapidinho, sem burocracias.</p>
-        
-        <div class="stock-badge">
-            ⚡ Apenas 5 unidades disponíveis no site hoje!
-        </div>
-
-        <!-- Bloco Pix Copia e Cola REAL e FIXO -->
-        <div class="pix-container" style="text-align: center; margin-top: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <p style="font-weight: bold; color: var(--dark); margin-bottom: 8px; font-size: 14px;">Ou pague com o Pix Copia e Cola:</p>
-            <div style="display: flex; gap: 5px; justify-content: center; max-width: 320px; margin: 0 auto;">
-                <input type="text" id="pixCode" value="00020126580014br.gov.bcb.pix0136dce800d8-eeb3-4de4-90af-01d33251173e5204000053039865802BR5921JOSE CARLOS SUGUIMOTO6009Mairipora6211050726f787963042AD7" readonly style="width: 70%; padding: 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9;">
-                <button onclick="copiarPix()" style="width: 30%; padding: 8px; background: #25D366; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">Copiar</button>
-            </div>
-        </div>
-
-        <div class="price-tag">
-            Valor da Cartela: R$ <span id="view-preco">13.00</span>
-        </div>
-
-        <button class="btn-pix" onclick="registarClique()">📱 Pagar Antecipado via PIX</button>
-
-        <div id="qr-container">
-            <p><strong>Linha 6312: Use o seu banco para escanear o QR Code RecargaPlay abaixo:</strong></p>
-            <img src="qrcode-pagamento.png" alt="QR Code de Pagamento">
-            <p style="font-size: 12px; color: #666;">Após pagar, envie o comprovativo pelo WhatsApp.</p>
-        </div>
-
-        <br>
-        <button class="btn-audio" onclick="toggleAudio()">🎵 Ativar Som da Natureza</button>
-        
-        <audio id="bg-music" loop prefetch="auto">
-            <source src="https://soundhelix.com" type="audio/mp3">
-        </audio>
-
-        <!-- PAINEL ADM SECRETO (CÓDIGO 999) -->
-        <div id="panel-adm">
-            <h3>📊 Painel Secreto - Código 999</h3>
-            <div class="stat-line"><strong>Chassi Status:</strong> Ativo (Mairiporã Agro)</div>
-            <div class="stat-line"><strong>Motor Digital:</strong> JCS_Software v1.0.0 [STEM]</div>
-            <div class="stat-line"><strong>Reserva Real:</strong> 7 Cartelas Concluídas (210 unidades)</div>
-            <div class="stat-line"><strong>Monitor de Cliques:</strong> <span id="click-count">0</span> acessos</div>
-            <br>
-            <button class="btn-adm" onclick="alterarPreco()">Alterar Preço</button>
-            <button class="btn-adm" style="background-color: var(--alert);" onclick="executarEstorno()">Módulo de Estornos</button>
-            <button class="btn-adm" style="background-color: #555;" onclick="document.getElementById('panel-adm').style.display='none'">Fechar</button>
-        </div>
-    </main>
-
-    <!-- Botão de WhatsApp Flutuante (Tela ZAP) -->
-    <div id="btn-whatsapp-flutuante" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <a href="https://wa.me" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);">
-                <span style="font-size: 30px;">💬</span>
-            </div>
-        </a>
-    </div>
-
-    <footer>
-        <p>© 2026 Mairiporã Agro. Sistema ecológico movido pelo motor digital da JCS_Software v1.0.0 [STEM].</p>
-        <button onclick="abrirAdmin()" style="background: none; border: none; color: #555; cursor: pointer; font-size: 12px; text-decoration: underline;">Área ADM</button>
-    </footer>
-
     <script>
-        let cliques = 0;
-        let precoAtual = 13.00;
-        let audio = document.getElementById('bg-music');
-
-        function registarClique() {
-            cliques++;
-            document.getElementById('click-count').innerText = cliques;
-            document.getElementById('qr-container').style.display = 'block';
+    function validarTermo() {
+        var checkbox = document.getElementById('chk-aceite');
+        var btnZap = document.getElementById('btn-zap');
+        var btnPagamento = document.getElementById('btn-pagamento');
+        if (checkbox.checked) {
+            btnZap.style.pointerEvents = "auto"; btnZap.style.opacity = "1";
+            btnPagamento.style.pointerEvents = "auto"; btnPagamento.style.opacity = "1";
+        } else {
+            btnZap.style.pointerEvents = "none"; btnZap.style.opacity = "0.5";
+            btnPagamento.style.pointerEvents = "none"; btnPagamento.style.opacity = "0.5";
         }
-
-        function copiarPix() {
-            var copyText = document.getElementById("pixCode");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(copyText.value);
-            alert("Código Pix copiado com sucesso! Agora basta colar no seu banco.");
-        }
-
-        function abrirAdmin() {
-            let codigo = prompt("Insira o Código de Acesso Administrativo:");
-            if(codigo === "999") {
-                document.getElementById('panel-adm').style.display = 'block';
-            } else {
-                alert("Código Inválido.");
-            }
-        }
-
-        function alterarPreco() {
-            let novoPreco = prompt("Insira o novo preço da cartela:");
-            if(novoPreco && !isNaN(novoPreco)) {
-                precoAtual = parseFloat(novoPreco);
-                document.getElementById('view-preco').innerText = precoAtual.toFixed(2);
-                alert("Preço modificado com sucesso!");
-            }
-        }
-
-        function ejecutarEstorno() {
-            let confirmacao = prompt("Digite o Código ADM para Autorizar o Estorno:");
-            if(confirmacao === "999") {
-                let idVenda = prompt("Insira o ID da transação Pix para cancelamento:");
-                if(idVenda) { alert("Estorno processado pela JCS_Software para a transação: " + idVenda); }
-            } else { alert("Código incorreto. Acesso negado."); }
-        }
-
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play().catch(function(e) { alert("Clique na tela primeiro para dar permissão de áudio ao navegador."); });
-                document.querySelector('.btn-audio').innerText = "⏸️ Pausar Som";
-            } else {
-                audio.pause();
-                document.querySelector('.btn-audio').innerText = "🎵 Ativar Som da Natureza";
-            }
-        }
+    }
     </script>
 </body>
 </html>
+EOF
+
+# 2. Adiciona o arquivo diretamente na árvore do Git
+git add index.html
+
+# 3. Cria o commit de sincronização
+git commit -m "Injeção direta do novo index - Termos e Proteção iOS"
