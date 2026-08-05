@@ -11,15 +11,15 @@
     <div id="manutencao-tela" style="display: none; text-align: center; margin-top: 100px; font-family: Arial, sans-serif;">
         <h1 style="color: #cc092f;">Aviso do Sistema</h1>
         <h2>JCS_Software v1.0.0 em Manutenção Operacional</h2>
-        <p>Estamos a ajustar os systems de som e logística. Voltamos já!</p>
+        <p>Estamos a ajustar os sistemas de som e logística. Voltamos já!</p>
     </div>
 
     <!-- PAINEL PRINCIPAL DO CHECKOUT -->
     <div id="jcs-checkout-container" style="font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 25px; border: 1px solid #e1e4e8; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
         <div style="margin-bottom: 25px;">
             <h3 style="color: #1a1a1a; margin-bottom: 12px; border-bottom: 2px solid #eaeaea; padding-bottom: 8px;">Condições de Venda, Logística e Aceite</h3>
-            <div style="height: 160px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
-                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
+            <div style="height: 180px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
+                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA:</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmation do pagamento no sistema ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
                 <strong>2. COMPROVAÇÃO E PLATAFORMA DE PAGAMENTO:</strong><br>O processamento financeiro oficial do sistema é integrado via plataforma homologada <strong>RecargaPay</strong>, utilizando especificações de QR Code validadas sob as normas bancárias do Bradesco. O cliente poderá efetuar a transferência Pix a partir de qualquer instituição (Itaú, Bradesco, Santander, Nubank, etc.) ou optar pelo pagamento em dinheiro à vista.<br><br>
                 <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces de pagamento.<br><br>
                 <strong>4. POLÍTICA DE CANCELAMENTO E RETORNO:</strong><br>Ao clicar no botão de aceitação abaixo, os dados de logística são consolidados. Modificações na rota de entrega ou dados de envio devem ser comunicadas imediatamente à equipa de suporte via WhatsApp oficial.
@@ -32,19 +32,19 @@
         
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <a id="btn-zap" href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
-            <button id="btn-pagamento" onclick="abrirSistemasPagamento()" style="display: block; width: 100%; text-align: center; background-color: #cc092f; color: white; padding: 14px; border: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px; cursor: pointer;">Pagar com Pix / Qualquer Banco / RecargaPay</button>
+            <!-- FIX DO GATILHO DE TOQUE DO BOTÃO VERMELHO -->
+            <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
         </div>
 
-        <!-- ÁREA SECRETA DE PAGAMENTO -->
+        <!-- ÁREA SECRETA DE PAGAMENTO (DESCONGELA APÓS CLIQUE) -->
         <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5;">
             <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
             <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
             
             <div style="margin-top: 15px;">
                 <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
-                <input type="text" id="pix-copie-cole" value="COLE_AQUI_A_SUA_CHAVE_PIX_COPIE_E_COLE_DO_RECARGAPAY" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
+                <input type="text" id="pix-copie-cole" value="00020101021126580014br.gov.bcb.pix0136suas-chaves-pix-recargapay-aqui" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
                 
-                <!-- PAINEL DE DISPARO DIRETO E SEGURO PRO WHATSAPP DO DESTINATÁRIO -->
                 <div style="margin-top: 15px; background: #e6f7ff; border: 1px solid #91d5ff; padding: 12px; border-radius: 6px; text-align: left;">
                     <label style="display: block; font-size: 12px; font-weight: bold; color: #0050b3; margin-bottom: 5px;">📱 Número do Destinatário (Ex: Esposa/Sócio com DDD):</label>
                     <input type="tel" id="txt-telefone-cliente" placeholder="Ex: 11999999999" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #91d5ff; border-radius: 4px; font-weight: bold; margin-bottom: 8px;">
@@ -123,11 +123,14 @@
 
         localStorage.setItem('ultimo_tel_cliente', tel);
 
-        // MENSAGEM DO PROTETOR ANTI-SUSTO: EXPLICAÇÃO CLARA DO CONTEXTO DE ENTREGA
         var textoMensagem = "Olá! A JCS_Software informa: O seu familiar/sócio está connosco a receber a mercadoria e solicitou o envio deste código Pix Copie e Cole para liquidação imediata da entrega.\n\nChave Pix abaixo:\n\n" + chavePix;
         var mensagem = encodeURIComponent(textoMensagem);
         
-        // Abre o link global direcionando para o destinatário informado
-        var urlZap = "https://wa.me" + tel + "?text=" + mensagem;
+        var urlZap = "https://wa.me" + tel + "?text=" + message;
         
         if(somAtivado) audioAlerta.play();
+        window.open(urlZap, '_blank');
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('adm') === '1') {
