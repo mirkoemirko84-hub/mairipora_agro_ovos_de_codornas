@@ -43,7 +43,12 @@
             <div style="margin-top: 15px;">
                 <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 5px;">Código Copie e Cole abaixo:</span>
                 <input type="text" id="pix-copie-cole" value="COLE_AQUI_A_SUA_CHAVE_PIX_COPIE_E_COLE_DO_RECARGAPAY" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                <button onclick="copiarChavePix()" style="margin-top: 8px; background: #1e293b; color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Copiar Código</button>
+                
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <button onclick="copiarChavePix()" style="background: #1e293b; color: white; border: none; padding: 8px 16px; font-size: 13px; border-radius: 4px; cursor: pointer; font-weight: bold;">Copiar Código</button>
+                    <!-- NOVO BOTÃO DE COMPARTILHAMENTO DIRETOR -->
+                    <button onclick="compartilharPix()" style="background: #0070f3; color: white; border: none; padding: 8px 16px; font-size: 13px; border-radius: 4px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px;">Compartilhar Pix 📤</button>
+                </div>
             </div>
         </div>
     </div>
@@ -96,6 +101,23 @@
         copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
         alert("Código Pix Copie e Cole copiado com sucesso!");
+    }
+
+    // LÓGICA DO BOTÃO DE COMPARTILHAMENTO SOB SEU COMANDO
+    function compartilharPix() {
+        var chavePix = document.getElementById("pix-copie-cole").value;
+        if (navigator.share) {
+            navigator.share({
+                title: 'Código Copie e Cole Pix - JCS Software',
+                text: chavePix
+            })
+            .then(() => console.log('Compartilhado com sucesso!'))
+            .catch((error) => console.log('Erro ao compartilhar:', error));
+        } else {
+            // Caso o navegador não tenha suporte nativo, ele copia automaticamente para enviar por mensagem
+            copiarChavePix();
+            alert("Dispositivo sem suporte a partilha nativa. O código Pix foi copiado para a área de transferência! Pode colá-lo direto no WhatsApp.");
+        }
     }
 
     const urlParams = new URLSearchParams(window.location.search);
