@@ -43,7 +43,9 @@
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
         <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
             <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
-            <img src="imagens/qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
+            
+            <!-- CAMINHO CORRIGIDO PARA A RAIZ DO REPOSITÓRIO -->
+            <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
             
             <button id="btn-confirmar-qr" onclick="dispararFluxoProcessamento('QR')" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
 
@@ -52,6 +54,13 @@
                 <input type="text" id="pix-copie-cole" value="dce800d8-eeb3-4de4-90af-01d33251173e" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
                 <button id="btn-copiar-pix" onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
             </div>
+
+            <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA -->
+            <div id="container-progresso" style="display: none; margin-top: 20px; background: #e2e8f0; border-radius: 8px; padding: 4px; position: relative; height: 25px;">
+                <div id="barra-progresso" style="background: #eab308; width: 0%; height: 100%; border-radius: 6px; transition: width 0.1s linear;"></div>
+                <span id="texto-progresso" style="position: absolute; width: 100%; text-align: center; left: 0; top: 6px; font-weight: bold; font-size: 12px; color: #000;">⏳ Conectando à API RecargaPay...</span>
+            </div>
+        </div>
 
             <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA -->
             <div id="container-progresso" style="display: none; margin-top: 20px; background: #e2e8f0; border-radius: 8px; padding: 4px; position: relative; height: 25px;">
