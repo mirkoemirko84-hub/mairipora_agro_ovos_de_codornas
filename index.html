@@ -22,7 +22,7 @@
         <div style="margin-bottom: 25px;">
             <h3 style="color: #1a1a1a; margin-bottom: 12px; font-size: 15px; font-weight: bold;">Condições de Venda, Logística e Aceite</h3>
             <div style="height: 180px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
-                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA, (TERÇAS e SEXTA):</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema ou mediante liquidação in dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
+                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA, (TERÇAS e SEXTA):</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
                 <strong>2. COMPROVAÇÃO E PLATAFORMA DE PAGAMENTO:</strong><br>O processamento financeiro oficial do sistema é integrado via plataforma homologada <strong>RecargaPay</strong>. O cliente poderá efetuar a transferência Pix a partir de qualquer instituição financeira ou optar pelo pagamento em dinheiro à vista.<br><br>
                 <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces de pagamento.<br><br>
                 <strong>4. POLÍTICA DE CANCELAMENTO E RETORNO:</strong><br>Ao clicar no botão de aceitação abaixo, os dados de logística são consolidados. Modificações na rota de entrega ou dados de envio devem ser comunicadas imediatamente à equipe de suporte via WhatsApp oficial 11964856312.
@@ -34,16 +34,16 @@
             </label>
         </div>
         
-        <!-- BLOCO DE BOTÕES TRADICIONAIS COM LINKS REAIS DE ALTA COMPATIBILIDADE -->
+        <!-- CIRCUITO DE BOTÕES PURIFICADO -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- LINK UNIVERSAL REFORÇADO COM PROTOCOLO DE CONVERSA DIRETA -->
-            <a href="https://whatsapp.com." target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
+            <!-- ROTA DO ZAP REDIRECIONADA E PROTEGIDA -->
+            <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
             
-            <!-- LINK DO PIX QUE ACIONA O BLOCO INTERNO SEM SALTAR O ECRÃ -->
-            <a href="#" onclick="mostrarBlocoPix(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
+            <!-- ROTA DO PIX COM DISPARADOR DE STATUS -->
+            <a href="#" onclick="mostrarBlocoPix(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Pagar com Pix / Qualquer Banco / RecargaPay</a>
             
-            <!-- BOTÃO OCULTO: COMPARTILHAR SITE DE VENDAS -->
-            <button onclick="compartilharSite()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 5px;">Field-Tested Share Site</button>
+            <!-- BOTÃO COMPARTILHAR INTELLIGENT SHARE -->
+            <button onclick="compartilharSite()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 5px;">📲 Compartilhar Site de Vendas</button>
         </div>
 
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
@@ -73,11 +73,7 @@
         function mostrarBlocoPix() {
             var bloco = document.getElementById('bloco-pagamento');
             if (bloco) {
-                if (bloco.style.display === 'none' || bloco.style.display === '') {
-                    bloco.style.display = 'block';
-                } else {
-                    bloco.style.display = 'none';
-                }
+                bloco.style.display = (bloco.style.display === 'none' || bloco.style.display === '') ? 'block' : 'none';
             }
         }
 
@@ -97,11 +93,8 @@
                 text: 'Compre ovos de codorna frescos e selecionados direto do produtor!',
                 url: window.location.href
             };
-
             if (navigator.share) {
-                navigator.share(dadosCompartilhar)
-                    .then(() => console.log('Compartilhado!'))
-                    .catch((err) => console.log(err));
+                navigator.share(dadosCompartilhar).catch((err) => console.log(err));
             } else {
                 var linkTemporario = document.createElement('input');
                 document.body.appendChild(linkTemporario);
@@ -126,3 +119,9 @@
                 var progresso = 0;
                 var intervalo = setInterval(function() {
                     progresso += 5;
+                    barra.style.width = progresso + '%';
+                    
+                    if (progresso === 25) texto.innerText = '📡 Autenticando com o Servidor Central...';
+                    if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
+                    if (progresso === 75) texto.innerText = '🔒 Validando chaves criptográficas...';
+                    
