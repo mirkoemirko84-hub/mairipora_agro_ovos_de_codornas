@@ -34,14 +34,15 @@
             </label>
         </div>
         
-        <!-- BLOCO DE BOTÕES TRADICIONAIS SEM CONFLITO -->
+                <!-- BLOCO DE BOTÕES TRADICIONAIS COM LINKS REAIS DE ALTA COMPATIBILIDADE -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- LINK UNIVERSAL HOMOLOGADO PARA SMARTPHONE E PC -->
-            <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
+            <!-- LINK UNIVERSAL COM TEXTO INICIAL PARA FORÇAR ABRIR EM QUALQUER CELULAR -->
+            <a href="https://wa.me." target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
             
-            <!-- BOTÃO PIX COM ACIONAMENTO LIMPO -->
-            <button onclick="mostrarBlocoPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Pagar com Pix / Qualquer Banco / RecargaPay</button>
+            <!-- LINK DO PIX DISFARÇADO DE BOTÃO PARA FORÇAR ABERTURA NO CELULAR -->
+            <a href="#" onclick="mostrarBlocoPix(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
         </div>
+
 
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
         <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5;">
