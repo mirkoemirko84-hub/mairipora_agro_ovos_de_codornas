@@ -42,25 +42,19 @@
             
             <div style="display: flex; flex-direction: column; gap: 8px;">
                 <!-- ABA 1: WHATSAPP -->
-                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase;">
+                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                     💬 Opção 1: Chamar no Zap
                 </a>
                 
                 <!-- ABA 2: SISTEMA PIX -->
-                <button onclick="alternarMenuPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer;">
+                <button onclick="alternarMenuPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                     🔑 Opção 2: Pagar com Pix / RecargaPay
                 </button>
                 
                 <!-- ABA 3: COMPARTILHAR LINK -->
-                <button onclick="copiarLinkMenu()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer;">
+                <button onclick="copiarLinkMenu()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                     📲 Opção 3: Compartilhar o Site
                 </button>
-            </div>
-
-            <!-- SISTEMA ADIANTAR E VOLTAR INTEGRADO NO MENU -->
-            <div style="display: flex; gap: 8px; margin-top: 12px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
-                <button onclick="navegarVoltar()" style="flex: 1; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer;">↩️ Voltar Página</button>
-                <button onclick="navegarAdiantar()" style="flex: 1; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer;">Advance Adiantar ↪️</button>
             </div>
         </div>
 
@@ -116,19 +110,6 @@
             alert('Link do site copiado para o menu! Pronto para colar e partilhar no WhatsApp.');
         }
 
-        // CIRCUITOS DE NAVEGAÇÃO INTERNA DO HISTÓRICO
-        function navegarVoltar() {
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                alert('Início do histórico alcançado.');
-            }
-        }
-
-        function navegarAdiantar() {
-            window.history.forward();
-        }
-
         function dispararProgresso() {
             var container = document.getElementById('container-progresso');
             var barra = document.getElementById('barra-progresso');
@@ -140,3 +121,21 @@
                 
                 var progresso = 0;
                 var intervalo = setInterval(function() {
+                    progresso += 5;
+                    barra.style.width = progresso + '%';
+                    
+                    if (progresso === 25) texto.innerText = '📡 Autenticando transação no RecargaPay...';
+                    if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
+                    if (progresso === 75) texto.innerText = '🔒 Validando chaves de segurança...';
+                    
+                    if (progresso >= 100) {
+                        clearInterval(intervalo);
+                        texto.innerText = '✅ Pagamento Confirmado com Sucesso!';
+                        barra.style.background = '#25D366';
+                        setTimeout(function() {
+                            alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
+                        }, 500);
+                    }
+                }, 100);
+            }
+        }
