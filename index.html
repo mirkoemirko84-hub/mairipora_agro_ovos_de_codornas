@@ -35,32 +35,32 @@
         </div>
         
         <!-- ========================================== -->
-        <!-- MENU OPERACIONAL INVERTIDO (BAIXO PARA CIMA) -->
+        <!-- MENU OPERACIONAL ISOLADO (SEM O LINK DE TRAVAMENTO) -->
         <!-- ========================================== -->
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 15px;">
-            <span style="display: block; font-size: 12px; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 10px; text-align: center; letter-spacing: 0.5px;">📋 Menu Invertido de Engenharia</span>
+            <span style="display: block; font-size: 12px; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 10px; text-align: center; letter-spacing: 0.5px;">📋 Triagem Passo a Passo — JCS</span>
             
             <div style="display: flex; flex-direction: column; gap: 8px;">
                 
-                <!-- ISOLADO 3: COMPARTILHAR LINK (FICOU NO TOPO DO MENU) -->
+                <!-- ISOLADO 3: COMPARTILHAR LINK -->
                 <button onclick="copiarLinkMenu()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    📲 Opção 3: Compartilhar o Site
+                    📲 Opção 3: Testar Compartilhar o Site
                 </button>
 
-                <!-- ISOLADO 2: SISTEMA PIX / QR CODE (FICOU NO MEIO) -->
+                <!-- ISOLADO 2: SISTEMA PIX / QR CODE -->
                 <button onclick="alternarMenuPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    🔑 Opção 2: Pagar com Pix / RecargaPay
+                    🔑 Opção 2: Testar Pagar com Pix
                 </button>
 
-                <!-- ISOLADO 1: WHATSAPP CORRIGIDO (FICOU NA BASE DO MENU) -->
-                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    💬 Opção 1: Chamar no Zap
-                </a>
+                <!-- ISOLADO 1: TEXTO ESTÁTICO DO ZAP (NÃO EXECUTA LINKS NEM COPIA TEXTO EXTERNO) -->
+                <div style="display: flex; align-items: center; justify-content: center; background-color: #e2e8f0; color: #475569; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; border: 1px dashed #cbd5e1;">
+                    🔒 Opção 1: Suporte Oficial (11) 96485-6312
+                </div>
 
             </div>
         </div>
 
-        <!-- CONTEÚDO DO MENU: ÁREA DO PIX (ABRE EMBAIXO DO MENU) -->
+        <!-- CONTEÚDO DO MENU: ÁREA DO PIX -->
         <div id="bloco-pagamento" style="display: none; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; margin-top: 15px;">
             <h4 style="color: #cc092f; margin-top: 0; font-size: 16px;">Menu Pix Ativado</h4>
             <p style="font-size: 13px; color: #475569; margin-top: 0;">Escaneie o QR Code abaixo para concluir:</p>
@@ -137,3 +137,10 @@
                         setTimeout(function() {
                             alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
                         }, 500);
+                    }
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>
