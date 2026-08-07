@@ -7,13 +7,6 @@
 </head>
 <body style="background-color: #f4f6f9; margin: 0; padding: 20px;">
 
-    <!-- TELA DE MANUTENÇÃO (ON/OFF) -->
-    <div id="manutencao-tela" style="display: none; text-align: center; margin-top: 100px; font-family: Arial, sans-serif;">
-        <h1 style="color: #cc092f;">Aviso do Sistema</h1>
-        <h2>JCS_Software v1.0.0 em Manutenção Operacional</h2>
-        <p>Estamos a ajustar os sistemas de som e logística. Voltamos já!</p>
-    </div>
-
     <!-- PAINEL PRINCIPAL DO CHECKOUT (MAIRIPORÃ AGRO) -->
     <div id="jcs-checkout-container" style="font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 25px; border: 1px solid #e1e4e8; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
         
@@ -36,33 +29,32 @@
             </div>
             
             <label style="display: flex; align-items: flex-start; cursor: pointer; font-size: 13px; font-weight: bold; color: #1e293b;">
-                <input type="checkbox" id="chk-aceite" style="margin-right: 12px; margin-top: 3px; transform: scale(1.2);" checked>
+                <input type="checkbox" id="chk-aceite" style="margin-right: 12px; margin-top: 3px; transform: scale(1.2);" checked readonly>
                 <span>Declaro que li, compreendi e aceito integralmente as Condições de Venda, os prazos de Logística e as diretivas de suporte do sistema.</span>
             </label>
         </div>
         
-        <!-- BLOCO ÚNICO DE BOTÕES (TOTALMENTE DESTRAVADOS POR PADRÃO) -->
+        <!-- BLOCO DE BOTÕES TRADICIONAIS SEM CONFLITO -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- LINK DIRETO PARA O WHATSAPP NO CELULAR -->
-            <a id="btn-zap" href="whatsapp://send?phone=5511964856312" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
+            <!-- LINK UNIVERSAL HOMOLOGADO PARA SMARTPHONE E PC -->
+            <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
             
-            <!-- BOTÃO DE PAGAMENTO DIRETO -->
-            <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Pagar com Pix / Qualquer Banco / RecargaPay</a>
+            <!-- BOTÃO PIX COM ACIONAMENTO LIMPO -->
+            <button onclick="mostrarBlocoPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Pagar com Pix / Qualquer Banco / RecargaPay</button>
         </div>
 
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
-        <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
+        <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5;">
             <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
             
-            <!-- IMAGEM DA RAIZ DO REPOSITÓRIO -->
             <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
             
-            <button id="btn-confirmar-qr" onclick="dispararFluxoProcessamento('QR')" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
+            <button onclick="dispararFluxoProcessamento()" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
 
             <div style="margin-top: 15px; border-top: 1px solid #e1e4e8; padding-top: 15px;">
                 <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
                 <input type="text" id="pix-copie-cole" value="dce800d8-eeb3-4de4-90af-01d33251173e" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                <button id="btn-copiar-pix" onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
+                <button onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
             </div>
 
             <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA -->
@@ -73,14 +65,13 @@
         </div>
     </div>
 
-    <!-- LOGICA SCRIPT DO SISTEMA JCS SIMPLIFICADA -->
+    <!-- LOGICA PURA SEM CONFLITOS DE NAVEGADOR -->
     <script>
-        function abrirSistemasPagamento() {
+        function mostrarBlocoPix() {
             var bloco = document.getElementById('bloco-pagamento');
             if (bloco) {
                 if (bloco.style.display === 'none') {
                     bloco.style.display = 'block';
-                    bloco.scrollIntoView({ behavior: 'smooth' });
                 } else {
                     bloco.style.display = 'none';
                 }
@@ -97,7 +88,7 @@
             }
         }
 
-        function dispararFluxoProcessamento(tipo) {
+        function dispararFluxoProcessamento() {
             var container = document.getElementById('container-progresso');
             var barra = document.getElementById('barra-progresso');
             var texto = document.getElementById('texto-progresso');
@@ -125,3 +116,8 @@
                         }, 500);
                     }
                 }, 150);
+            }
+        }
+    </script>
+</body>
+</html>
