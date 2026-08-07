@@ -35,30 +35,32 @@
         </div>
         
         <!-- ========================================== -->
-        <!-- MENU OPERACIONAL DE ATENDIMENTO E VENDAS -->
+        <!-- MENU OPERACIONAL INVERTIDO (BAIXO PARA CIMA) -->
         <!-- ========================================== -->
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 15px;">
-            <span style="display: block; font-size: 12px; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 10px; text-align: center; letter-spacing: 0.5px;">📋 Menu de Opções Disponíveis</span>
+            <span style="display: block; font-size: 12px; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 10px; text-align: center; letter-spacing: 0.5px;">📋 Menu Invertido de Engenharia</span>
             
             <div style="display: flex; flex-direction: column; gap: 8px;">
-                <!-- ABA 1: WHATSAPP -->
-                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    💬 Opção 1: Chamar no Zap
-                </a>
                 
-                <!-- ABA 2: SISTEMA PIX -->
-                <button onclick="alternarMenuPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    🔑 Opção 2: Pagar com Pix / RecargaPay
-                </button>
-                
-                <!-- ABA 3: COMPARTILHAR LINK -->
+                <!-- ISOLADO 3: COMPARTILHAR LINK (FICOU NO TOPO DO MENU) -->
                 <button onclick="copiarLinkMenu()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                     📲 Opção 3: Compartilhar o Site
                 </button>
+
+                <!-- ISOLADO 2: SISTEMA PIX / QR CODE (FICOU NO MEIO) -->
+                <button onclick="alternarMenuPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    🔑 Opção 2: Pagar com Pix / RecargaPay
+                </button>
+
+                <!-- ISOLADO 1: WHATSAPP CORRIGIDO (FICOU NA BASE DO MENU) -->
+                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    💬 Opção 1: Chamar no Zap
+                </a>
+
             </div>
         </div>
 
-        <!-- CONTEÚDO DINÂMICO DO MENU: ÁREA DO PIX (RECOLHIDO POR PADRÃO) -->
+        <!-- CONTEÚDO DO MENU: ÁREA DO PIX (ABRE EMBAIXO DO MENU) -->
         <div id="bloco-pagamento" style="display: none; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; margin-top: 15px;">
             <h4 style="color: #cc092f; margin-top: 0; font-size: 16px;">Menu Pix Ativado</h4>
             <p style="font-size: 13px; color: #475569; margin-top: 0;">Escaneie o QR Code abaixo para concluir:</p>
@@ -135,7 +137,3 @@
                         setTimeout(function() {
                             alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
                         }, 500);
-                    }
-                }, 100);
-            }
-        }
