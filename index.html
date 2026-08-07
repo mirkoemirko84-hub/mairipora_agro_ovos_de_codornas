@@ -22,7 +22,7 @@
         <div style="margin-bottom: 25px;">
             <h3 style="color: #1a1a1a; margin-bottom: 12px; font-size: 15px; font-weight: bold;">Condições de Venda, Logística e Aceite</h3>
             <div style="height: 180px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
-                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA, (TERÇAS e SEXTA):</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema ou mediante liquidação em dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
+                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA, (TERÇAS e SEXTA):</strong><br>O fluxo de entrega do produto ou libertação das credenciais do software é iniciado estritamente após a confirmação do pagamento no sistema ou mediante liquidação in dinheiro/Pix no ato da entrega física. A JCS_Software realiza vistorias de conformidade antes do envio físico ou digital.<br><br>
                 <strong>2. COMPROVAÇÃO E PLATAFORMA DE PAGAMENTO:</strong><br>O processamento financeiro oficial do sistema é integrado via plataforma homologada <strong>RecargaPay</strong>. O cliente poderá efetuar a transferência Pix a partir de qualquer instituição financeira ou optar pelo pagamento em dinheiro à vista.<br><br>
                 <strong>3. COMPATIBILIDADE E SUPORTE (iOS/Apple):</strong><br>Para utilizadores do ecossistema Apple (iPhone/Safari), o cliente declara estar ciente de que as diretivas nativas de segurança do navegador podem exigir a desativação manual do 'Bloqueio de Pop-ups' nas definições do Safari para a correta abertura de janelas externas do WhatsApp (Zap) e interfaces de pagamento.<br><br>
                 <strong>4. POLÍTICA DE CANCELAMENTO E RETORNO:</strong><br>Ao clicar no botão de aceitação abaixo, os dados de logística são consolidados. Modificações na rota de entrega ou dados de envio devem ser comunicadas imediatamente à equipe de suporte via WhatsApp oficial 11964856312.
@@ -36,11 +36,14 @@
         
         <!-- BLOCO DE BOTÕES TRADICIONAIS COM LINKS REAIS DE ALTA COMPATIBILIDADE -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- LINK UNIVERSAL HOMOLOGADO PARA SMARTPHONE E PC -->
-            <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
+            <!-- LINK UNIVERSAL REFORÇADO COM PROTOCOLO DE CONVERSA DIRETA -->
+            <a href="https://whatsapp.com." target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
             
             <!-- LINK DO PIX QUE ACIONA O BLOCO INTERNO SEM SALTAR O ECRÃ -->
             <a href="#" onclick="mostrarBlocoPix(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
+            
+            <!-- BOTÃO OCULTO: COMPARTILHAR SITE DE VENDAS -->
+            <button onclick="compartilharSite()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 14px; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 5px;">Field-Tested Share Site</button>
         </div>
 
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
@@ -49,7 +52,7 @@
             
             <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
             
-            <button onclick="dispararFluxoProcessamento()" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
+            <button onclick="dispararFluxoProcessamento()" style="margin-bottom: 20px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
 
             <div style="margin-top: 15px; border-top: 1px solid #e1e4e8; padding-top: 15px;">
                 <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
@@ -88,6 +91,28 @@
             }
         }
 
+        function compartilharSite() {
+            var dadosCompartilhar = {
+                title: 'Mairiporã Agro — Ovos de Codorna',
+                text: 'Compre ovos de codorna frescos e selecionados direto do produtor!',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(dadosCompartilhar)
+                    .then(() => console.log('Compartilhado!'))
+                    .catch((err) => console.log(err));
+            } else {
+                var linkTemporario = document.createElement('input');
+                document.body.appendChild(linkTemporario);
+                linkTemporario.value = window.location.href;
+                linkTemporario.select();
+                document.execCommand('copy');
+                document.body.removeChild(linkTemporario);
+                alert('Link do site copiado para partilhar!');
+            }
+        }
+
         function dispararFluxoProcessamento() {
             var container = document.getElementById('container-progresso');
             var barra = document.getElementById('barra-progresso');
@@ -101,23 +126,3 @@
                 var progresso = 0;
                 var intervalo = setInterval(function() {
                     progresso += 5;
-                    barra.style.width = progresso + '%';
-                    
-                    if (progresso === 25) texto.innerText = '📡 Autenticando com o Servidor Central...';
-                    if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
-                    if (progresso === 75) texto.innerText = '🔒 Validando chaves criptográficas...';
-                    
-                    if (progresso >= 100) {
-                        clearInterval(intervalo);
-                        texto.innerText = '✅ Pagamento Confirmado com Sucesso!';
-                        barra.style.background = '#25D366';
-                        setTimeout(function() {
-                            alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
-                        }, 500);
-                    }
-                }, 150);
-            }
-        }
-    </script>
-</body>
-</html>
