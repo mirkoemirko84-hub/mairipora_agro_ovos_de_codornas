@@ -14,7 +14,7 @@
         <p>Estamos a ajustar os sistemas de som e logística. Voltamos já!</p>
     </div>
 
-              <!-- PAINEL PRINCIPAL DO CHECKOUT (MAIRIPORÃ AGRO) -->
+    <!-- PAINEL PRINCIPAL DO CHECKOUT (MAIRIPORÃ AGRO) -->
     <div id="jcs-checkout-container" style="font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 25px; border: 1px solid #e1e4e8; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
         <div style="margin-bottom: 25px;">
             <!-- CABEÇALHO RESTAURADO COM A MARCA OFICIAL -->
@@ -36,40 +36,11 @@
         <!-- BLOCO ÚNICO DE BOTÕES (SEM DUPLICAÇÃO) -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <!-- LINK UNIVERSAL DO WHATSAPP REFIXADO E SEGURO -->
-            <a id="btn-zap" href="https://wa.me." target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
+            <a id="btn-zap" href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
             <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
         </div>
 
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
-        <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
-            <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
-            <img src="imagens/qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
-            
-            <button id="btn-confirmar-qr" onclick="dispararFluxoProcessamento('QR')" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
-
-            <div style="margin-top: 15px; border-top: 1px solid #e1e4e8; padding-top: 15px;">
-                <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
-                <input type="text" id="pix-copie-cole" value="dce800d8-eeb3-4de4-90af-01d33251173e" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                <button id="btn-copiar-pix" onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
-            </div>
-
-            <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA (25% -> 50% -> 75% -> 100%) -->
-            <div id="container-progresso" style="display: none; margin-top: 20px; background: #e2e8f0; border-radius: 8px; padding: 4px; position: relative; height: 25px;">
-                <div id="barra-progresso" style="background: #eab308; width: 0%; height: 100%; border-radius: 6px; transition: width 0.1s linear;"></div>
-                <span id="texto-progresso" style="position: absolute; width: 100%; text-align: center; left: 0; top: 6px; font-weight: bold; font-size: 12px; color: #000;">⏳ Conectando à API RecargaPay...</span>
-            </div>
-        </div>
-    </div>
-
-        
-        <!-- APENAS UM BLOCO DE BOTÕES (SEM DUPLICAÇÃO) -->
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- LINK UNIVERSAL DO WHATSAPP CORRIGIDO -->
-            <a id="btn-zap" href="https://wa.me." target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
-            <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
-        </div>
-
-        <!-- ÁREA DE PAGAMENTO ESTÁVEL -->
         <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
             <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
             <img src="imagens/qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
@@ -90,111 +61,73 @@
         </div>
     </div>
 
-        <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
-        <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
-            <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
-            
-            <!-- Elemento de Imagem Estático Protegido contra Loops -->
-            <img src="imagens/qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
-            
-            <button id="btn-confirmar-qr" onclick="dispararFluxoProcessamento('QR')" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
-
-            <div style="margin-top: 15px; border-top: 1px solid #e1e4e8; padding-top: 15px;">
-                <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
-                <input type="text" id="pix-copie-cole" value="dce800d8-eeb3-4de4-90af-01d33251173e" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                <button id="btn-copiar-pix" onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
-            </div>
-
-            <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA -->
-            <div id="container-progresso" style="display: none; margin-top: 20px; background: #e2e8f0; border-radius: 8px; padding: 4px; position: relative; height: 25px;">
-                <div id="barra-progresso" style="background: #eab308; width: 0%; height: 100%; border-radius: 6px; transition: width 0.1s linear;"></div>
-                <span id="texto-progresso" style="position: absolute; width: 100%; text-align: center; left: 0; top: 6px; font-weight: bold; font-size: 12px; color: #000;">⏳ Conectando à API RecargaPay...</span>
-            </div>
-        </div>
-    </div>
-
-            <!-- LINK UNIVERSAL DO WHATSAPP REFIXADO -->
-            <a id="btn-zap" href="https://wa.me." target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
-            <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
-        </div>
-
-        <!-- ÁREA DE PAGAMENTO -->
-        <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
-            <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
-            <img src="imagens/qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
-            
-            <button id="btn-confirmar-qr" onclick="dispararFluxoProcessamento('QR')" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
-
-            <div style="margin-top: 15px; border-top: 1px solid #e1e4e8; padding-top: 15px;">
-                <span style="display: block; background-color: #25D366; color: white; padding: 8px; font-weight: bold; border-radius: 4px; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
-                <input type="text" id="pix-copie-cole" value="dce800d8-eeb3-4de4-90af-01d33251173e" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                <button id="btn-copiar-pix" onclick="copiarChavePix()" style="margin-top: 10px; background: #1e293b; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
-            </div>
-
-            <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA (25% -> 50% -> 75% -> 100%) -->
-            <div id="container-progresso" style="display: none; margin-top: 20px; background: #e2e8f0; border-radius: 8px; padding: 4px; position: relative; height: 25px;">
-                <div id="barra-progresso" style="background: #eab308; width: 0%; height: 100%; border-radius: 6px; transition: width 0.1s linear;"></div>
-                <span id="texto-progresso" style="position: absolute; width: 100%; text-align: center; left: 0; top: 6px; font-weight: bold; font-size: 12px; color: #000;">⏳ Conectando à API RecargaPay...</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAINEL ADM DO ADMINISTRADOR (?adm=1) -->
-    <div id="painel-adm" style="display: none; max-width: 600px; margin: 20px auto; padding: 20px; background: #222; color: #fff; border-radius: 8px; font-family: Arial, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-        <h3 style="text-align: center; margin-top: 0; color: #25D366; border-bottom: 1px solid #444; padding-bottom: 10px;">Painel ADM JCS_Software</h3>
-        
-        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
-            <button id="btn-status" onclick="alternarStatus()" style="background: #25D366; color: white; border: none; padding: 10px 15px; font-weight: bold; border-radius: 5px; cursor: pointer; flex: 1;">Status: ONLINE</button>
-            <button onclick="tocarSomObrigado()" style="background: #0284c7; color: white; border: none; padding: 10px 15px; font-weight: bold; border-radius: 5px; cursor: pointer; flex: 1;">🔊 Testar Som Direto</button>
-        </div>
-
-        <div style="background: #333; padding: 12px; border-radius: 6px; font-size: 13px; line-height: 1.6;">
-            <strong style="color: #eab308;">📊 Monitor de Estoque da Base:</strong><br>
-            • Saldo Fixo em Base: <span style="background: #25D366; color: #000; padding: 2px 6px; font-weight: bold; border-radius: 3px;">3 Cartelas (Máx)</span><br>
-            • Status do Excedente: <span style="color: #67e8f9; font-weight: bold;">Direcionado para Encomendas e Pagas</span>
-        </div>
-    </div>
-
+    <!-- LOGICA SCRIPT DO SISTEMA JCS -->
     <script>
-    var audioObrigado = new Audio('sons/obrigado.mp3'); 
-
-    function tocarSomObrigado() {
-        audioObrigado.currentTime = 0;
-        audioObrigado.play().catch(e => console.log('Áudio aguardando interação ou arquivo ausente na pasta sons/.'));
-    }
-
-    function validarTermo() {
-        var checkbox = document.getElementById('chk-aceite');
-        var btnZap = document.getElementById('btn-zap');
-        var btnPagamento = document.getElementById('btn-pagamento');
-        
-        if (checkbox.checked) {
-            btnZap.style.pointerEvents = "auto"; btnZap.style.opacity = "1";
-            btnPagamento.style.pointerEvents = "auto"; btnPagamento.style.opacity = "1";
-        } else {
-            btnZap.style.pointerEvents = "none"; btnZap.style.opacity = "0.5";
-            btnPagamento.style.pointerEvents = "none"; btnPagamento.style.opacity = "0.5";
+        function validarTermo() {
+            var chk = document.getElementById('chk-aceite');
+            var btnZap = document.getElementById('btn-zap');
+            var btnPago = document.getElementById('btn-pagamento');
+            
+            if (chk.checked) {
+                btnZap.style.pointerEvents = 'auto';
+                btnZap.style.opacity = '1';
+                btnPago.style.pointerEvents = 'auto';
+                btnPago.style.opacity = '1';
+            } else {
+                btnZap.style.pointerEvents = 'none';
+                btnZap.style.opacity = '0.5';
+                btnPago.style.pointerEvents = 'none';
+                btnPago.style.opacity = '0.5';
+                document.getElementById('bloco-pagamento').style.display = 'none';
+            }
         }
-    }
 
-    function abrirSistemasPagamento() {
-        document.getElementById('bloco-pagamento').style.display = 'block';
-    }
+        function abrirSistemasPagamento() {
+            var bloco = document.getElementById('bloco-pagamento');
+            if (bloco.style.display === 'none') {
+                bloco.style.display = 'block';
+                bloco.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                bloco.style.display = 'none';
+            }
+        }
 
-    function copiarChavePix() {
-        var copyText = document.getElementById("pix-copie-cole");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-        dispararFluxoProcessamento('PIX');
-    }
+        function copiarChavePix() {
+            var campo = document.getElementById('pix-copie-cole');
+            campo.select();
+            campo.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(campo.value);
+            alert('Código Pix Copiado com sucesso!');
+        }
 
-    function dispararFluxoProcessamento(origem) {
-        var btnPix = document.getElementById('btn-copiar-pix');
-        var btnQr = document.getElementById('btn-confirmar-qr');
-        var containerBarra = document.getElementById('container-progresso');
-        var barra = document.getElementById('barra-progresso');
-        var textoBarra = document.getElementById('texto-progresso');
-
-        btnPix.disabled = true;
-        btnQr.disabled = true;
+        function dispararFluxoProcessamento(tipo) {
+            var container = document.getElementById('container-progresso');
+            var barra = document.getElementById('barra-progresso');
+            var texto = document.getElementById('texto-progresso');
+            
+            container.style.display = 'block';
+            barra.style.width = '0%';
+            texto.innerText = '⏳ Verificando transação no RecargaPay...';
+            
+            var progresso = 0;
+            var intervalo = setInterval(function() {
+                progresso += 5;
+                barra.style.width = progresso + '%';
+                
+                if (progresso === 25) texto.innerText = '📡 Autenticando com o Servidor Central...';
+                if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
+                if (progresso === 75) texto.innerText = '🔒 Validando chaves criptográficas...';
+                
+                if (progresso >= 100) {
+                    clearInterval(intervalo);
+                    texto.innerText = '✅ Pagamento Confirmado com Sucesso!';
+                    barra.style.background = '#25D366';
+                    setTimeout(function() {
+                        alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
+                    }, 500);
+                }
+            }, 150);
+        }
+    </script>
+</body>
+</html>
