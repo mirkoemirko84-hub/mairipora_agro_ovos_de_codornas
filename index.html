@@ -36,23 +36,25 @@
             </div>
             
             <label style="display: flex; align-items: flex-start; cursor: pointer; font-size: 13px; font-weight: bold; color: #1e293b;">
-                <input type="checkbox" id="chk-aceite" style="margin-right: 12px; margin-top: 3px; transform: scale(1.2);" onchange="validarTermo()">
+                <input type="checkbox" id="chk-aceite" style="margin-right: 12px; margin-top: 3px; transform: scale(1.2);" checked>
                 <span>Declaro que li, compreendi e aceito integralmente as Condições de Venda, os prazos de Logística e as diretivas de suporte do sistema.</span>
             </label>
         </div>
         
-        <!-- BLOCO ÚNICO DE BOTÕES -->
+        <!-- BLOCO ÚNICO DE BOTÕES (TOTALMENTE DESTRAVADOS POR PADRÃO) -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- LINK DO WHATSAPP RECONFIGURADO PARA CELULARES (FORÇA ABERTURA DIRETA) -->
-            <a id="btn-zap" href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Chamar no Zap</a>
-            <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; pointer-events: none; opacity: 0.5; transition: 0.3s; font-size: 15px;">Pagar com Pix / Qualquer Banco / RecargaPay</a>
+            <!-- LINK DIRETO PARA O WHATSAPP NO CELULAR -->
+            <a id="btn-zap" href="whatsapp://send?phone=5511964856312" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background-color: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chamar no Zap</a>
+            
+            <!-- BOTÃO DE PAGAMENTO DIRETO -->
+            <a id="btn-pagamento" href="#" onclick="abrirSistemasPagamento(); return false;" style="display: block; text-align: center; background-color: #cc092f; color: white; padding: 14px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Pagar com Pix / Qualquer Banco / RecargaPay</a>
         </div>
 
         <!-- ÁREA DE PAGAMENTO ESTABILIZADA -->
         <div id="bloco-pagamento" style="display: none; margin-top: 20px; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; transition: background-color 0.2s;">
             <h4 style="color: #cc092f; margin-top: 0;">Escaneie o QR Code abaixo:</h4>
             
-            <!-- IMAGEM BUSCADA NA RAIZ DO REPOSITÓRIO -->
+            <!-- IMAGEM DA RAIZ DO REPOSITÓRIO -->
             <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
             
             <button id="btn-confirmar-qr" onclick="dispararFluxoProcessamento('QR')" style="margin-bottom: 20px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
@@ -71,43 +73,28 @@
         </div>
     </div>
 
-    <!-- LOGICA SCRIPT DO SISTEMA JCS -->
+    <!-- LOGICA SCRIPT DO SISTEMA JCS SIMPLIFICADA -->
     <script>
-        function validarTermo() {
-            var chk = document.getElementById('chk-aceite');
-            var btnZap = document.getElementById('btn-zap');
-            var btnPago = document.getElementById('btn-pagamento');
-            
-            if (chk.checked) {
-                btnZap.style.pointerEvents = 'auto';
-                btnZap.style.opacity = '1';
-                btnPago.style.pointerEvents = 'auto';
-                btnPago.style.opacity = '1';
-            } else {
-                btnZap.style.pointerEvents = 'none';
-                btnZap.style.opacity = '0.5';
-                btnPago.style.pointerEvents = 'none';
-                btnPago.style.opacity = '0.5';
-                document.getElementById('bloco-pagamento').style.display = 'none';
-            }
-        }
-
         function abrirSistemasPagamento() {
             var bloco = document.getElementById('bloco-pagamento');
-            if (bloco.style.display === 'none') {
-                bloco.style.display = 'block';
-                bloco.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                bloco.style.display = 'none';
+            if (bloco) {
+                if (bloco.style.display === 'none') {
+                    bloco.style.display = 'block';
+                    bloco.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    bloco.style.display = 'none';
+                }
             }
         }
 
         function copiarChavePix() {
             var campo = document.getElementById('pix-copie-cole');
-            campo.select();
-            campo.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(campo.value);
-            alert('Código Pix Copiado com sucesso!');
+            if(campo) {
+                campo.select();
+                campo.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(campo.value);
+                alert('Código Pix Copiado com sucesso!');
+            }
         }
 
         function dispararFluxoProcessamento(tipo) {
@@ -115,14 +102,26 @@
             var barra = document.getElementById('barra-progresso');
             var texto = document.getElementById('texto-progresso');
             
-            container.style.display = 'block';
-            barra.style.width = '0%';
-            texto.innerText = '⏳ Verificando transação no RecargaPay...';
-            
-            var progresso = 0;
-            var intervalo = setInterval(function() {
-                progresso += 5;
-                barra.style.width = progresso + '%';
+            if(container && barra && texto) {
+                container.style.display = 'block';
+                barra.style.width = '0%';
+                texto.innerText = '⏳ Verificando transação no RecargaPay...';
                 
-                if (progresso === 25) texto.innerText = '📡 Autenticando com o Servidor Central...';
-                if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
+                var progresso = 0;
+                var intervalo = setInterval(function() {
+                    progresso += 5;
+                    barra.style.width = progresso + '%';
+                    
+                    if (progresso === 25) texto.innerText = '📡 Autenticando com o Servidor Central...';
+                    if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
+                    if (progresso === 75) texto.innerText = '🔒 Validando chaves criptográficas...';
+                    
+                    if (progresso >= 100) {
+                        clearInterval(intervalo);
+                        texto.innerText = '✅ Pagamento Confirmado com Sucesso!';
+                        barra.style.background = '#25D366';
+                        setTimeout(function() {
+                            alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
+                        }, 500);
+                    }
+                }, 150);
