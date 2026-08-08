@@ -147,7 +147,6 @@
             line-height: 1.4;
         }
         
-        /* Selo Oficial de Segurança da JCS_Software */
         .security-footer {
             margin-top: 35px;
             font-size: 0.75rem;
@@ -163,38 +162,48 @@
             margin-bottom: 3px;
         }
 
-        .adm-trigger {
+        /* NOVO GATILHO: Área de clique alargada e centralizada */
+        .adm-trigger-btn {
+            background: transparent;
+            border: none;
+            color: #16351e; /* Mesma cor do fundo para discrição */
+            padding: 15px 30px;
             margin-top: 15px;
-            font-size: 0.65rem;
-            color: #16351e; /* Quase invisível no verde-escuro para total discrição */
+            font-size: 0.8rem;
             cursor: pointer;
+            width: 100%;
+            display: block;
             user-select: none;
+            text-align: center;
         }
+        
         .adm-panel {
             display: none;
             margin-top: 15px;
             background: #111;
-            padding: 12px;
-            border: 1px solid #cc092f;
+            padding: 15px;
+            border: 2px solid #cc092f;
             border-radius: 8px;
         }
         .adm-panel input {
-            width: 65px;
-            padding: 6px;
+            width: 70px;
+            padding: 8px;
             text-align: center;
             font-weight: bold;
             border-radius: 4px;
             border: 1px solid #555;
+            font-size: 1rem;
         }
         .adm-panel button {
             background: #cc092f;
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 8px 15px;
             cursor: pointer;
             font-weight: bold;
             border-radius: 4px;
             margin-left: 5px;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -248,18 +257,19 @@
             </a>
         </div>
 
-        <!-- BLINDAGEM DE SINAL DE SEGURANÇA SOLICITADA PELO MESTRE -->
+        <!-- BLINDAGEM DE SINAL DE SEGURANÇA -->
         <div class="security-footer">
             <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
             &copy; 2026 JCS_software - Todos os direitos reservados.
         </div>
 
-        <!-- GATILHO INVISÍVEL ADM 999 OCULTO ABAIXO DO SELO -->
-        <div class="adm-trigger" onclick="ativarManobra()">• Painel Operacional Central •</div>
+        <!-- NOVO BOTÃO DE GATILHO LARGO ( invisível, mas fácil de clicar) -->
+        <button class="adm-trigger-btn" onclick="ativarManobra()">[ Painel Operacional Central ]</button>
+        
         <div id="painelAdm" class="adm-panel">
-            <span style="color: white; font-size: 0.8rem;">Código ADM:</span>
+            <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
             <input type="password" id="senhaAdm" placeholder="***">
-            <span style="color: white; font-size: 0.8rem; margin-left: 5px;">Stock:</span>
+            <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
             <input type="number" id="novoEstoque" value="3">
             <button onclick="executarBaixa()">Dar Baixa</button>
         </div>
@@ -269,8 +279,3 @@
     <script>
         function copiarPix() {
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
-            navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o faturamento seguro.");
-            }).catch(err => {
-                alert("Erro ao copiar.");
-            });
