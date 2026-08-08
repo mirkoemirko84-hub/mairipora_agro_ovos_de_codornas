@@ -19,61 +19,6 @@
             box-sizing: border-box;
             text-align: center;
         }
-        
-        /* BOTÃO DA ENGRENAGEM OPERACIONAL */
-        .adm-trigger-topo {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 0.8rem;
-            color: #d4af37;
-            background: rgba(11, 36, 19, 0.8);
-            border: 2px solid #d4af37;
-            border-radius: 5px;
-            font-weight: bold;
-            padding: 6px 12px;
-            cursor: pointer;
-            z-index: 9999;
-            user-select: none;
-        }
-        
-        /* PAINEL OPERACIONAL INDEPENDENTE */
-        .adm-panel {
-            display: block; /* Nasce aberto para o teste mestre */
-            background: #111;
-            padding: 15px;
-            border: 2px solid #cc092f;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 410px;
-            box-sizing: border-box;
-            margin-bottom: 25px;
-            margin-top: 50px;
-            z-index: 9999;
-        }
-        .adm-panel input {
-            width: 70px;
-            padding: 8px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 4px;
-            border: 1px solid #555;
-            font-size: 1rem;
-            color: #000 !important;
-            background-color: #fff !important;
-        }
-        .adm-panel button {
-            background: #cc092f;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 4px;
-            margin-left: 5px;
-            font-size: 1rem;
-        }
-
         .container {
             max-width: 450px;
             background: rgba(11, 36, 19, 0.9);
@@ -217,22 +162,48 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
+            cursor: pointer; /* Indica que é clicável apenas para o Mestre */
+            user-select: none;
+        }
+        
+        /* PAINEL OPERACIONAL OCULTO REESTRUTURADO */
+        .adm-panel {
+            display: none; /* Totalmente invisível até o clique secreto no selo seguro */
+            background: #111;
+            padding: 15px;
+            border: 2px solid #cc092f;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 410px;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            z-index: 9999;
+        }
+        .adm-panel input {
+            width: 70px;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid #555;
+            font-size: 1rem;
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+        .adm-panel button {
+            background: #cc092f;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-left: 5px;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
-
-    <!-- BOTÃO DA ENGRENAGEM OPERACIONAL -->
-    <div class="adm-trigger-topo" onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block';">⚙️ Painel ADM</div>
-
-    <!-- PAINEL OPERACIONAL INDEPENDENTE EM LINHA -->
-    <div id="painelAdm" class="adm-panel">
-        <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
-        <input type="password" id="senhaAdm" placeholder="***" autocomplete="off">
-        <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
-        <input type="number" id="novoEstoque" value="3">
-        <button type="button" onclick="executarBaixa()">Dar Baixa</button>
-    </div>
 
     <div class="container">
         <h1>Mairiporã Agro</h1>
@@ -278,3 +249,25 @@
         <!-- CIRCUITO UNIFICADO EXCLUSIVO -->
         <div class="text-link-container">
             <a href="https://wa.me" class="link-direto-unico" target="_blank">
+                💬 CLIQUE AQUI PARA CHAMAR NO ZAP: Confirmar Compra, Enviar Comprovativo e Receber o Link de Partilha
+            </a>
+        </div>
+
+        <!-- GATILHO INVISÍVEL EMBUTIDO DIRECTO NO SELO SEGURO -->
+        <div class="security-footer">
+            <span class="security-badge" onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block'; document.getElementById('senhaAdm').focus();">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
+            &copy; 2026 JCS_software - Todos os direitos reservados.
+        </div>
+
+        <!-- PAINEL OPERACIONAL INDEPENDENTE LOGO ABAIXO -->
+        <div id="painelAdm" class="adm-panel">
+            <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
+            <input type="password" id="senhaAdm" placeholder="***" autocomplete="off">
+            <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
+            <input type="number" id="novoEstoque" value="3">
+            <button type="button" onclick="executarBaixa()">Dar Baixa</button>
+        </div>
+    </div>
+
+    <script>
+        function copiarPix() {
