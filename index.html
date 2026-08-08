@@ -18,23 +18,61 @@
             padding: 20px;
             box-sizing: border-box;
             text-align: center;
-            position: relative;
         }
         
-        /* GATILHO ISOLADO NO TOPO ESQUERDO DA TELA */
+        /* GATILHO VISÍVEL E ELEGANTE NO TOPO ESQUERDO */
         .adm-trigger-topo {
             position: absolute;
             top: 15px;
             left: 15px;
-            font-size: 0.75rem;
-            color: #16351e; /* Discreto, misturado com o verde de fundo */
+            font-size: 0.8rem;
+            color: #d4af37;
+            background: rgba(11, 36, 19, 0.5);
+            border: 1px solid #d4af37;
+            border-radius: 5px;
             cursor: pointer;
             user-select: none;
             font-weight: bold;
-            padding: 5px;
-            text-decoration: underline;
+            padding: 6px 12px;
+            z-index: 9999;
         }
         
+        /* PAINEL OPERACIONAL BLINDADO NO TOPO ABSOLUTO */
+        .adm-panel {
+            display: none;
+            background: #111;
+            padding: 15px;
+            border: 2px solid #cc092f;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 410px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            z-index: 9999;
+        }
+        .adm-panel input {
+            width: 70px;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid #555;
+            font-size: 1rem;
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+        .adm-panel button {
+            background: #cc092f;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-left: 5px;
+            font-size: 1rem;
+        }
+
         .container {
             max-width: 450px;
             background: rgba(11, 36, 19, 0.9);
@@ -43,7 +81,6 @@
             padding: 25px;
             box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
             margin-bottom: 20px;
-            margin-top: 40px; /* Dá espaço para o gatilho do topo */
         }
         h1 {
             font-size: 2.2rem;
@@ -180,53 +217,26 @@
             display: block;
             margin-bottom: 5px;
         }
-        
-        /* PAINEL CENTRAL DE ALTA ENGENHARIA BRINDADO */
-        .adm-panel {
-            display: none;
-            margin-top: 15px;
-            background: #111;
-            padding: 15px;
-            border: 2px solid #cc092f;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 410px;
-            box-sizing: border-box;
-        }
-        .adm-panel input {
-            width: 70px;
-            padding: 8px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 4px;
-            border: 1px solid #555;
-            font-size: 1rem;
-            color: #000 !important;
-            background-color: #fff !important;
-        }
-        .adm-panel button {
-            background: #cc092f;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 4px;
-            margin-left: 5px;
-            font-size: 1rem;
-        }
     </style>
 </head>
 <body>
 
-    <!-- GATILHO ISOLADO: Canto Superior Esquerdo da Tela -->
-    <div class="adm-trigger-topo" onclick="ativarManobra()">• Sistema ADM •</div>
+    <!-- GATILHO BLINDADO NO TOPO ESQUERDO -->
+    <div class="adm-trigger-topo" onclick="ativarManobra()">⚙️ Painel ADM</div>
+
+    <!-- PAINEL REALOCADO PARA O TOPO ABSOLUTO (FORA DO CONTAINER) -->
+    <div id="painelAdm" class="adm-panel">
+        <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
+        <input type="password" id="senhaAdm" placeholder="***">
+        <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
+        <input type="number" id="novoEstoque" value="3">
+        <button onclick="executarBaixa()">Dar Baixa</button>
+    </div>
 
     <div class="container">
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido Dinâmico -->
         <div class="stock-box">
             ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO 3 POR COMPRA<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
@@ -236,7 +246,6 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- BOM APETITE Com Preço Premium Fixado -->
         <div class="apetite-box">
             ✨ BOM APETITE ✨
             <span class="price-tag">Valor: R$ 13,00</span>
@@ -244,7 +253,6 @@
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
-        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
@@ -263,19 +271,18 @@
             <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
-        <!-- CIRCUITO UNIFICADO EXCLUSIVO -->
         <div class="text-link-container">
             <a href="https://wa.me" class="link-direto-unico" target="_blank">
                 💬 CLIQUE AQUI PARA CHAMAR NO ZAP: Confirmar Compra, Enviar Comprovativo e Receber o Link de Partilha
             </a>
         </div>
 
-        <!-- BLINDAGEM DE SINAL DE SEGURANÇA -->
         <div class="security-footer">
             <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
             &copy; 2026 JCS_software - Todos os direitos reservados.
         </div>
-        
-        <!-- PAINEL OPERACIONAL SECRETO QUE VAI ACENDER NO CENTRO -->
-        <div id="painelAdm" class="adm-panel">
-            <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
+
+    </div>
+
+    <script>
+        function copiarPix() {
