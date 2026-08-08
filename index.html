@@ -146,10 +146,27 @@
             cursor: pointer;
             line-height: 1.4;
         }
+        
+        /* Selo Oficial de Segurança da JCS_Software */
+        .security-footer {
+            margin-top: 35px;
+            font-size: 0.75rem;
+            color: #888;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 15px;
+        }
+        .security-badge {
+            color: #25d366;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 3px;
+        }
+
         .adm-trigger {
-            margin-top: 40px;
-            font-size: 0.7rem;
-            color: #2a5235;
+            margin-top: 15px;
+            font-size: 0.65rem;
+            color: #16351e; /* Quase invisível no verde-escuro para total discrição */
             cursor: pointer;
             user-select: none;
         }
@@ -205,14 +222,14 @@
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
-        <!-- Benefícios Validados com o ME ADICIONAR -->
+        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
                 <li><strong>Origem Controlada:</strong> Produção direto do criatório com manejo de alta engenharia.</li>
                 <li><strong>Qualidade Agro-Premium:</strong> Padrão selecionado com frescura e procedência total.</li>
                 <li><strong>Logística Veloz:</strong> Processo de envio simplificado e faturamento rastreado.</li>
-                <li><strong>Aviso de Envio:</strong> Notificação direta pelo WhatsApp " ME ADICIONAR " 11964856312 assim que a sua encomenda estiver a caminho.</li>
+                <li><strong>Aviso de Envio:</strong> Notificação direto pelo WhatsApp " ME ADICIONAR " 11964856312 assim que a sua encomenda estiver a caminho.</li>
             </ul>
         </div>
 
@@ -231,7 +248,13 @@
             </a>
         </div>
 
-        <!-- GATILHO INVISÍVEL ADM 999 -->
+        <!-- BLINDAGEM DE SINAL DE SEGURANÇA SOLICITADA PELO MESTRE -->
+        <div class="security-footer">
+            <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
+            &copy; 2026 JCS_software - Todos os direitos reservados.
+        </div>
+
+        <!-- GATILHO INVISÍVEL ADM 999 OCULTO ABAIXO DO SELO -->
         <div class="adm-trigger" onclick="ativarManobra()">• Painel Operacional Central •</div>
         <div id="painelAdm" class="adm-panel">
             <span style="color: white; font-size: 0.8rem;">Código ADM:</span>
@@ -247,26 +270,7 @@
         function copiarPix() {
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o pagamento.");
+                alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o faturamento seguro.");
             }).catch(err => {
                 alert("Erro ao copiar.");
             });
-        }
-
-        function ativarManobra() {
-            var painel = document.getElementById('painelAdm');
-            painel.style.display = (painel.style.display === 'block') ? 'none' : 'block';
-        }
-
-        function executarBaixa() {
-            var senha = document.getElementById('senhaAdm').value;
-            var novoValor = document.getElementById('novoEstoque').value;
-            if(senha === "999") {
-                document.getElementById('qtdEstoque').innerText = novoValor;
-                alert("MANOBRA CONCLUÍDA! Estoque atualizado para " + novoValor + " cartelas.");
-                document.getElementById('painelAdm').style.display = 'none';
-                document.getElementById('senhaAdm').value = "";
-            } else {
-                alert("Código Inválido!");
-            }
-        }
