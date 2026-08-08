@@ -60,8 +60,6 @@
             padding: 5px;
             margin-bottom: 15px;
         }
-        
-        /* Visual Inovador BOM APETITE */
         .apetite-box {
             margin: 15px 0;
             font-size: 1.4rem;
@@ -75,7 +73,6 @@
             display: block;
             margin-top: 5px;
         }
-
         .btn-copy {
             background-color: #d4af37;
             color: #0b2413;
@@ -200,7 +197,7 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- JOGADA DE MESTRE CORRIGIDA: Texto Premium BOM APETITE com Preço Fixo -->
+        <!-- BOM APETITE Com Preço Premium Fixado -->
         <div class="apetite-box">
             ✨ BOM APETITE ✨
             <span class="price-tag">Valor: R$ 13,00</span>
@@ -208,10 +205,11 @@
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
+        <!-- Benefícios Validados com o ME ADICIONAR -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
-                <li><strong>Origem Controlada:</strong> Producão direto do criatório com manejo de alta engenharia.</li>
+                <li><strong>Origem Controlada:</strong> Produção direto do criatório com manejo de alta engenharia.</li>
                 <li><strong>Qualidade Agro-Premium:</strong> Padrão selecionado com frescura e procedência total.</li>
                 <li><strong>Logística Veloz:</strong> Processo de envio simplificado e faturamento rastreado.</li>
                 <li><strong>Aviso de Envio:</strong> Notificação direta pelo WhatsApp " ME ADICIONAR " 11964856312 assim que a sua encomenda estiver a caminho.</li>
@@ -247,7 +245,6 @@
 
     <script>
         function copiarPix() {
-            // Valor estrito e fixado em R$ 13,00 nos bastidores
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
                 alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o pagamento.");
@@ -270,3 +267,6 @@
                 document.getElementById('painelAdm').style.display = 'none';
                 document.getElementById('senhaAdm').value = "";
             } else {
+                alert("Código Inválido!");
+            }
+        }
