@@ -164,16 +164,17 @@
             margin-bottom: 5px;
         }
 
-        /* GATILHO INTEGRADO: Visível, cinzento e fácil de clicar no telemóvel */
+        /* Gatilho Corrigido: Cinzento, visível e totalmente clicável */
         .adm-trigger-link {
             display: inline-block;
-            margin-top: 8px;
-            font-size: 0.75rem;
-            color: #666; /* Cor discreta igual ao texto do copyright */
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #666;
             cursor: pointer;
-            text-decoration: none;
+            text-decoration: underline;
             user-select: none;
             font-weight: bold;
+            padding: 5px 15px;
         }
         
         .adm-panel {
@@ -192,7 +193,8 @@
             border-radius: 4px;
             border: 1px solid #555;
             font-size: 1rem;
-            color: #000;
+            color: #000 !important;
+            background-color: #fff !important;
         }
         .adm-panel button {
             background: #cc092f;
@@ -262,12 +264,12 @@
             <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
             &copy; 2026 JCS_software - Todos os direitos reservados.
             
-            <!-- MANOBRA DO DUQUE: Gatilho trazido para dentro do ecrã e fácil de tocar -->
+            <!-- GATILHO SINCRONIZADO SEM CONFLITO DE LETRAS -->
             <br>
             <span class="adm-trigger-link" onclick="ativarManobra()">• Sistema ADM •</span>
         </div>
         
-        <!-- PAINEL CENTRAL ACORDADO -->
+        <!-- PAINEL OPERACIONAL CENTRAL DE ALTA ENGENHARIA -->
         <div id="painelAdm" class="adm-panel">
             <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
             <input type="password" id="senhaAdm" placeholder="***">
@@ -279,4 +281,3 @@
     </div>
 
     <script>
-        function copiarPix() {
