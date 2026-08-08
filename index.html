@@ -1,143 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mairiporã Agro — Ovos de Codorna</title>
+    <title>Mairiporã Agro</title>
+    <style>
+        body {
+            background-color: #0b2413; /* Verde-escuro premium */
+            color: #d4af37; /* Ouro velho */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body style="background-color: #f4f6f9; margin: 0; padding: 20px;">
-
-    <!-- PAINEL PRINCIPAL DO CHECKOUT (MAIRIPORÃ AGRO) -->
-    <div id="jcs-checkout-container" style="font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 25px; border: 1px solid #e1e4e8; border-radius: 12px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-        
-        <!-- APRESENTAÇÃO REDUZIDA DO PRODUTO -->
-        <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid #eaeaea;">
-            <h2 style="color: #cc092f; margin: 0 0 10px 0; font-size: 22px; font-weight: bold;">MAIRIPORÃ AGRO</h2>
-            <h3 style="color: #1e293b; margin: 0 0 12px 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Produção Oficial — Ovos de Codorna</h3>
-            <p style="color: #475569; font-size: 14px; line-height: 1.5; margin: 0; padding: 0 10px;">
-                Fornecemos ovos de codorna frescos, selecionados rigorosamente direto do criatório para a sua mesa ou comércio. Qualidade, procedência e pontualidade na entrega.
-            </p>
-        </div>
-
-        <!-- CONDIÇÕES DE ACEITE VISUAIS -->
-        <div style="margin-bottom: 25px;">
-            <h3 style="color: #1a1a1a; margin-bottom: 12px; font-size: 15px; font-weight: bold;">Condições de Venda, Logística e Aceite</h3>
-            <div style="height: 120px; overflow-y: scroll; border: 1px solid #d1d5db; padding: 15px; background: #f8fafc; font-size: 13px; color: #334155; line-height: 1.6; border-radius: 6px; margin-bottom: 15px;">
-                <strong>1. CLÁUSULA DE LOGÍSTICA E ENTREGA, (TERÇAS e SEXTA):</strong><br>O fluxo de entrega do produto é iniciado estritamente após a confirmação do pagamento no sistema. A JCS_Software realiza vistorias de conformidade.<br><br>
-                <strong>2. COMPROVAÇÃO E PLATAFORMA DE PAGAMENTO:</strong><br>O processamento financeiro oficial do sistema é integrado via plataforma homologada <strong>RecargaPay</strong>.<br><br>
-                <strong>3. COMPATIBILIDADE E SUPORTE:</strong><br>O suporte técnico e modificações na rota devem ser comunicadas via WhatsApp oficial 11964856312.
-            </div>
-            
-            <label style="display: flex; align-items: flex-start; font-size: 13px; font-weight: bold; color: #1e293b;">
-                <input type="checkbox" id="chk-aceite" style="margin-right: 12px; margin-top: 3px; transform: scale(1.2);" checked disabled>
-                <span>Condições de Venda e Logística validadas no sistema.</span>
-            </label>
-        </div>
-        
-        <!-- ========================================== -->
-        <!-- MENU OPERACIONAL HOMOLOGADO (BAIXO PARA CIMA) -->
-        <!-- ========================================== -->
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 15px;">
-            <span style="display: block; font-size: 12px; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 10px; text-align: center; letter-spacing: 0.5px;">📋 Menu de Opções Disponíveis</span>
-            
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-                
-                <!-- OPÇÃO 3: COMPARTILHAR LINK -->
-                <button onclick="copiarLinkMenu()" style="display: block; width: 100%; border: none; text-align: center; background-color: #0284c7; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    📲 Opção 3: Compartilhar o Site
-                </button>
-
-                <!-- OPÇÃO 2: SISTEMA PIX / QR CODE -->
-                <button onclick="alternarMenuPix()" style="display: block; width: 100%; border: none; text-align: center; background-color: #cc092f; color: white; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    🔑 Opção 2: Pagar com Pix / RecargaPay
-                </button>
-
-                <!-- OPÇÃO 1: WHATSAPP REATIVADO E SEGURO NA BASE -->
-                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; text-transform: uppercase; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    💬 Opção 1: Chamar no Zap
-                </a>
-
-            </div>
-        </div>
-
-        <!-- CONTEÚDO DO MENU: ÁREA DO PIX -->
-        <div id="bloco-pagamento" style="display: none; padding: 15px; border: 2px dashed #cc092f; border-radius: 8px; text-align: center; background: #fff5f5; margin-top: 15px;">
-            <h4 style="color: #cc092f; margin-top: 0; font-size: 16px;">Menu Pix Ativado</h4>
-            <p style="font-size: 13px; color: #475569; margin-top: 0;">Escaneie o QR Code abaixo para concluir:</p>
-            
-            <img src="qrcode-pagamento.png" alt="QR Code Pix" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; background: #fff;">
-            
-            <button onclick="dispararProgresso()" style="margin-bottom: 20px; background: #1e293b; color: white; border: none; padding: 12px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Já escaneei o QR Code / Confirmar</button>
-
-            <div style="margin-top: 15px; border-top: 1px solid #e1e4e8; padding-top: 15px;">
-                <span style="display: block; background-color: #25D366; color: white; padding: 6px; font-weight: bold; border-radius: 4px; font-size: 11px; text-transform: uppercase; margin-bottom: 10px;">Código Copie e Cole abaixo:</span>
-                <input type="text" id="pix-copie-cole" value="dce800d8-eeb3-4de4-90af-01d33251173e" readonly style="width: 100%; padding: 10px; box-sizing: border-box; text-align: center; border: 1px solid #25D366; border-radius: 4px; font-weight: bold; background: #f0fff4; color: #1e293b;">
-                <button onclick="copiarChave()" style="margin-top: 10px; background: #0284c7; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Copiar Código Pix</button>
-            </div>
-
-            <!-- CONTAINER DA BARRA DE PROGRESSO ANIMADA -->
-            <div id="container-progresso" style="display: none; margin-top: 20px; background: #e2e8f0; border-radius: 8px; padding: 4px; position: relative; height: 25px;">
-                <div id="barra-progresso" style="background: #eab308; width: 0%; height: 100%; border-radius: 6px; transition: width 0.1s linear;"></div>
-                <span id="texto-progresso" style="position: absolute; width: 100%; text-align: center; left: 0; top: 6px; font-weight: bold; font-size: 12px; color: #000;">⏳ Conectando à API RecargaPay...</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- LOGICA DO CIRCUITO INTEGRADO JCS -->
-    <script>
-        function alternarMenuPix() {
-            var bloco = document.getElementById('bloco-pagamento');
-            if (bloco) {
-                bloco.style.display = (bloco.style.display === 'none' || bloco.style.display === '') ? 'block' : 'none';
-            }
-        }
-
-        function copiarChave() {
-            var campo = document.getElementById('pix-copie-cole');
-            if(campo) {
-                campo.select();
-                campo.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(campo.value);
-                alert('Código Pix Copiado com sucesso!');
-            }
-        }
-
-        function copiarLinkMenu() {
-            var linkTemporario = document.createElement('input');
-            document.body.appendChild(linkTemporario);
-            linkTemporario.value = window.location.href;
-            linkTemporario.select();
-            document.execCommand('copy');
-            document.body.removeChild(linkTemporario);
-            alert('Link do site copiado para o menu! Pronto para colar e partilhar no WhatsApp.');
-        }
-
-        function dispararProgresso() {
-            var container = document.getElementById('container-progresso');
-            var barra = document.getElementById('barra-progresso');
-            var texto = document.getElementById('texto-progresso');
-            
-            if(container && barra && texto) {
-                container.style.display = 'block';
-                barra.style.width = '0%';
-                
-                var progresso = 0;
-                var intervalo = setInterval(function() {
-                    progresso += 5;
-                    barra.style.width = progresso + '%';
-                    
-                    if (progresso === 25) texto.innerText = '📡 Autenticando transação no RecargaPay...';
-                    if (progresso === 50) texto.innerText = '🔄 Processando dados de Logística...';
-                    if (progresso === 75) texto.innerText = '🔒 Validando chaves de segurança...';
-                    
-                    if (progresso >= 100) {
-                        clearInterval(intervalo);
-                        texto.innerText = '✅ Pagamento Confirmado com Sucesso!';
-                        barra.style.background = '#25D366';
-                        setTimeout(function() {
-                            alert('Sucesso! Operação concluída. O JCS_Software e a Mairiporã Agro agradecem.');
-                        }, 500);
-                    }
-                }, 100);
-            }
-        }
+<body>
+    Oi
+</body>
+</html>
