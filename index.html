@@ -49,7 +49,6 @@
             padding: 5px;
             margin-bottom: 10px;
         }
-        /* Botão de Copie e Cole Inteligente */
         .btn-copy {
             background-color: #d4af37;
             color: #0b2413;
@@ -162,7 +161,6 @@
 
     <div class="container">
         <h1>Mairiporã Agro</h1>
-        <!-- Centralizado perfeitamente no topo -->
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
         <!-- Bloco do QR Code -->
@@ -170,25 +168,26 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- JOGADA DE MESTRE: Botão Copia e Cole abaixo do QR Code -->
+        <!-- Botão Copia e Cole -->
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
-        <!-- Benefícios Validados -->
+        <!-- Benefícios Validados e Focados na Operação -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
                 <li><strong>Origem Controlada:</strong> Produção direto do criatório com manejo de alta engenharia.</li>
                 <li><strong>Qualidade Agro-Premium:</strong> Padrão selecionado com frescura e procedência total.</li>
                 <li><strong>Logística Veloz:</strong> Processo de envio simplificado e faturamento rastreado.</li>
-                <li><strong>Garantia de Satisfação:</strong> Suporte direto via WhatsApp 11964856312 para total comodidade.</li>
+                <li><strong>Aviso de Envio:</strong> Notificação direta pelo WhatsApp assim que a sua encomenda estiver a caminho.</li>
             </ul>
         </div>
 
-        <!-- Condições de Venda e Logística Direta -->
+        <!-- Condições de Venda e Logística da Rodoviária -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
-            <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro.<br><br>
-            <strong>2. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap após o aceite.
+            <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
+            <strong>2. COMPROVATIVO:</strong> É obrigatório chamar no WhatsApp para enviar o comprovativo de pagamento e receber os detalhes da entrega.<br><br>
+            <strong>3. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap após o aceite.
         </div>
 
         <!-- Controle de Trava de Segurança -->
@@ -198,15 +197,12 @@
         </label>
 
         <!-- Botão Único de Ação Direta -->
-        <a href="https://wa.me" id="btnZap" class="btn btn-zap disabled" target="_blank">Chamar no Zap</a>
+        <a href="https://wa.me" id="btnZap" class="btn btn-zap disabled" target="_blank">Chamar no Zap & Enviar Comprovativo</a>
     </div>
 
     <script>
-        // Função do Copia e Cole Automático
         function copiarPix() {
-            // Insira o seu código Pix enorme entre as aspas abaixo
-            const codigoPix = "dce800d8-eeb3-4de4-90af-01d33251173e";
-            
+            const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
                 alert("Código Pix copiado com sucesso! Agora basta colar no aplicativo do seu banco.");
             }).catch(err => {
