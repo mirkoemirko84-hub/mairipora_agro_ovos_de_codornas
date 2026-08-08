@@ -162,44 +162,6 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        /* PAINEL OPERACIONAL SECRETO AUTOMATIZADO */
-        .adm-panel {
-            display: none;
-            background: #111;
-            padding: 15px;
-            border: 2px solid #cc092f;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 410px;
-            box-sizing: border-box;
-            margin-bottom: 25px;
-            z-index: 9999;
-        }
-        .adm-panel input {
-            width: 70px;
-            padding: 8px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 4px;
-            border: 1px solid #555;
-            font-size: 1rem;
-            color: #000 !important;
-            background-color: #fff !important;
-        }
-        .adm-panel button {
-            background: #cc092f;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 4px;
-            margin-left: 5px;
-            font-size: 1rem;
         }
     </style>
 </head>
@@ -209,9 +171,9 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido Dinâmico -->
+        <!-- CALIBRAÇÃO DE ESTOQUE REAL DA FAZENDA: 4 CARTELAS -->
         <div class="stock-box">
-            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO 3 POR COMPRA<br>
+            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">4</span> CARTELAS NO MÁXIMO 3 POR COMPRA<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
         </div>
 
@@ -253,21 +215,22 @@
             </a>
         </div>
 
-        <!-- GATILHO INVISÍVEL EMBUTIDO DIRETO NO COPYRIGHT DA JCS_SOFTWARE -->
         <div class="security-footer">
             <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
-            <span onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block'; document.getElementById('senhaAdm').focus();" style="cursor: pointer; user-select: none;">&copy; 2026 JCS_software - Todos os direitos reservados.</span>
-        </div>
-
-        <!-- PAINEL OPERACIONAL INDEPENDENTE ATUALIZADO -->
-        <div id="painelAdm" class="adm-panel">
-            <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
-            <input type="password" id="senhaAdm" placeholder="***" autocomplete="off">
-            <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
-            <input type="number" id="novoEstoque" value="3">
-            <button type="button" onclick="executarBaixa()">Dar Baixa</button>
+            &copy; 2026 JCS_software - Todos os direitos reservados.
         </div>
     </div>
 
     <script>
         function copiarPix() {
+            const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
+            navigator.clipboard.writeText(codigoPix).then(() => {
+                alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o faturamento seguro.");
+            }).catch(err => {
+                alert("Erro ao copiar.");
+            });
+        }
+    </script>
+
+</body>
+</html>
