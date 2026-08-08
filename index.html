@@ -202,9 +202,10 @@
             <span class="price-tag">Valor: R$ 13,00</span>
         </div>
 
-        <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
+        <!-- CIRCUITO FIXADO PELO DUQUE: ID ÚNICO PARA CADA BOTÃO -->
+        <button class="btn-copy" onclick="copiarChavePix Real()">📋 Copiar Código Pix (Copia e Cole)</button>
         <br>
-        <button class="btn-copy-phone" onclick="copiarTelefone()">📋 Copiar Número do WhatsApp (Se o link falhar)</button>
+        <button class="btn-copy-phone" onclick="copiarApenasTelefone()">📋 Copiar Número do WhatsApp (Se o link falhar)</button>
 
         <!-- Benefícios Validados -->
         <div class="benefits-box">
@@ -239,22 +240,23 @@
     </div>
 
     <script>
-        function copiarPix() {
-            // JOGADA DE MESTRE: Chave Real Criptografada e Injetada!
-            const codigoPix = "dce800d8-eeb3-4de4-90af-01d33251173e";
-            
-            navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("📋 Chave Pix da Mairiporã Agro copiada com sucesso!\nAbra o seu banco Bradesco, escolha 'Transferir via Chave Pix (Chave Aleatória)' e cole o código.");
+        // CIRCUITO 1: Exclusivo para copiar a chave aleatória do Pix
+        function copiarChavePixReal() {
+            const chavePix = "dce800d8-eeb3-4de4-90af-01d33251173e";
+            navigator.clipboard.writeText(chavePix).then(() => {
+                alert("📋 Chave Pix da Mairiporã Agro copiada com sucesso!\nAbra o seu banco Bradesco, escolha 'Transferir via Chave Pix' e cole.");
             }).catch(err => {
-                alert("Erro ao copiar automaticamente.");
+                alert("Erro ao copiar.");
             });
         }
 
-        function copiarTelefone() {
-            navigator.clipboard.writeText("11964856312").then(() => {
-                alert("📋 Número do WhatsApp (11964856312) copiado!\nBasta adicionar nos seus contactos.");
+        // CIRCUITO 2: Exclusivo para copiar o número do WhatsApp
+        function copiarApenasTelefone() {
+            const numeroZap = "11964856312";
+            navigator.clipboard.writeText(numeroZap).then(() => {
+                alert("📋 Número do WhatsApp (11964856312) copiado para a área de transferência!");
             }).catch(err => {
-                alert("Erro ao copiar o número.");
+                alert("Erro ao copiar.");
             });
         }
     </script>
