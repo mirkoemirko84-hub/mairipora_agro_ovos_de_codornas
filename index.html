@@ -119,13 +119,12 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado</div>
 
-        <!-- Bloco do QR Code -->
+        <!-- Bloco do QR Code Configurado por Alta Engenharia -->
         <div class="qrcode-box">
-            <!-- Substitua 'imagen' pelo nome exato com a extensão se necessário, ex: imagen.png ou qrcode.jpg -->
-            <img src="imagen" alt="QR Code Oficial Pix">
+            <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- Condições de Venda de Alta Engenharia -->
+        <!-- Condições de Venda, Logística e Aceite -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação ou dinheiro/Pix à vista.<br><br>
@@ -140,11 +139,11 @@
 
         <!-- Botões de Ação Direta -->
         <a href="https://wa.me" id="btnZap" class="btn btn-zap disabled" target="_blank">Chamar no Zap</a>
-        <a href="https://banco.bradesco/html/classic/index.shtm" id="btnBanco" class="btn btn-bradesco disabled" target="_blank">Pagar no Bradesco</a>
+        <a href="https://banco.bradesco" id="btnBanco" class="btn btn-bradesco disabled" target="_blank">Pagar no Bradesco</a>
     </div>
 
     <script>
-        // Função que destrava os botões apenas se a caixa for marcada
+        // Função de destravamento com validação do Duque
         function liberarBotoes() {
             var checkbox = document.getElementById('aceite');
             var btnZap = document.getElementById('btnZap');
