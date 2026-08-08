@@ -60,6 +60,30 @@
             padding: 5px;
             margin-bottom: 12px;
         }
+        
+        /* Estilo do Input de Valor Antigolpe */
+        .value-box {
+            margin-bottom: 15px;
+        }
+        .value-box label {
+            display: block;
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .value-box input {
+            background: #0b2413;
+            border: 2px solid #d4af37;
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 5px;
+            width: 120px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
         .btn-copy {
             background-color: #d4af37;
             color: #0b2413;
@@ -125,13 +149,47 @@
         }
         .link-direto-unico {
             display: block;
-            color: #25d366; /* Verde Zap de Alta Visibilidade */
+            color: #25d366;
             font-size: 1.15rem;
             font-weight: bold;
             text-decoration: underline;
             margin: 15px 0;
             cursor: pointer;
             line-height: 1.4;
+        }
+
+        .adm-trigger {
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #2a5235;
+            cursor: pointer;
+            user-select: none;
+        }
+        .adm-panel {
+            display: none;
+            margin-top: 15px;
+            background: #111;
+            padding: 12px;
+            border: 1px solid #cc092f;
+            border-radius: 8px;
+        }
+        .adm-panel input {
+            width: 65px;
+            padding: 6px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid #555;
+        }
+        .adm-panel button {
+            background: #cc092f;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-left: 5px;
         }
     </style>
 </head>
@@ -141,21 +199,24 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido -->
+        <!-- Alerta de Limitação de Pedido Dinâmico -->
         <div class="stock-box">
-            ⚠️ DISPONÍVEL EM ESTOQUE: 3 CARTELAS NO MÁXIMO<br>
+            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
         </div>
 
-        <!-- Bloco do QR Code -->
         <div class="qrcode-box">
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- Botão Copia e Cole -->
+        <!-- BLINDAGEM ANTIGOLPE: Validação de Valor Mínimo -->
+        <div class="value-box">
+            <label>Informe o Valor do seu Pedido (R$):</label>
+            <input type="number" id="valorPix" value="10.00" min="10.00" step="0.01">
+        </div>
+
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
-        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
@@ -166,34 +227,44 @@
             </ul>
         </div>
 
-        <!-- Condições de Venda, Logística e Reserva -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
             <strong>2. QUANTIDADE:</strong> Limite condicionado ao stock disponível no momento para garantir o atendimento de todos.<br><br>
             <strong>3. COMPROVATIVO & RESERVA:</strong> É obrigatório chamar no WhatsApp para enviar o comprovativo e garantir a sua reserva antecipada.<br><br>
-            <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
+            <strong>4. VALOR MÍNIMO:</strong> O sistema rejeita transações e pedidos com valores inferiores a R$ 10,00.<br><br>
+            <strong>5. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
-        <!-- CIRCUITO UNIFICADO EXCLUSIVO: Apenas uma rota para o Zap -->
+        <!-- CIRCUITO UNIFICADO EXCLUSIVO -->
         <div class="text-link-container">
             <a href="https://wa.me" class="link-direto-unico" target="_blank">
                 💬 CLIQUE AQUI PARA CHAMAR NO ZAP: Confirmar Compra, Enviar Comprovativo e Receber o Link de Partilha
             </a>
         </div>
 
+        <!-- GATILHO INVISÍVEL ADM 999 -->
+        <div class="adm-trigger" onclick="ativarManobra()">• Painel Operacional Central •</div>
+        <div id="painelAdm" class="adm-panel">
+            <span style="color: white; font-size: 0.8rem;">Código ADM:</span>
+            <input type="password" id="senhaAdm" placeholder="***">
+            <span style="color: white; font-size: 0.8rem; margin-left: 5px;">Stock:</span>
+            <input type="number" id="novoEstoque" value="3">
+            <button onclick="executarBaixa()">Dar Baixa</button>
+        </div>
+
     </div>
 
     <script>
+        /* LÓGICA DE BLINDAGEM DE VALOR ANTIGOLPE DEL DUQUE */
         function copiarPix() {
-            const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
-            navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("Código Pix copiado com sucesso! Agora basta colar no seu banco.");
-            }).catch(err => {
-                alert("Erro ao copiar.");
-            });
-        }
-    </script>
-
-</body>
-</html>
+            var valorDigitado = parseFloat(document.getElementById('valorPix').value);
+            
+            // Se o espertalhão tentar digitar menos de 10 reais, o Duque morde!
+            if (isNaN(valorDigitado) || valorDigitado < 10.00) {
+                alert("❌ OPERAÇÃO BLOQUEADA PELO SISTEMA!\nO valor mínimo para pedidos na Mairiporã Agro é de R$ 10,00. Os espertalhões não têm hipótese aqui!");
+                document.getElementById('valorPix').value = "10.00"; // Força o reset para 10
+                return; // Trava a execução e não deixa copiar nada!
+            }
+            
+            // Se o valor estiver correto (10,00 ou mais), liberta o Copia e Cole real
