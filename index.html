@@ -117,7 +117,6 @@
             text-transform: uppercase;
             font-size: 0.95rem;
         }
-        /* Estilo dos Links de Texto Direto */
         .text-link-container {
             margin-top: 25px;
             padding-top: 15px;
@@ -126,7 +125,7 @@
         }
         .link-direto {
             display: block;
-            color: #25d366; /* Verde chamativo para o Zap */
+            color: #25d366; /* Verde para o Zap */
             font-size: 1.1rem;
             font-weight: bold;
             text-decoration: underline;
@@ -150,21 +149,17 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido -->
         <div class="stock-box">
             ⚠️ DISPONÍVEL EM ESTOQUE: 3 CARTELAS NO MÁXIMO<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
         </div>
 
-        <!-- Bloco do QR Code -->
         <div class="qrcode-box">
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- Botão Copia e Cole -->
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
-        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
@@ -175,7 +170,6 @@
             </ul>
         </div>
 
-        <!-- Condições de Venda, Logística e Reserva -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
@@ -184,11 +178,13 @@
             <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
-        <!-- MANOBRA DE TEXTO: Links Diretos Ativados sem Botões ou Travas -->
+        <!-- JOGADA DE MESTRE: Links de Texto com Disparos Diretos para o Zap -->
         <div class="text-link-container">
-            <a href="https://wa.me" class="link-direto">💬 Chamar pelo zap para confirmar a compra e enviar o comprovante de compra</a>
+            <!-- Link 1: Envia para o seu número real -->
+            <a href="https://wa.me" class="link-direto" target="_blank">💬 Chamar pelo zap para confirmar a compra e enviar o comprovante de compra</a>
             
-            <a onclick="partilharSite()" class="link-direto-share">🔗 Partilhar com zap para um amigo o produto</a>
+            <!-- Link 2: Abre o Zap para partilhar o site com um amigo (sem abrir ícones do sistema) -->
+            <a href="https://whatsapp.com" class="link-direto-share" target="_blank">🔗 Partilhar com zap para um amigo o produto</a>
         </div>
 
     </div>
@@ -201,19 +197,6 @@
             }).catch(err => {
                 alert("Erro ao copiar.");
             });
-        }
-
-        function partilharSite() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Mairiporã Agro',
-                    text: 'Garanta os seus Ovos de Codorna Premium da Mairiporã Agro!',
-                    url: window.location.href
-                });
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("Link do site copiado! Pode colá-lo no WhatsApp para partilhar.");
-            }
         }
     </script>
 
