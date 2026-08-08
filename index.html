@@ -162,13 +162,13 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            cursor: pointer; /* Indica que é clicável apenas para o Mestre */
+            cursor: pointer;
             user-select: none;
         }
         
-        /* PAINEL OPERACIONAL OCULTO REESTRUTURADO */
+        /* PAINEL OPERACIONAL SECRETO AUTOMATIZADO */
         .adm-panel {
-            display: none; /* Totalmente invisível até o clique secreto no selo seguro */
+            display: none;
             background: #111;
             padding: 15px;
             border: 2px solid #cc092f;
@@ -253,13 +253,13 @@
             </a>
         </div>
 
-        <!-- GATILHO INVISÍVEL EMBUTIDO DIRECTO NO SELO SEGURO -->
+        <!-- GATILHO INVISÍVEL EMBUTIDO DIRETO NO COPYRIGHT DA JCS_SOFTWARE -->
         <div class="security-footer">
-            <span class="security-badge" onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block'; document.getElementById('senhaAdm').focus();">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
-            &copy; 2026 JCS_software - Todos os direitos reservados.
+            <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
+            <span onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block'; document.getElementById('senhaAdm').focus();" style="cursor: pointer; user-select: none;">&copy; 2026 JCS_software - Todos os direitos reservados.</span>
         </div>
 
-        <!-- PAINEL OPERACIONAL INDEPENDENTE LOGO ABAIXO -->
+        <!-- PAINEL OPERACIONAL INDEPENDENTE ATUALIZADO -->
         <div id="painelAdm" class="adm-panel">
             <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
             <input type="password" id="senhaAdm" placeholder="***" autocomplete="off">
