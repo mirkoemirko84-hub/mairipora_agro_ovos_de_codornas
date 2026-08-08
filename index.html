@@ -58,29 +58,24 @@
             border-radius: 10px;
             background-color: white;
             padding: 5px;
-            margin-bottom: 12px;
-        }
-        .value-box {
             margin-bottom: 15px;
         }
-        .value-box label {
+        
+        /* Visual Inovador BOM APETITE */
+        .apetite-box {
+            margin: 15px 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+        .price-tag {
+            color: #d4af37;
+            font-size: 1.6rem;
             display: block;
-            font-size: 0.95rem;
-            color: #ffffff;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-top: 5px;
         }
-        .value-box input {
-            background: #0b2413;
-            border: 2px solid #d4af37;
-            color: #ffffff;
-            padding: 8px;
-            border-radius: 5px;
-            width: 120px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
+
         .btn-copy {
             background-color: #d4af37;
             color: #0b2413;
@@ -205,10 +200,10 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- Campo Limpo com os R$ 13,00 Reais da Cartela -->
-        <div class="value-box">
-            <label>Informe o Valor do seu Pedido (R$) 13,00 :</label>
-            <input type="number" id="valorPix" value="13.00" min="10.00" step="1.00">
+        <!-- JOGADA DE MESTRE CORRIGIDA: Texto Premium BOM APETITE com Preço Fixo -->
+        <div class="apetite-box">
+            ✨ BOM APETITE ✨
+            <span class="price-tag">Valor: R$ 13,00</span>
         </div>
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
@@ -223,7 +218,6 @@
             </ul>
         </div>
 
-        <!-- Condições de Venda Otimizadas - SEM O ITEM DO MÍNIMO VISÍVEL -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
@@ -253,17 +247,26 @@
 
     <script>
         function copiarPix() {
-            var valorDigitado = parseFloat(document.getElementById('valorPix').value);
-            
-            // TRAVA INVISÍVEL ANTIGOLPE (Nos bastidores)
-            if (isNaN(valorDigitado) || valorDigitado < 10.00) {
-                alert("❌ OPERAÇÃO BLOQUEADA PELO SISTEMA!\nPor favor, informe o valor correto do seu pedido correspondente às cartelas adquiridas.");
-                document.getElementById('valorPix').value = "13.00"; // Reseta para o valor correto de fábrica
-                return;
-            }
-            
+            // Valor estrito e fixado em R$ 13,00 nos bastidores
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("📋 Código Pix copiado com sucesso no valor de R$ " + valorDigitado.toFixed(2) + "!");
+                alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o pagamento.");
             }).catch(err => {
                 alert("Erro ao copiar.");
+            });
+        }
+
+        function ativarManobra() {
+            var painel = document.getElementById('painelAdm');
+            painel.style.display = (painel.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function executarBaixa() {
+            var senha = document.getElementById('senhaAdm').value;
+            var novoValor = document.getElementById('novoEstoque').value;
+            if(senha === "999") {
+                document.getElementById('qtdEstoque').innerText = novoValor;
+                alert("MANOBRA CONCLUÍDA! Estoque atualizado para " + novoValor + " cartelas.");
+                document.getElementById('painelAdm').style.display = 'none';
+                document.getElementById('senhaAdm').value = "";
+            } else {
