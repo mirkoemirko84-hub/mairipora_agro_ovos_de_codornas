@@ -83,8 +83,23 @@
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-copy-phone {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px dashed #d4af37;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 25px;
             display: inline-flex;
             align-items: center;
             gap: 5px;
@@ -188,6 +203,8 @@
         </div>
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
+        <br>
+        <button class="btn-copy-phone" onclick="copiarTelefone()">📋 Copiar Número do WhatsApp (Se o link falhar)</button>
 
         <!-- Benefícios Validados -->
         <div class="benefits-box">
@@ -208,9 +225,9 @@
             <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
-        <!-- CIRCUITO EM ROTA UNIVERSAL PURA: Link curto que o telemóvel não consegue bloquear -->
+        <!-- ROTA UNIVERSAL DA API DO ZAP -->
         <div class="text-link-container">
-            <a href="https://wa.me" class="link-direto-unico" target="_blank">
+            <a href="https://whatsapp.com" class="link-direto-unico">
                 💬 CLIQUE AQUI PARA CHAMAR NO ZAP: Confirmar Compra, Enviar Comprovante e Receber o Link de Partilha
             </a>
         </div>
@@ -223,11 +240,21 @@
 
     <script>
         function copiarPix() {
-            const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
+            // JOGADA DE MESTRE: Chave Real Criptografada e Injetada!
+            const codigoPix = "dce800d8-eeb3-4de4-90af-01d33251173e";
+            
             navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("📋 Código Pix de R$ 13,00 copiado com sucesso!\nCole no seu banco para concluir o faturamento seguro.");
+                alert("📋 Chave Pix da Mairiporã Agro copiada com sucesso!\nAbra o seu banco Bradesco, escolha 'Transferir via Chave Pix (Chave Aleatória)' e cole o código.");
             }).catch(err => {
-                alert("Erro ao copiar.");
+                alert("Erro ao copiar automaticamente.");
+            });
+        }
+
+        function copiarTelefone() {
+            navigator.clipboard.writeText("11964856312").then(() => {
+                alert("📋 Número do WhatsApp (11964856312) copiado!\nBasta adicionar nos seus contactos.");
+            }).catch(err => {
+                alert("Erro ao copiar o número.");
             });
         }
     </script>
