@@ -123,23 +123,15 @@
             border-top: 1px dashed #d4af37;
             text-align: center;
         }
-        .link-direto {
+        .link-direto-unico {
             display: block;
-            color: #25d366; /* Verde para o Zap */
-            font-size: 1.1rem;
+            color: #25d366; /* Verde Zap de Alta Visibilidade */
+            font-size: 1.15rem;
             font-weight: bold;
             text-decoration: underline;
             margin: 15px 0;
             cursor: pointer;
-        }
-        .link-direto-share {
-            display: block;
-            color: #0077b6; /* Azul para partilha */
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: underline;
-            margin: 15px 0;
-            cursor: pointer;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -149,17 +141,21 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
+        <!-- Alerta de Limitação de Pedido -->
         <div class="stock-box">
             ⚠️ DISPONÍVEL EM ESTOQUE: 3 CARTELAS NO MÁXIMO<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
         </div>
 
+        <!-- Bloco do QR Code -->
         <div class="qrcode-box">
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
+        <!-- Botão Copia e Cole -->
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
+        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
@@ -170,6 +166,7 @@
             </ul>
         </div>
 
+        <!-- Condições de Venda, Logística e Reserva -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
@@ -178,13 +175,11 @@
             <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
-        <!-- JOGADA DE MESTRE: Links de Texto com Disparos Diretos para o Zap -->
+        <!-- CIRCUITO UNIFICADO EXCLUSIVO: Apenas uma rota para o Zap -->
         <div class="text-link-container">
-            <!-- Link 1: Envia para o seu número real -->
-            <a href="https://wa.me" class="link-direto" target="_blank">💬 Chamar pelo zap para confirmar a compra e enviar o comprovante de compra</a>
-            
-            <!-- Link 2: Abre o Zap para partilhar o site com um amigo (sem abrir ícones do sistema) -->
-            <a href="https://whatsapp.com" class="link-direto-share" target="_blank">🔗 Partilhar com zap para um amigo o produto</a>
+            <a href="https://wa.me" class="link-direto-unico" target="_blank">
+                💬 CLIQUE AQUI PARA CHAMAR NO ZAP: Confirmar Compra, Enviar Comprovativo e Receber o Link de Partilha
+            </a>
         </div>
 
     </div>
@@ -193,7 +188,7 @@
         function copiarPix() {
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("Código Pix copiado com sucesso!");
+                alert("Código Pix copiado com sucesso! Agora basta colar no seu banco.");
             }).catch(err => {
                 alert("Erro ao copiar.");
             });
