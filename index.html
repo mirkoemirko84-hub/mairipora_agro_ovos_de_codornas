@@ -103,6 +103,8 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            width: 100%;
+            justify-content: center;
         }
         .benefits-box {
             background: rgba(212, 175, 55, 0.1);
@@ -202,10 +204,10 @@
             <span class="price-tag">Valor: R$ 13,00</span>
         </div>
 
-        <!-- CIRCUITO FIXADO PELO DUQUE: ID ÚNICO PARA CADA BOTÃO -->
-        <button class="btn-copy" onclick="copiarChavePix Real()">📋 Copiar Código Pix (Copia e Cole)</button>
+        <!-- DOIS CIRCUITOS ISOLADOS SEM ESPAÇOS EM BRANCO NAS FUNÇÕES -->
+        <button class="btn-copy" onclick="copiarChavePix()">📋 Copiar Código Pix (Copia e Cole)</button>
         <br>
-        <button class="btn-copy-phone" onclick="copiarApenasTelefone()">📋 Copiar Número do WhatsApp (Se o link falhar)</button>
+        <button class="btn-copy-phone" onclick="copiarTelefone()">📋 Copiar Número do WhatsApp (Se o link falhar)</button>
 
         <!-- Benefícios Validados -->
         <div class="benefits-box">
@@ -240,23 +242,23 @@
     </div>
 
     <script>
-        // CIRCUITO 1: Exclusivo para copiar a chave aleatória do Pix
-        function copiarChavePixReal() {
+        // CIRCUITO 1: Chave Aleatória do Pix sem erros de leitura
+        function copiarChavePix() {
             const chavePix = "dce800d8-eeb3-4de4-90af-01d33251173e";
             navigator.clipboard.writeText(chavePix).then(() => {
-                alert("📋 Chave Pix da Mairiporã Agro copiada com sucesso!\nAbra o seu banco Bradesco, escolha 'Transferir via Chave Pix' e cole.");
+                alert("📋 Chave Pix da Mairiporã Agro copiada com sucesso!\nAbra o seu banco Bradesco, escolha 'Transferir via Chave Pix (Chave Aleatória)' e cole o código.");
             }).catch(err => {
-                alert("Erro ao copiar.");
+                alert("Erro ao copiar automaticamente.");
             });
         }
 
-        // CIRCUITO 2: Exclusivo para copiar o número do WhatsApp
-        function copiarApenasTelefone() {
+        // CIRCUITO 2: Número do WhatsApp sem interferência
+        function copiarTelefone() {
             const numeroZap = "11964856312";
             navigator.clipboard.writeText(numeroZap).then(() => {
-                alert("📋 Número do WhatsApp (11964856312) copiado para a área de transferência!");
+                alert("📋 Número do WhatsApp (11964856312) copiado com sucesso!\nBasta colar nos seus contactos se precisar.");
             }).catch(err => {
-                alert("Erro ao copiar.");
+                alert("Erro ao copiar o número.");
             });
         }
     </script>
