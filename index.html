@@ -195,7 +195,7 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido Dinâmico com Texto do Mestre -->
+        <!-- Alerta de Limitação de Pedido Dinâmico -->
         <div class="stock-box">
             ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO 3 POR COMPRA<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
@@ -205,7 +205,7 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- Campo de Valor Calibrado para o Valor da Cartela (R$ 13,00) -->
+        <!-- Campo Limpo e Corrigido: Apenas os R$ 13,00 do Mestre -->
         <div class="value-box">
             <label>Informe o Valor do seu Pedido (R$) 13,00 :</label>
             <input type="number" id="valorPix" value="13.00" min="10.00" step="1.00">
@@ -255,10 +255,10 @@
         function copiarPix() {
             var valorDigitado = parseFloat(document.getElementById('valorPix').value);
             
-            // Trava eletrônica baseada no mínimo de R$ 10,00
+            // Blindagem silenciosa em segundo plano (mínimo R$ 10,00)
             if (isNaN(valorDigitado) || valorDigitado < 10.00) {
                 alert("❌ OPERAÇÃO BLOQUEADA!\nO valor mínimo aceito é de R$ 10,00 para evitar fraudes.");
-                document.getElementById('valorPix').value = "13.00"; // Força o valor padrão
+                document.getElementById('valorPix').value = "13.00"; 
                 return;
             }
             
@@ -266,3 +266,5 @@
             navigator.clipboard.writeText(codigoPix).then(() => {
                 alert("📋 Código Pix copiado com sucesso no valor de R$ " + valorDigitado.toFixed(2) + "!");
             }).catch(err => {
+                alert("Erro ao copiar.");
+            });
