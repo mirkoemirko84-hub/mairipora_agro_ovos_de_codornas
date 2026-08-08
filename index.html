@@ -20,7 +20,7 @@
             text-align: center;
         }
         
-        /* BOTÃO DA ENGRENAGEM FIXO NO TOPO */
+        /* BOTÃO DA ENGRENAGEM OPERACIONAL */
         .adm-trigger-topo {
             position: absolute;
             top: 15px;
@@ -32,12 +32,14 @@
             border-radius: 5px;
             font-weight: bold;
             padding: 6px 12px;
+            cursor: pointer;
             z-index: 9999;
+            user-select: none;
         }
         
-        /* PAINEL OPERACIONAL JÁ ABERTO DE FÁBRICA */
+        /* PAINEL OPERACIONAL INDEPENDENTE */
         .adm-panel {
-            display: block; /* Sempre visível para testes de campo */
+            display: block; /* Nasce aberto para o teste mestre */
             background: #111;
             padding: 15px;
             border: 2px solid #cc092f;
@@ -45,8 +47,8 @@
             width: 100%;
             max-width: 410px;
             box-sizing: border-box;
-            margin-bottom: 20px;
-            margin-top: 50px; /* Dá espaço abaixo da engrenagem */
+            margin-bottom: 25px;
+            margin-top: 50px;
             z-index: 9999;
         }
         .adm-panel input {
@@ -220,16 +222,16 @@
 </head>
 <body>
 
-    <!-- ÍCONE VISUAL DO TOPO -->
-    <div class="adm-trigger-topo">⚙️ Painel ADM</div>
+    <div class="adm-trigger-topo" onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block';">⚙️ Painel ADM</div>
 
-    <!-- PAINEL TOTALMENTE DISPONÍVEL NO TOPO PARA TESTE DE CAMPO -->
+    <!-- PAINEL OPERACIONAL COM ENTRADA DE SENHA TOTALMENTE MASCARADA -->
     <div id="painelAdm" class="adm-panel">
         <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
-        <input type="password" id="senhaAdm" placeholder="***">
+        <!-- O type="password" garante pontinhos discretos e remove qualquer olhinho de visualização -->
+        <input type="password" id="senhaAdm" placeholder="***" autocomplete="off">
         <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
         <input type="number" id="novoEstoque" value="3">
-        <button onclick="executarBaixa()">Dar Baixa</button>
+        <button type="button" onclick="executarBaixa()">Dar Baixa</button>
     </div>
 
     <div class="container">
@@ -263,7 +265,7 @@
         </div>
 
         <div class="terms-box">
-            <div class="terms-title">Condições de Venda, Logística e Aceite</div>
+            <div class="terms-title">Conditions de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
             <strong>2. QUANTIDADE:</strong> Limite condicionado ao stock disponível no momento para garantir o atendimento de todos.<br><br>
             <strong>3. COMPROVATIVO & RESERVA:</strong> É obrigatório chamar no WhatsApp para enviar o comprovativo e garantir a sua reserva antecipada.<br><br>
@@ -277,11 +279,3 @@
         </div>
 
         <div class="security-footer">
-            <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
-            &copy; 2026 JCS_software - Todos os direitos reservados.
-        </div>
-
-    </div>
-
-    <script>
-        function copiarPix() {
