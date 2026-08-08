@@ -20,26 +20,24 @@
             text-align: center;
         }
         
-        /* GATILHO VISÍVEL E ELEGANTE NO TOPO ESQUERDO */
+        /* BOTÃO DA ENGRENAGEM FIXO NO TOPO */
         .adm-trigger-topo {
             position: absolute;
             top: 15px;
             left: 15px;
             font-size: 0.8rem;
             color: #d4af37;
-            background: rgba(11, 36, 19, 0.5);
-            border: 1px solid #d4af37;
+            background: rgba(11, 36, 19, 0.8);
+            border: 2px solid #d4af37;
             border-radius: 5px;
-            cursor: pointer;
-            user-select: none;
             font-weight: bold;
             padding: 6px 12px;
             z-index: 9999;
         }
         
-        /* PAINEL OPERACIONAL BLINDADO NO TOPO ABSOLUTO */
+        /* PAINEL OPERACIONAL JÁ ABERTO DE FÁBRICA */
         .adm-panel {
-            display: none;
+            display: block; /* Sempre visível para testes de campo */
             background: #111;
             padding: 15px;
             border: 2px solid #cc092f;
@@ -48,6 +46,7 @@
             max-width: 410px;
             box-sizing: border-box;
             margin-bottom: 20px;
+            margin-top: 50px; /* Dá espaço abaixo da engrenagem */
             z-index: 9999;
         }
         .adm-panel input {
@@ -221,10 +220,10 @@
 </head>
 <body>
 
-    <!-- GATILHO BLINDADO NO TOPO ESQUERDO -->
-    <div class="adm-trigger-topo" onclick="ativarManobra()">⚙️ Painel ADM</div>
+    <!-- ÍCONE VISUAL DO TOPO -->
+    <div class="adm-trigger-topo">⚙️ Painel ADM</div>
 
-    <!-- PAINEL REALOCADO PARA O TOPO ABSOLUTO (FORA DO CONTAINER) -->
+    <!-- PAINEL TOTALMENTE DISPONÍVEL NO TOPO PARA TESTE DE CAMPO -->
     <div id="painelAdm" class="adm-panel">
         <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
         <input type="password" id="senhaAdm" placeholder="***">
