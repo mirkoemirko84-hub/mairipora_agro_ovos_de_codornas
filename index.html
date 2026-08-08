@@ -60,14 +60,12 @@
             padding: 5px;
             margin-bottom: 12px;
         }
-        
-        /* Estilo do Input de Valor Antigolpe */
         .value-box {
             margin-bottom: 15px;
         }
         .value-box label {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #ffffff;
             margin-bottom: 5px;
             font-weight: bold;
@@ -83,7 +81,6 @@
             font-size: 1.1rem;
             font-weight: bold;
         }
-
         .btn-copy {
             background-color: #d4af37;
             color: #0b2413;
@@ -157,7 +154,6 @@
             cursor: pointer;
             line-height: 1.4;
         }
-
         .adm-trigger {
             margin-top: 40px;
             font-size: 0.7rem;
@@ -199,9 +195,9 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido Dinâmico -->
+        <!-- Alerta de Limitação de Pedido Dinâmico com Texto do Mestre -->
         <div class="stock-box">
-            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO 3 POR COMPRA <br>
+            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO 3 POR COMPRA<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
         </div>
 
@@ -209,10 +205,10 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
-        <!-- BLINDAGEM ANTIGOLPE: Validação de Valor Mínimo -->
+        <!-- Campo de Valor Calibrado para o Valor da Cartela (R$ 13,00) -->
         <div class="value-box">
             <label>Informe o Valor do seu Pedido (R$) 13,00 :</label>
-            <input type="number" id="valorPix" value="10.00" min="10.00" step="0.01">
+            <input type="number" id="valorPix" value="13.00" min="10.00" step="1.00">
         </div>
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
@@ -256,15 +252,17 @@
     </div>
 
     <script>
-        /* LÓGICA DE BLINDAGEM DE VALOR ANTIGOLPE DEL DUQUE */
         function copiarPix() {
             var valorDigitado = parseFloat(document.getElementById('valorPix').value);
             
-            // Se o espertalhão tentar digitar menos de 10 reais, o Duque morde!
+            // Trava eletrônica baseada no mínimo de R$ 10,00
             if (isNaN(valorDigitado) || valorDigitado < 10.00) {
-                alert("❌ OPERAÇÃO BLOQUEADA PELO SISTEMA!\nO valor mínimo para pedidos na Mairiporã Agro é de R$ 10,00. Os espertalhões não têm hipótese aqui!");
-                document.getElementById('valorPix').value = "10.00"; // Força o reset para 10
-                return; // Trava a execução e não deixa copiar nada!
+                alert("❌ OPERAÇÃO BLOQUEADA!\nO valor mínimo aceito é de R$ 10,00 para evitar fraudes.");
+                document.getElementById('valorPix').value = "13.00"; // Força o valor padrão
+                return;
             }
             
-            // Se o valor estiver correto (10,00 ou mais), liberta o Copia e Cole real
+            const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
+            navigator.clipboard.writeText(codigoPix).then(() => {
+                alert("📋 Código Pix copiado com sucesso no valor de R$ " + valorDigitado.toFixed(2) + "!");
+            }).catch(err => {
