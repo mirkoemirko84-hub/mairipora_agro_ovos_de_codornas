@@ -41,6 +41,16 @@
             border-bottom: 1px solid #d4af37;
             padding-bottom: 10px;
         }
+        .stock-box {
+            background: rgba(204, 9, 47, 0.15);
+            border: 1px solid #cc092f;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
         .qrcode-box img {
             max-width: 220px;
             border: 4px solid #d4af37;
@@ -143,6 +153,10 @@
             background-color: #25d366;
             color: white;
         }
+        .btn-share {
+            background-color: #0077b6;
+            color: white;
+        }
         .btn:hover {
             opacity: 0.9;
             transform: translateY(-2px);
@@ -155,6 +169,38 @@
             transform: none !important;
             opacity: 0.6;
         }
+        
+        /* Estilo Oculto do Painel de Administração Direta */
+        .adm-trigger {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: #2a5235;
+            cursor: pointer;
+            user-select: none;
+        }
+        .adm-panel {
+            display: none;
+            margin-top: 15px;
+            background: #111;
+            padding: 10px;
+            border: 1px solid #cc092f;
+            border-radius: 8px;
+        }
+        .adm-panel input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .adm-panel button {
+            background: #cc092f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -162,6 +208,12 @@
     <div class="container">
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
+
+        <!-- Alerta de Limitação de Pedido Dinâmico -->
+        <div class="stock-box">
+            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO<br>
+            <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
+        </div>
 
         <!-- Bloco do QR Code -->
         <div class="qrcode-box">
@@ -171,7 +223,7 @@
         <!-- Botão Copia e Cole -->
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
-        <!-- Benefícios Validados e Focados na Operação -->
+        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
@@ -182,12 +234,13 @@
             </ul>
         </div>
 
-        <!-- Condições de Venda e Logística da Rodoviária -->
+        <!-- Condições de Venda, Logística e Reserva -->
         <div class="terms-box">
             <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
-            <strong>2. COMPROVATIVO:</strong> É obrigatório chamar no WhatsApp para enviar o comprovate de pagamento e receber os detalhes da entrega.<br><br>
-            <strong>3. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap após o aceite.
+            <strong>2. QUANTIDADE:</strong> Limite condicionado ao stock disponível no momento para garantir o atendimento de todos.<br><br>
+            <strong>3. COMPROVATIVO & RESERVA:</strong> É obrigatório chamar no WhatsApp para enviar o comprovativo e garantir a sua reserva antecipada.<br><br>
+            <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap após o aceite.
         </div>
 
         <!-- Controle de Trava de Segurança -->
@@ -198,29 +251,36 @@
 
         <!-- Botão Único de Ação Direta -->
         <a href="https://wa.me" id="btnZap" class="btn btn-zap disabled" target="_blank">Chamar no Zap & Enviar Comprovativo</a>
+        
+        <!-- Botão de Partilha -->
+        <button onclick="partilharSite()" class="btn btn-share">🔗 Partilhar Site de Vendas</button>
+        
+        <!-- MANOBRA ADM 999: Gatilho invisível no fundo da página -->
+        <div class="adm-trigger" onclick="ativarManobra()">• Painel Operacional Central •</div>
+        <div id="painelAdm" class="adm-panel">
+            <span style="color: white; font-size: 0.8rem;">Código ADM:</span>
+            <input type="password" id="senhaAdm" placeholder="***">
+            <span style="color: white; font-size: 0.8rem; margin-left: 5px;">Stock:</span>
+            <input type="number" id="novoEstoque" value="3">
+            <button onclick="executarBaixa()">Dar Baixa</button>
+        </div>
     </div>
 
     <script>
         function copiarPix() {
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
-                alert("Código Pix copiado com sucesso! Agora basta colar no aplicativo do seu banco.");
+                alert("Código Pix copiado com sucesso!");
             }).catch(err => {
-                alert("Erro ao copiar automaticamente. Por favor, utilize o QR Code.");
+                alert("Erro ao copiar.");
             });
         }
 
-        function liberarBotoes() {
-            var checkbox = document.getElementById('aceite');
-            var btnZap = document.getElementById('btnZap');
-            
-            if(checkbox.checked) {
-                btnZap.classList.remove('disabled');
+        function partilharSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mairiporã Agro',
+                    text: 'Ovos de Codorna Premium!',
+                    url: window.location.href
+                });
             } else {
-                btnZap.classList.add('disabled');
-            }
-        }
-    </script>
-
-</body>
-</html>
