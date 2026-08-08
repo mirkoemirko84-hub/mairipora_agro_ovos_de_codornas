@@ -222,12 +222,12 @@
 </head>
 <body>
 
+    <!-- BOTÃO DA ENGRENAGEM OPERACIONAL -->
     <div class="adm-trigger-topo" onclick="var p=document.getElementById('painelAdm'); p.style.display=(p.style.display==='block')?'none':'block';">⚙️ Painel ADM</div>
 
-    <!-- PAINEL OPERACIONAL COM ENTRADA DE SENHA TOTALMENTE MASCARADA -->
+    <!-- PAINEL OPERACIONAL INDEPENDENTE EM LINHA -->
     <div id="painelAdm" class="adm-panel">
         <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
-        <!-- O type="password" garante pontinhos discretos e remove qualquer olhinho de visualização -->
         <input type="password" id="senhaAdm" placeholder="***" autocomplete="off">
         <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
         <input type="number" id="novoEstoque" value="3">
@@ -238,6 +238,7 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
+        <!-- Alerta de Limitação de Pedido Dinâmico -->
         <div class="stock-box">
             ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO 3 POR COMPRA<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
@@ -247,6 +248,7 @@
             <img src="qrcode-pagamento.png" alt="QR Code Oficial Pix">
         </div>
 
+        <!-- BOM APETITE Com Preço Premium Fixado -->
         <div class="apetite-box">
             ✨ BOM APETITE ✨
             <span class="price-tag">Valor: R$ 13,00</span>
@@ -254,6 +256,7 @@
 
         <button class="btn-copy" onclick="copiarPix()">📋 Copiar Código Pix (Copia e Cole)</button>
 
+        <!-- Benefícios Validados -->
         <div class="benefits-box">
             <div class="benefits-title">🌱 Benefícios Exclusivos do Produto</div>
             <ul class="benefits-list">
@@ -265,17 +268,13 @@
         </div>
 
         <div class="terms-box">
-            <div class="terms-title">Conditions de Venda, Logística e Aceite</div>
+            <div class="terms-title">Condições de Venda, Logística e Aceite</div>
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
             <strong>2. QUANTIDADE:</strong> Limite condicionado ao stock disponível no momento para garantir o atendimento de todos.<br><br>
             <strong>3. COMPROVATIVO & RESERVA:</strong> É obrigatório chamar no WhatsApp para enviar o comprovativo e garantir a sua reserva antecipada.<br><br>
             <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
+        <!-- CIRCUITO UNIFICADO EXCLUSIVO -->
         <div class="text-link-container">
             <a href="https://wa.me" class="link-direto-unico" target="_blank">
-                💬 CLIQUE AQUI PARA CHAMAR NO ZAP: Confirmar Compra, Enviar Comprovativo e Receber o Link de Partilha
-            </a>
-        </div>
-
-        <div class="security-footer">
