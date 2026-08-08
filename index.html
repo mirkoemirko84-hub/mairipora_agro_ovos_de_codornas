@@ -18,7 +18,23 @@
             padding: 20px;
             box-sizing: border-box;
             text-align: center;
+            position: relative;
         }
+        
+        /* GATILHO ISOLADO NO TOPO ESQUERDO DA TELA */
+        .adm-trigger-topo {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 0.75rem;
+            color: #16351e; /* Discreto, misturado com o verde de fundo */
+            cursor: pointer;
+            user-select: none;
+            font-weight: bold;
+            padding: 5px;
+            text-decoration: underline;
+        }
+        
         .container {
             max-width: 450px;
             background: rgba(11, 36, 19, 0.9);
@@ -27,6 +43,7 @@
             padding: 25px;
             box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
             margin-bottom: 20px;
+            margin-top: 40px; /* Dá espaço para o gatilho do topo */
         }
         h1 {
             font-size: 2.2rem;
@@ -163,20 +180,8 @@
             display: block;
             margin-bottom: 5px;
         }
-
-        /* Gatilho Corrigido: Cinzento, visível e totalmente clicável */
-        .adm-trigger-link {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: #666;
-            cursor: pointer;
-            text-decoration: underline;
-            user-select: none;
-            font-weight: bold;
-            padding: 5px 15px;
-        }
         
+        /* PAINEL CENTRAL DE ALTA ENGENHARIA BRINDADO */
         .adm-panel {
             display: none;
             margin-top: 15px;
@@ -184,6 +189,9 @@
             padding: 15px;
             border: 2px solid #cc092f;
             border-radius: 8px;
+            width: 100%;
+            max-width: 410px;
+            box-sizing: border-box;
         }
         .adm-panel input {
             width: 70px;
@@ -210,6 +218,9 @@
     </style>
 </head>
 <body>
+
+    <!-- GATILHO ISOLADO: Canto Superior Esquerdo da Tela -->
+    <div class="adm-trigger-topo" onclick="ativarManobra()">• Sistema ADM •</div>
 
     <div class="container">
         <h1>Mairiporã Agro</h1>
@@ -263,21 +274,8 @@
         <div class="security-footer">
             <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
             &copy; 2026 JCS_software - Todos os direitos reservados.
-            
-            <!-- GATILHO SINCRONIZADO SEM CONFLITO DE LETRAS -->
-            <br>
-            <span class="adm-trigger-link" onclick="ativarManobra()">• Sistema ADM •</span>
         </div>
         
-        <!-- PAINEL OPERACIONAL CENTRAL DE ALTA ENGENHARIA -->
+        <!-- PAINEL OPERACIONAL SECRETO QUE VAI ACENDER NO CENTRO -->
         <div id="painelAdm" class="adm-panel">
             <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
-            <input type="password" id="senhaAdm" placeholder="***">
-            <span style="color: white; font-size: 0.9rem; margin-left: 5px;">Estoque:</span>
-            <input type="number" id="novoEstoque" value="3">
-            <button onclick="executarBaixa()">Dar Baixa</button>
-        </div>
-
-    </div>
-
-    <script>
