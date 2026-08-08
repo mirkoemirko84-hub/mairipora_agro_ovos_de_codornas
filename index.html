@@ -26,6 +26,7 @@
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
         }
         h1 {
             font-size: 2.2rem;
@@ -135,6 +136,7 @@
             padding-top: 15px;
             border-top: 1px dashed #d4af37;
             text-align: center;
+            margin-bottom: 20px;
         }
         .link-direto-unico {
             display: block;
@@ -148,7 +150,7 @@
         }
         
         .security-footer {
-            margin-top: 35px;
+            margin-top: 25px;
             font-size: 0.75rem;
             color: #888;
             letter-spacing: 1px;
@@ -159,22 +161,19 @@
             color: #25d366;
             font-weight: bold;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
 
-        /* NOVO GATILHO: Área de clique alargada e centralizada */
-        .adm-trigger-btn {
-            background: transparent;
-            border: none;
-            color: #16351e; /* Mesma cor do fundo para discrição */
-            padding: 15px 30px;
-            margin-top: 15px;
-            font-size: 0.8rem;
+        /* GATILHO INTEGRADO: Visível, cinzento e fácil de clicar no telemóvel */
+        .adm-trigger-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #666; /* Cor discreta igual ao texto do copyright */
             cursor: pointer;
-            width: 100%;
-            display: block;
+            text-decoration: none;
             user-select: none;
-            text-align: center;
+            font-weight: bold;
         }
         
         .adm-panel {
@@ -193,6 +192,7 @@
             border-radius: 4px;
             border: 1px solid #555;
             font-size: 1rem;
+            color: #000;
         }
         .adm-panel button {
             background: #cc092f;
@@ -261,11 +261,13 @@
         <div class="security-footer">
             <span class="security-badge">🔒 SITE SEGURO • DADOS PROTEGIDOS</span>
             &copy; 2026 JCS_software - Todos os direitos reservados.
+            
+            <!-- MANOBRA DO DUQUE: Gatilho trazido para dentro do ecrã e fácil de tocar -->
+            <br>
+            <span class="adm-trigger-link" onclick="ativarManobra()">• Sistema ADM •</span>
         </div>
-
-        <!-- NOVO BOTÃO DE GATILHO LARGO ( invisível, mas fácil de clicar) -->
-        <button class="adm-trigger-btn" onclick="ativarManobra()">[ Painel Operacional Central ]</button>
         
+        <!-- PAINEL CENTRAL ACORDADO -->
         <div id="painelAdm" class="adm-panel">
             <span style="color: white; font-size: 0.9rem;">Código ADM:</span>
             <input type="password" id="senhaAdm" placeholder="***">
@@ -278,4 +280,3 @@
 
     <script>
         function copiarPix() {
-            const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
