@@ -74,11 +74,6 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
-        }
-        .btn-copy:hover {
-            background-color: #ffffff;
-            color: #0b2413;
         }
         .benefits-box {
             background: rgba(212, 175, 55, 0.1);
@@ -122,93 +117,30 @@
             text-transform: uppercase;
             font-size: 0.95rem;
         }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 25px 0 15px 0;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.05rem;
-        }
-        .checkbox-container input {
-            accent-color: #d4af37;
-            transform: scale(1.4);
-            cursor: pointer;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.15rem;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: 0.3s ease;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
-            gap: 8px;
-        }
-        .btn-zap {
-            background-color: #25d366;
-            color: white;
-        }
-        .btn-share {
-            background-color: #0077b6;
-            color: white;
-            font-size: 1.05rem;
-            padding: 12px;
-        }
-        .btn:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-        }
-        .disabled {
-            background-color: #555 !important;
-            color: #aaa !important;
-            cursor: not-allowed;
-            pointer-events: none;
-            transform: none !important;
-            opacity: 0.5;
-            box-shadow: none !important;
-        }
-        .adm-trigger {
-            margin-top: 40px;
-            font-size: 0.7rem;
-            color: #2a5235;
-            cursor: pointer;
-            user-select: none;
-        }
-        .adm-panel {
-            display: none;
-            margin-top: 15px;
-            background: #111;
-            padding: 12px;
-            border: 1px solid #cc092f;
-            border-radius: 8px;
-        }
-        .adm-panel input {
-            width: 65px;
-            padding: 6px;
+        /* Estilo dos Links de Texto Direto */
+        .text-link-container {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed #d4af37;
             text-align: center;
-            font-weight: bold;
-            border-radius: 4px;
-            border: 1px solid #555;
         }
-        .adm-panel button {
-            background: #cc092f;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            cursor: pointer;
+        .link-direto {
+            display: block;
+            color: #25d366; /* Verde chamativo para o Zap */
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 4px;
-            margin-left: 5px;
+            text-decoration: underline;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+        .link-direto-share {
+            display: block;
+            color: #0077b6; /* Azul para partilha */
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 15px 0;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -218,9 +150,9 @@
         <h1>Mairiporã Agro</h1>
         <div class="subtitle">Logística e Faturamento Organizado<br>🚚 ENTREGAS ÀS TERÇAS E SEXTAS</div>
 
-        <!-- Alerta de Limitação de Pedido Dinâmico -->
+        <!-- Alerta de Limitação de Pedido -->
         <div class="stock-box">
-            ⚠️ DISPONÍVEL EM ESTOQUE: <span id="qtdEstoque">3</span> CARTELAS NO MÁXIMO<br>
+            ⚠️ DISPONÍVEL EM ESTOQUE: 3 CARTELAS NO MÁXIMO<br>
             <span style="font-size: 0.8rem; font-weight: normal; color: #ffffff;">Sujeito a confirmação de disponibilidade ou reserva via pagamento antecipado.</span>
         </div>
 
@@ -249,34 +181,41 @@
             <strong>1. LOGÍSTICA:</strong> Entrega pós-compensação do Pix ou em dinheiro. A retirada dos produtos será efetuada na <strong>RODOVIÁRIA</strong>.<br><br>
             <strong>2. QUANTIDADE:</strong> Limite condicionado ao stock disponível no momento para garantir o atendimento de todos.<br><br>
             <strong>3. COMPROVATIVO & RESERVA:</strong> É obrigatório chamar no WhatsApp para enviar o comprovativo e garantir a sua reserva antecipada.<br><br>
-            <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap após o aceite.
+            <strong>4. COMPATIBILIDADE iOS:</strong> Desativar Pop-ups no Safari para abrir o Zap de forma direta.
         </div>
 
-        <!-- Controle de Trava de Segurança -->
-        <label class="checkbox-container">
-            <input type="checkbox" id="aceite" onchange="liberarBotoes()">
-            Li e aceito as Condições e Benefícios.
-        </label>
-
-        <!-- Botão Único de Ação Direta Empurrado -->
-        <a href="https://wa.me" id="btnZap" class="btn btn-zap disabled" target="_blank">💬 Chamar no Zap & Enviar Comprovativo</a>
-        
-        <!-- Botão de Partilha Otimizado -->
-        <button onclick="partilharSite()" class="btn btn-share">🔗 Partilhar Site de Vendas</button>
-        
-        <!-- GATILHO INVISÍVEL ADM 999 -->
-        <div class="adm-trigger" onclick="ativarManobra()">• Painel Operacional Central •</div>
-        <div id="painelAdm" class="adm-panel">
-            <span style="color: white; font-size: 0.8rem;">Código ADM:</span>
-            <input type="password" id="senhaAdm" placeholder="***">
-            <span style="color: white; font-size: 0.8rem; margin-left: 5px;">Stock:</span>
-            <input type="number" id="novoEstoque" value="3">
-            <button onclick="executarBaixa()">Dar Baixa</button>
+        <!-- MANOBRA DE TEXTO: Links Diretos Ativados sem Botões ou Travas -->
+        <div class="text-link-container">
+            <a href="https://wa.me" class="link-direto">💬 Chamar pelo zap para confirmar a compra e enviar o comprovante de compra</a>
+            
+            <a onclick="partilharSite()" class="link-direto-share">🔗 Partilhar com zap para um amigo o produto</a>
         </div>
+
     </div>
 
     <script>
         function copiarPix() {
-            // Insira a sua linha Pix real entre as aspas abaixo se desejar
             const codigoPix = "COLOQUE_AQUI_O_SEU_CODIGO_PIX_COPIA_E_COLA";
             navigator.clipboard.writeText(codigoPix).then(() => {
+                alert("Código Pix copiado com sucesso!");
+            }).catch(err => {
+                alert("Erro ao copiar.");
+            });
+        }
+
+        function partilharSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mairiporã Agro',
+                    text: 'Garanta os seus Ovos de Codorna Premium da Mairiporã Agro!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link do site copiado! Pode colá-lo no WhatsApp para partilhar.");
+            }
+        }
+    </script>
+
+</body>
+</html>
